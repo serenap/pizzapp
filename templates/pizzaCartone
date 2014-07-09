@@ -1,0 +1,6 @@
+<li class="table-view-cell">1 Pizza 1
+	<p>Ingrediente 1, ingrediente 2, ingrediente 3, ingrediente 4 </p>
+	<button class="btn btn-negative">
+		<span class="icon icon-close"></span>
+	</button>
+</li>
