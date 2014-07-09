@@ -69,15 +69,9 @@ define(function(require) {
       });
     },
 
-<<<<<<< HEAD
-     profilo: function(event) {
-      
-      Backbone.history.navigate("newprofilo", {
-=======
     profilo: function(event) {
       
       Backbone.history.navigate("profilo", {
->>>>>>> origin/test
         trigger: true
       });
     }

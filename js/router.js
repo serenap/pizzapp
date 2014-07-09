@@ -7,11 +7,7 @@ define(function(require) {
   var MyView = require("views/pages/MyView");
   var MapView = require("views/pages/MapView");
   var PizzerieView = require("views/pages/PizzerieView");
-<<<<<<< HEAD
-  var NewprofiloView = require("views/pages/NewprofiloView");
-=======
   var ProfiloView = require("views/pages/ProfiloView");
->>>>>>> origin/test
   var MenuView = require("views/pages/MenuView");
   
 
@@ -25,11 +21,7 @@ define(function(require) {
       "myview": "myView",
       "map": "map",
       "pizzerie": "pizzerie",
-<<<<<<< HEAD
-      "newprofilo": "profilo",
-=======
       "profilo": "profilo",
->>>>>>> origin/test
       "menu" : "menu"
     },
 
@@ -72,19 +64,11 @@ define(function(require) {
         this.changePage(page);
     },
 
-<<<<<<< HEAD
-     profilo: function() {
-     // highlight the nav2 tab bar element as the current one
-       this.structureView.setActiveTabBarElement("nav2");
-     // create the view and show it
-      var page = new NewprofiloView();
-=======
     profilo: function() {
      // highlight the nav2 tab bar element as the current one
        this.structureView.setActiveTabBarElement("nav2");
      // create the view and show it
       var page = new ProfiloView();
->>>>>>> origin/test
         this.changePage(page);
     },
 

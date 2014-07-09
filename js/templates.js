@@ -12,10 +12,6 @@ define({
     structure: "templates/structure.html",
     myview: "templates/myview.html",
     pizzerie: "templates/pizzerie.html",
-<<<<<<< HEAD
-    newprofilo: "templates/newprofilo.html",
-=======
     profilo: "templates/profilo.html",
->>>>>>> origin/test
     menu: "templates/menu.html"
 });
