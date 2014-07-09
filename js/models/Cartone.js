@@ -13,12 +13,12 @@ define(function(require) {
 			for (var i = 0; i < this.pizze.length; i++) {
 				if(this.pizze[i].nome == pizza.nome && this.pizze[i].ingredienti == pizza.serializzaIngredienti())
 					this.pizze[i].quantita++;
-				else return this.pizze.push({
-					quantita: 1,
-					nome: pizza.nome,
-					ingredienti: pizza.serializzaIngredienti()
-				});
 			};
+//			return this.pizze.push({
+//				quantita: 1,
+//				nome: pizza.nome,
+//				ingredienti: pizza.serializzaIngredienti()
+//			});
 		},
 
 		rimuoviPizza: function(i){
