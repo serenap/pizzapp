@@ -2,16 +2,21 @@ define(function(require) {
 
 	var Backbone = require("backbone");
 
-	pizza = Backbone.Model.extend({
-		constructorName: "pizza",
+	var Pizza = Backbone.Model.extend({
+		constructorName: "Pizza",
 		default:{
 			nome: '',
-			tipo:'',
-			prezzo:''
+			categoria: '',
+			immagine: undefined,
+			ingredienti: [],
+			prezzo: 0
 			
 		},
+
 		initialize: function(){
 		},
 	});
+
+	return Pizza;
 
 });

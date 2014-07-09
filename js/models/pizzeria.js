@@ -2,21 +2,24 @@ define(function(require) {
 
 	var Backbone = require("backbone");
 
-	pizzeria = Backbone.Model.extend({
-		constructorName: "pizzeria",
+	var Pizzeria = Backbone.Model.extend({
+		constructorName: "Pizzeria",
 		default:{
 			nome: '',
 			indirizzo:'',
 			telefono: '',
+			immagine: undefined,
 			listino: [], //array di oggetti "pizza"
-			zone: [], //elenco di vie/quartieri coperti dalla pizzeria
-			giorni_chiusura: [],
-			orario: ''
+			maxDistanza: 0, //massma distanza di consegna
+			giorniApertura: [],
+			orarioApertura: []
 
 		},
 
 		initialize: function(){
 		},
 	});
+
+	return Pizzeria;
 
 });
