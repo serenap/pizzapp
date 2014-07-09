@@ -14,13 +14,14 @@ define(function(require) {
 			maxDistanza: 0, //massima distanza di consegna
 			giorniApertura: [],
 			orarioApertura: []
-
 		},
 
 		aperta: function(){
-//			var data = new Date();
-//			var giorno=data.getDay();
-//			var ora=data.getHours()+":"+(data.getMinutes()<10?'0':'') + data.getMinutes();
+			var data = new Date();
+			return data.getDay() >= this.giorniApertura[0] && 
+					data.getDay() <= this.giorniApertura[1] && 
+					data.getHours() >= this.orarioApertura[0] && 
+					data.getHours() <= this.orarioApertura[1];
 		}
 	});
 

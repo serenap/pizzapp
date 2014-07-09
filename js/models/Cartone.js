@@ -1,16 +1,28 @@
 define(function(require) {
 
 	var Backbone = require("backbone");
+	var Pizza = require("models/Pizza")
 
 	var Cartone = Backbone.Model.extend({
 		constructorName: "Cartone",
 		default:{
-			pizze: {
-				quantita: 0,
-				nome: '',
-				ingredienti: ''
-			}
-			
+			pizze: []
+		},
+
+		aggiungiPizza: function(pizza){
+			for (var i = 0; i < this.pizze.length; i++) {
+				if(this.pizze[i].nome == pizza.nome && this.pizze[i].ingredienti == pizza.serializzaIngredienti())
+					this.pizze[i].quantita++;
+				else return this.pizze.push({
+					quantita: 1,
+					nome: pizza.nome,
+					ingredienti: pizza.serializzaIngredienti()
+				});
+			};
+		},
+
+		rimuoviPizza: function(i){
+			this.pizze.splice(i, 0);
 		}
 	});
 
