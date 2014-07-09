@@ -13,5 +13,10 @@ define({
     myview: "templates/myview.html",
     pizzerie: "templates/pizzerie.html",
     profilo: "templates/profilo.html",
-    menu: "templates/menu.html"
+    menu: "templates/menu.html",
+    ingredienti: "templates/ingredienti.html",
+    localizzazione: "templates/localizzazione.html",
+    riepilogo: "templates/riepilogo.html",
+    home: "templates/home.html",
+    cartone: "templates.cartone.html"
 });
