@@ -14,10 +14,7 @@ define(function(require) {
 			telefono: '',
 			posizione: '',
 			carta: ''
-		},
-		
-		initialize: function(){
-		},
+		}
 	});
 
 	return Utente;

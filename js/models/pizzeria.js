@@ -14,10 +14,7 @@ define(function(require) {
 			giorniApertura: [],
 			orarioApertura: []
 
-		},
-
-		initialize: function(){
-		},
+		}
 	});
 
 	return Pizzeria;

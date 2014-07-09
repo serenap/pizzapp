@@ -15,10 +15,7 @@ define(function(require) {
 			totale: 0,
 			orarioConsegna: '',
 			modalitaPagamento: ''
-		},
-
-		initialize: function(){
-		},
+		}
 	});
 
 	return Ordine;

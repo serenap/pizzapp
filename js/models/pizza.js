@@ -13,9 +13,6 @@ define(function(require) {
 			
 		},
 
-		initialize: function(){
-		},
-
 		serializzaIngredienti: function(){
 			return this.ingredienti.join(", ");
 		})
