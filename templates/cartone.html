@@ -41,10 +41,12 @@
 			<span class="icon icon-close"></span>
 		</button>
 	</li>
-	<li class="table-view-cell">1 Pizza 8
-		<p>Ingrediente 1, ingrediente 2, ingrediente 3, ingrediente 4, </p>
+	{{#each menu.models}}
+	<li class="table-view-cell">1 {{this.nome}}
+		<p>{{this.serializzaIngredienti()}}</p>
 		<button class="btn btn-negative">
 			<span class="icon icon-close"></span>
 		</button>
 	</li>
+	{{/each}}
 </ul>
