@@ -20,9 +20,14 @@ define(function(require) {
       "": "showStructure",
       "myview": "myView",
       "map": "map",
-      "pizzerie": "pizzerie",
+      "home": "home",
       "profilo": "profilo",
-      "menu" : "menu"
+      "localizzazione": "localizzazione",
+      "listaPizzerie": "listaPizzerie",
+      "listaIngredienti": "listaIngredienti",
+      "menu" : "menu",
+      "cartone": "cartone",
+      "riepilogo": "riepilogo"
     },
 
     firstView: "myview",
@@ -48,11 +53,27 @@ define(function(require) {
       this.changePage(page);
     },
 
-    pizzerie: function() {
+    listaPizzerie: function() {
      // highlight the nav2 tab bar element as the current one
      // this.structureView.setActiveTabBarElement("nav3");
      // create the view and show it
       var page = new PizzerieView();
+        this.changePage(page);
+    },
+
+    listaIngredienti: function() {
+     // highlight the nav2 tab bar element as the current one
+     // this.structureView.setActiveTabBarElement("nav3");
+     // create the view and show it
+      var page = new IngredientiView();
+        this.changePage(page);
+    },
+
+    home: function() {
+     // highlight the nav2 tab bar element as the current one
+     // this.structureView.setActiveTabBarElement("nav3");
+     // create the view and show it
+      var page = new HomeView();
         this.changePage(page);
     },
 
@@ -64,11 +85,35 @@ define(function(require) {
         this.changePage(page);
     },
 
+    cartone: function() {
+     // highlight the nav2 tab bar element as the current one
+     // this.structureView.setActiveTabBarElement("nav3");
+     // create the view and show it
+      var page = new CartoneView();
+        this.changePage(page);
+    },
+
+    localizzazione: function() {
+     // highlight the nav2 tab bar element as the current one
+     // this.structureView.setActiveTabBarElement("nav3");
+     // create the view and show it
+      var page = new LocalizzazioneView();
+        this.changePage(page);
+    },
+
     profilo: function() {
      // highlight the nav2 tab bar element as the current one
        this.structureView.setActiveTabBarElement("nav2");
      // create the view and show it
       var page = new ProfiloView();
+        this.changePage(page);
+    },
+
+    riepilogo: function() {
+     // highlight the nav2 tab bar element as the current one
+     // this.structureView.setActiveTabBarElement("nav3");
+     // create the view and show it
+      var page = new RiepilogoView();
         this.changePage(page);
     },
 
