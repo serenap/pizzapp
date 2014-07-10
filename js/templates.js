@@ -11,12 +11,8 @@
 define({
     structure: "templates/structure.html",
     myview: "templates/myview.html",
-    listaPizzerie: "templates/listaPizzerie.html",
+    pizzerie: "templates/pizzerie.html",
     profilo: "templates/profilo.html",
     menu: "templates/menu.html",
-    listaIngredienti: "templates/listaIngredienti.html",
-    localizzazione: "templates/localizzazione.html",
-    riepilogo: "templates/riepilogo.html",
-    home: "templates/home.html",
-    cartone: "templates/cartone.html"
+    localizzazione: "templates/localizzazione.html"
 });

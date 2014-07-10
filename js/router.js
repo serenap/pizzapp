@@ -9,6 +9,7 @@ define(function(require) {
   var PizzerieView = require("views/pages/PizzerieView");
   var ProfiloView = require("views/pages/ProfiloView");
   var MenuView = require("views/pages/MenuView");
+  var LocalizzazioneView = require("views/pages/LocalizzazioneView");
   
 
   var AppRouter = Backbone.Router.extend({
@@ -20,14 +21,10 @@ define(function(require) {
       "": "showStructure",
       "myview": "myView",
       "map": "map",
-      "home": "home",
+      "pizzerie": "pizzerie",
       "profilo": "profilo",
-      "localizzazione": "localizzazione",
-      "listaPizzerie": "listaPizzerie",
-      "listaIngredienti": "listaIngredienti",
       "menu" : "menu",
-      "cartone": "cartone",
-      "riepilogo": "riepilogo"
+      "localizzazione" : "localizza"
     },
 
     firstView: "myview",
@@ -38,11 +35,13 @@ define(function(require) {
 
     myView: function() {
       // highlight the nav1 tab bar element as the current one
+      document.getElementById("title").innerHTML = "HOME";
       this.structureView.setActiveTabBarElement("nav1");
+
       // create a model with an arbitrary attribute for testing the template engine
       var model = new MyModel({
-        key1: "Cercami",
-        key2: "Consegna a casa mia"
+        key2: "Cercami",
+        key1: "Consegna a casa mia"
 
       });
       // create the view
@@ -53,31 +52,16 @@ define(function(require) {
       this.changePage(page);
     },
 
-    listaPizzerie: function() {
-     // highlight the nav2 tab bar element as the current one
-     // this.structureView.setActiveTabBarElement("nav3");
+    pizzerie: function() {
+
+     document.getElementById("title").innerHTML = "PIZZERIE";
      // create the view and show it
       var page = new PizzerieView();
         this.changePage(page);
     },
 
-    listaIngredienti: function() {
-     // highlight the nav2 tab bar element as the current one
-     // this.structureView.setActiveTabBarElement("nav3");
-     // create the view and show it
-      var page = new IngredientiView();
-        this.changePage(page);
-    },
-
-    home: function() {
-     // highlight the nav2 tab bar element as the current one
-     // this.structureView.setActiveTabBarElement("nav3");
-     // create the view and show it
-      var page = new HomeView();
-        this.changePage(page);
-    },
-
     menu: function() {
+      document.getElementById("title").innerHTML = "MENU'";
      // highlight the nav2 tab bar element as the current one
      // this.structureView.setActiveTabBarElement("nav3");
      // create the view and show it
@@ -85,15 +69,8 @@ define(function(require) {
         this.changePage(page);
     },
 
-    cartone: function() {
-     // highlight the nav2 tab bar element as the current one
-     // this.structureView.setActiveTabBarElement("nav3");
-     // create the view and show it
-      var page = new CartoneView();
-        this.changePage(page);
-    },
-
-    localizzazione: function() {
+    localizza: function() {
+      document.getElementById("title").innerHTML = "CERCAMI";
      // highlight the nav2 tab bar element as the current one
      // this.structureView.setActiveTabBarElement("nav3");
      // create the view and show it
@@ -101,19 +78,12 @@ define(function(require) {
         this.changePage(page);
     },
 
-    profilo: function() {
+     profilo: function() {
+      document.getElementById("title").innerHTML = "PROFILO";
      // highlight the nav2 tab bar element as the current one
        this.structureView.setActiveTabBarElement("nav2");
      // create the view and show it
       var page = new ProfiloView();
-        this.changePage(page);
-    },
-
-    riepilogo: function() {
-     // highlight the nav2 tab bar element as the current one
-     // this.structureView.setActiveTabBarElement("nav3");
-     // create the view and show it
-      var page = new RiepilogoView();
         this.changePage(page);
     },
 
@@ -127,7 +97,7 @@ define(function(require) {
 
     // load the structure view
     showStructure: function() {
-      if (!this.structureView) {
+      if (!this.structureView) {   
         this.structureView = new StructureView();
         // put the el element of the structure view into the DOM
         document.body.appendChild(this.structureView.render().el);
