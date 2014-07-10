@@ -29,20 +29,39 @@ define(function(require) {
     //className: "i-g page",
 
     events: {
-    
+
+      "touchend #mostra" : "mostra"
+
     },   
 
 
     render: function() {
        // load the template
+
       this.el.innerHTML = this.template({});
       // cache a reference to the content element
       this.contentElement = this.$el.find('#content')[0];
-     //$(this.el).html(this.template(this.model.toJSON()));
+
+      //$(this.el).html(this.template(this.model.toJSON()));
       return this;
     },
 
-   
+    mostra: function(){
+
+      if(!($("#dettaglio").is(':hidden'))){    
+         
+           $("#dettaglio").hide();
+           $("#anteprima").show();
+
+           }
+      
+      else
+      {
+        $("#dettaglio").show();
+        $("#anteprima").hide();
+        }
+  }
+    
   
   });
 

@@ -35,10 +35,7 @@ define(function(require) {
 
 
     render: function() {
-<<<<<<< HEAD
       
-=======
->>>>>>> origin/master
        // load the template
       this.el.innerHTML = this.template({});
       // cache a reference to the content element

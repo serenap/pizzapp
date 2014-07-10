@@ -74,3 +74,17 @@ body {
 #map {
   height: 100%;
   width: 100%; }
+
+input[type="search"] {
+  background-image: url('../img/lente.gif') ;
+  background-repeat:no-repeat;
+}
+
+
+input[type="search"][placeholder]{
+    padding-left: 35px;
+}
+
+#anteprima{
+   -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(100%, rgba(0,0,0,0)), to(rgba(0,0,0,1)));
+}

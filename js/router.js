@@ -62,6 +62,7 @@ define(function(require) {
 
     menu: function() {
       document.getElementById("title").innerHTML = "MENU'";
+     
      // highlight the nav2 tab bar element as the current one
      // this.structureView.setActiveTabBarElement("nav3");
      // create the view and show it
