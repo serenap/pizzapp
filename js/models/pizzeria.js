@@ -1,7 +1,7 @@
 define(function(require) {
 
 	var Backbone = require("backbone");
-	var Pizza = require("models/Pizza");
+	var Menu = require("models/Menu");
 
 	var Pizzeria = Backbone.Model.extend({
 		constructorName: "Pizzeria",
@@ -9,9 +9,9 @@ define(function(require) {
 			nome: '',
 			indirizzo:'',
 			telefono: '',
-			immagine: undefined,
-			listino: [], //array di oggetti "pizza"
-			maxDistanza: 0, //massima distanza di consegna
+			immagine: null,
+			menu: new Menu(),
+			maxDistanza: 0,
 			giorniApertura: [],
 			orarioApertura: []
 		},

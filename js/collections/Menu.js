@@ -4,8 +4,8 @@ define(function(require) {
 	var Pizza = require("models/Pizza");
 
 	var Menu = Backbone.Collection.extend({
-		constructorName : "menu",
-		model : Pizza
+		constructorName : "Menu",
+		model : Pizza,
 	});
 
 	return Menu;
