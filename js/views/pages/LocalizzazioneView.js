@@ -35,7 +35,10 @@ define(function(require) {
 
 
     render: function() {
+<<<<<<< HEAD
       
+=======
+>>>>>>> 4f1c71834a15d218549b843a7cf098d138af1f11
        // load the template
       this.el.innerHTML = this.template({});
       // cache a reference to the content element
