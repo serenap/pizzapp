@@ -1,8 +1,31 @@
-<form>
-<input type="text" placeholder="Nome Cognome">
-<input type="text" placeholder="Num. Telefono">
-<input type="text" placeholder="Indirizzo">
-<button class="btn btn-block"><span class="icon icon-search"></span> Trovami</button>
+<form class="input-group">
+<br/>
+  <div class="input-row">
+    <label>Nome</label>
+    <input type="text" placeholder="{{nome}}">
+  </div>
+   <div class="input-row">
+    <label>Cognome</label>
+    <input type="text" placeholder="{{cognome}}">
+  </div>
+  <div class="input-row">
+    <label>Telefono</label>
+    <input type="text" placeholder="{{telefono}}">
+  </div>
+<br/>
+  <div class="input-row">
+    <label>CAP</label>
+    <input type="text" placeholder="{{CAP}}">
+  </div>
+  <div class="input-row">
+    <label>Via</label>
+    <input type="text" placeholder="{{indirizzo}}">
+  </div>
+  <div class="input-row">
+    <label>n civico</label>
+    <input type="text" placeholder="{{civico}}">
+  </div>
+
 </form>
-<button class="btn btn-block"><span class="icon icon-compose"></span> Aggiungi o Modifica Carta</button>
-<button class="btn btn-block"><span class="icon icon-check"></span> Salva</button>
+
+<button class="btn btn-primary btn-outlined pull-right"><span class="icon icon-search"></span>Cercami</button>

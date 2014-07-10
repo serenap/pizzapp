@@ -4,15 +4,15 @@ define(function(require) {
   var MyModel = require("models/MyModel");
   var Utils = require("utils");
 
-  var MyView = Utils.Page.extend({
+  var LocalizzazioneView = Utils.Page.extend({
 
-    constructorName: "MyView",
+    constructorName: "LocalizzazioneView",
 
     model: MyModel,
     
     initialize: function() {
       // load the precompiled template
-      this.template = Utils.templates.myview;
+      this.template = Utils.templates.localizzazione;
 
       // here we can register to inTheDOM or removing events
       // this.listenTo(this, "inTheDOM", function() {
@@ -25,35 +25,28 @@ define(function(require) {
       // by convention, all the inner views of a view must be stored in this.subViews
     },
 
-    id: "myview",
-    className: "i-g page",
+    id: "localizzazione",
+    //className: "i-g page",
 
     events: {
-      "touchend #localizzazione": "localizza",
-      "touchend #pizzerie": "pizzerie"
+    
 
-    },
+    },   
+
 
     render: function() {
-      $(this.el).html(this.template(this.model.toJSON()));
+      
+       // load the template
+      this.el.innerHTML = this.template({});
+      // cache a reference to the content element
+      this.contentElement = this.$el.find('#content')[0];
+     //$(this.el).html(this.template(this.model.toJSON()));
       return this;
     },
 
-    localizza: function(event) {
-        Backbone.history.navigate("localizzazione", {
-        trigger: true
-      });
-
-    },
-
-    pizzerie: function(event) {
-        Backbone.history.navigate("pizzerie", {
-        trigger: true
-      });
-    }
-
+  
   });
 
-  return MyView;
+  return LocalizzazioneView;
 
 });

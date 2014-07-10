@@ -1,13 +1,18 @@
-<div class="popup" id="localizzazione">
-	<button class="btn btn-negative">
-		<span class="icon icon-close"></span>
-	</button>
-	<p>Ti trovi qui:</p>
-	<input type="text" placeholder="Indirizzo">
-	<button class="btn btn-block">
-		<span class="icon icon-search"></span> Cerca di nuovo
-	</button>
-	<button class="btn btn-block">
-		<span class="icon icon-check"></span> Conferma
-	</button>
-</div>
+<form class="input-group">
+  <div class="input-row">
+    <label>CAP</label>
+    <input type="text" placeholder="{{CAP}}">
+  </div>
+  <div class="input-row">
+    <label>Via</label>
+    <input type="text" placeholder="{{indirizzo}}">
+  </div>
+  <div class="input-row">
+    <label>n civico</label>
+    <input type="text" placeholder="{{civico}}">
+  </div>
+
+</form>
+<br/>
+<button class="btn btn-primary btn-outlined pull-left"><span class="icon icon-refresh"></span> Ricalcola</button>
+<button class="btn btn-primary btn-outlined pull-right"><span class="icon icon-check"></span> Conferma</button>

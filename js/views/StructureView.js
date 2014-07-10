@@ -15,6 +15,7 @@ define(function(require) {
     id: "main",
 
     events: {
+      "touchend #back": "goBack",
       "touchend #nav1": "myView",
       "touchend #nav2": "profilo"
      
@@ -33,6 +34,7 @@ define(function(require) {
       // load the template
       this.el.innerHTML = this.template({});
       // cache a reference to the content element
+      //$(this.el).html(this.template(this.model.toJSON()));
       this.contentElement = this.$el.find('#content')[0];
       return this;
     },
@@ -69,7 +71,7 @@ define(function(require) {
       });
     },
 
-    profilo: function(event) {
+     profilo: function(event) {
       
       Backbone.history.navigate("profilo", {
         trigger: true
