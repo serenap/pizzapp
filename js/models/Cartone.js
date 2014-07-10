@@ -10,15 +10,19 @@ define(function(require) {
 		},
 
 		aggiungiPizza: function(pizza){
+			var presente = false;
 			for (var i = 0; i < this.pizze.length; i++) {
-				if(this.pizze[i].nome == pizza.nome && this.pizze[i].ingredienti == pizza.serializzaIngredienti())
+				if(this.pizze[i].nome == pizza.nome && this.pizze[i].ingredienti == pizza.serializzaIngredienti()){
 					this.pizze[i].quantita++;
+					presente = true;
+				}
 			};
-//			return this.pizze.push({
-//				quantita: 1,
-//				nome: pizza.nome,
-//				ingredienti: pizza.serializzaIngredienti()
-//			});
+			if(!presente)
+				this.pizze.push({
+					quantita: 1,
+					nome: pizza.nome,
+					ingredienti: pizza.serializzaIngredienti()
+				});
 		},
 
 		rimuoviPizza: function(i){

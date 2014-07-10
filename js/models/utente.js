@@ -6,10 +6,6 @@ define(function(require) {
 		constructorName: "Utente",
 		default:{
 			nome: '',
-/*			cognome:'',
-			citta: '',
-			via:'',
-			n_civico: '',*/
 			indirizzo: '',
 			telefono: '',
 			posizione: '',
