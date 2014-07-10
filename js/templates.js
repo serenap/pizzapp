@@ -11,16 +11,12 @@
 define({
     structure: "templates/structure.html",
     myview: "templates/myview.html",
-    pizzeria: "templates/pizzeria.html",
     listaPizzerie: "templates/listaPizzerie.html",
     profilo: "templates/profilo.html",
-    pizza: "templates.pizza.html",
-    pizzaCartone: "templates.pizzaCartone.html",
     menu: "templates/menu.html",
-    ingrediente: "templates/ingrediente.html",
     listaIngredienti: "templates/listaIngredienti.html",
     localizzazione: "templates/localizzazione.html",
     riepilogo: "templates/riepilogo.html",
     home: "templates/home.html",
-    cartone: "templates.cartone.html"
+    cartone: "templates/cartone.html"
 });

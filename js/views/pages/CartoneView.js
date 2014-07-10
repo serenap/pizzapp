@@ -4,15 +4,15 @@ define(function(require) {
   var MyModel = require("models/MyModel");
   var Utils = require("utils");
 
-  var LocalizzazioneView = Utils.Page.extend({
+  var CartoneView = Utils.Page.extend({
 
-    constructorName: "LocalizzazioneView",
+    constructorName: "CartoneView",
 
     model: MyModel,
     
     initialize: function() {
       // load the precompiled template
-      this.template = Utils.templates.localizzazione;
+      this.template = Utils.templates.cartone;
 
       // here we can register to inTheDOM or removing events
       // this.listenTo(this, "inTheDOM", function() {
@@ -25,7 +25,7 @@ define(function(require) {
       // by convention, all the inner views of a view must be stored in this.subViews
     },
 
-    id: "localizzazione",
+    id: "cartone",
     //className: "i-g page",
 
     events: {
@@ -35,10 +35,6 @@ define(function(require) {
 
 
     render: function() {
-<<<<<<< HEAD
-      
-=======
->>>>>>> origin/master
        // load the template
       this.el.innerHTML = this.template({});
       // cache a reference to the content element
@@ -50,6 +46,6 @@ define(function(require) {
   
   });
 
-  return LocalizzazioneView;
+  return CartoneView;
 
 });
