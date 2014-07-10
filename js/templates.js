@@ -18,5 +18,5 @@ define({
     localizzazione: "templates/localizzazione.html",
     riepilogo: "templates/riepilogo.html",
     home: "templates/home.html",
-    cartone: "templates.cartone.html"
+    cartone: "templates/cartone.html"
 });
