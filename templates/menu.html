@@ -1,15 +1,26 @@
+<div class="segmented-control">
+  <a class="control-item active" href="#item1mobile">
+   Tutte
+  </a>
+  <a class="control-item" href="#item2mobile">
+   Rosse
+  </a>
+  <a class="control-item" href="#item3mobile">
+   Bianche
+  </a>
+</div>
 <ul class="table-view" id="menu"><br/>
 <input type="search" placeholder="Filtra per ingrediente" focus="none">
   <li class="table-view-cell media" >
-    <a id="mostra"><img class="media-object pull-left" src="http://placehold.it/42x42">
-      <div class="media-body" >
+   <img class="media-object pull-left" src="http://placehold.it/42x42">
+      <div class="media-body" > <a id="mostra">
         <h3>Pizza 1</h3> 
         <p id="anteprima">Ingrediente1,ingrediente2,..<br/>Ingrediente1,ingrediente2,..</p>
         <p id="dettaglio" class="displaynone"> Ingrediente1,ingrediente2,..<br/>Ingrediente1,ingrediente2,..
         <br/>Ingrediente1,ingrediente2,..
-        <br/><br/>
-        <button class="btn"><span class="icon icon-edit"></span> Personalizza</button></p>
-      </div></a><button class="btn" id="pizz1">+5 &euro;</button>
+        <br/><br/></a>
+        <a href="#openModal"><button class="btn"><span class="icon icon-edit"></span> Personalizza</button></a></p>
+      </div><button class="btn" id="pizz1">+5 &euro;</button>
     
   </li>
   <li class="table-view-cell media" >
@@ -26,3 +37,30 @@
   </li>
   
 </ul>
+<div id="openModal" class="modalDialog">
+  <div>
+    <a href="#close" title="Close" class="close">X</a>
+    <h5>Personalizza</h5>
+  <ul class="table-view">
+    <li class="table-view-cell">
+    Ingrediente 1
+    <div class="toggle active">
+      <div class="toggle-handle"></div>
+    </div>
+  </li>
+  <li class="table-view-cell">
+    Ingrediente 2
+    <div class="toggle active">
+      <div class="toggle-handle"></div>
+    </div>
+  </li>
+  <li class="table-view-cell">
+    Ingrediente 3
+    <div class="toggle active">
+      <div class="toggle-handle"></div>
+    </div>
+  </li>
+  
+</ul>
+  </div>
+</div>

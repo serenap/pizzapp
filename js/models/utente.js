@@ -2,17 +2,19 @@ define(function(require) {
 
 	var Backbone = require("backbone");
 
-	var Utente = Backbone.Model.extend({
-		constructorName: "Utente",
+	utente = Backbone.Model.extend({
+		constructorName: "utente",
 		default:{
 			nome: '',
-			indirizzo: '',
-			telefono: '',
-			posizione: '',
-			carta: ''
-		}
+			cognome:'',
+			citta: '',
+			via:'',
+			n_civico: '',
+			telefono:''
+		},
+		initialize: function(){
+			alert("Welcome");
+		},
 	});
-
-	return Utente;
 
 });
