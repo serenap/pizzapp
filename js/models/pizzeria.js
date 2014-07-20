@@ -1,22 +1,34 @@
 define(function(require) {
 
 	var Backbone = require("backbone");
+	var Menu = require("models/Menu");
 
-	pizzeria = Backbone.Model.extend({
-		constructorName: "pizzeria",
+	var Pizzeria = Backbone.Model.extend({
+		constructorName: "Pizzeria",
 		default:{
 			nome: '',
 			indirizzo:'',
 			telefono: '',
-			listino: [], //array di oggetti "pizza"
-			zone: [], //elenco di vie/quartieri coperti dalla pizzeria
-			giorni_chiusura: [],
-			orario: ''
+			immagine: null,
+			menu: null,
+			maxDistanza: 0,
+			giorniApertura: [],
+			orarioApertura: []
 
 		},
 
 		initialize: function(){
 		},
+
+		aperta: function(){
+			var data = new Date();
+			return data.getDay() >= this.giorniApertura[0] && 
+					data.getDay() <= this.giorniApertura[1] && 
+					data.getHours() >= this.orarioApertura[0] && 
+					data.getHours() <= this.orarioApertura[1];
+		}
 	});
+
+	return Pizzeria;
 
 });
