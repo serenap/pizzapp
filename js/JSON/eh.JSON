@@ -1,0 +1,25 @@
+[
+	{
+		"nome": "Margherita",
+		"categoria": "Rossa",
+		"immagine": "null",
+		"ingredienti": [
+			"Mozzarella",
+			"Pomodoro"
+		],
+		"prezzo": "4,50"
+	},
+	{
+		"nome": "Porcellona",
+		"categoria": "Rossa",
+		"immagine": "null",
+		"ingredienti": [
+			"Mozzarella",
+			"Pomodoro",
+			"Salsiccia",
+			"Wurstel",
+			"Prosciutto Cotto"
+		],
+		"prezzo": "6,50"
+	}
+]

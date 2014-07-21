@@ -1,0 +1,24 @@
+[
+	{
+		"nome": "Margherita",
+		"categoria": "Rossa",
+		"immagine": "null",
+		"ingredienti": [
+			"Mozzarella",
+			"Pomodoro"
+		],
+		"prezzo": "3,50"
+	},
+	{
+		"nome": "Rustica",
+		"categoria": "Bianca",
+		"immagine": "null",
+		"ingredienti": [
+			"Mozzarella",
+			"Pachino",
+			"Rucola",
+			"Mais",
+		],
+		"prezzo": "4,00"
+	}
+]

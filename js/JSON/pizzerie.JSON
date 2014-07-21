@@ -1,0 +1,29 @@
+[
+	{
+		"nome": "Boh",
+		"indirizzo": "Viale della Croce Rossa, 48, 67100, L'Aquila",
+		"telefono": "086200000",
+		"immagine": "null",
+		"maxDistanza": 10,
+		"giorniApertura": [1,6],
+		"orarioApertura": [9,22]
+	},
+	{
+		"nome": "Mah",
+		"indirizzo": "Viale Aldo Moro, 26, 67100, L'Aquila",
+		"telefono": "086211111",
+		"immagine": "null",
+		"maxDistanza": 8,
+		"giorniApertura": [2,6],
+		"orarioApertura": [8,23]
+	},
+	{
+		"nome": "Eh",
+		"indirizzo": "Viale Strinella, 60, 67100, L'Aquila",
+		"telefono": "086222222",
+		"immagine": "null",
+		"maxDistanza": 8,
+		"giorniApertura": [2,6],
+		"orarioApertura": [2,3]
+	}
+]

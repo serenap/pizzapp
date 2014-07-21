@@ -6,7 +6,7 @@ define(function(require) {
 	var ListaPizzerie = Backbone.Collection.extend({
 		constructorName : "ListaPizzerie",
 		model : Pizzeria,
-		url : "JSON/"
+		url : "JSON/pizzerie.JSON"
 	});
 
 	return ListaPizzerie;

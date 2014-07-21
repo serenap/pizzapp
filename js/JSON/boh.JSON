@@ -1,0 +1,22 @@
+[
+	{
+		"nome": "Margherita",
+		"categoria": "Rossa",
+		"immagine": "null",
+		"ingredienti": [
+			"Mozzarella",
+			"Pomodoro"
+		],
+		"prezzo": "5,00"
+	},
+	{
+		"nome": "Tartufo",
+		"categoria": "Bianca",
+		"immagine": "null",
+		"ingredienti": [
+			"Mozzarella",
+			"Tartufo"
+		],
+		"prezzo": "6,00"
+	}
+]
