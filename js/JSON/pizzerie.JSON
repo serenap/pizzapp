@@ -19,11 +19,21 @@
 	},
 	{
 		"nome": "Eh",
-		"indirizzo": "Viale Strinella, 60, 67100, L'Aquila",
+		"indirizzo": "Via Strinella, 60, 67100, L'Aquila",
 		"telefono": "086222222",
 		"immagine": "null",
 		"maxDistanza": 8,
-		"giorniApertura": [2,6],
+		"giorniApertura": [0,6],
 		"orarioApertura": [2,3]
+	},
+	{
+		"nome": "Che?",
+		"indirizzo": "Via Sallustio, 7, 67039, Sulmona",
+		"telefono": "086400000",
+		"immagine": "null",
+		"maxDistanza": 8,
+		"giorniApertura": [1,6],
+		"orarioApertura": [8,22]
 	}
+
 ]
