@@ -3,6 +3,7 @@ define(function(require) {
   var Backbone = require("backbone");
   var MyModel = require("models/MyModel");
   var Utils = require("utils");
+  
 
   var CartoneView = Utils.Page.extend({
 
@@ -35,11 +36,13 @@ define(function(require) {
 
 
     render: function() {
+
        // load the template
       this.el.innerHTML = this.template({});
       // cache a reference to the content element
       this.contentElement = this.$el.find('#content')[0];
      //$(this.el).html(this.template(this.model.toJSON()));
+
       return this;
     },
 

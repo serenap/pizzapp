@@ -10,6 +10,7 @@ define(function(require) {
   var ProfiloView = require("views/pages/ProfiloView");
   var MenuView = require("views/pages/MenuView");
   var LocalizzazioneView = require("views/pages/LocalizzazioneView");
+  var CartoneView = require("views/pages/CartoneView");
   
 
   var AppRouter = Backbone.Router.extend({
@@ -24,7 +25,8 @@ define(function(require) {
       "pizzerie": "pizzerie",
       "profilo": "profilo",
       "menu" : "menu",
-      "localizzazione" : "localizza"
+      "localizzazione" : "local",
+      "cartone" : "riepilogo"
     },
 
     firstView: "myview",
@@ -70,12 +72,19 @@ define(function(require) {
         this.changePage(page);
     },
 
-    localizza: function() {
+    local: function() {
       document.getElementById("title").innerHTML = "CERCAMI";
      // highlight the nav2 tab bar element as the current one
      // this.structureView.setActiveTabBarElement("nav3");
      // create the view and show it
       var page = new LocalizzazioneView();
+        this.changePage(page);
+    },
+
+
+    riepilogo: function() {
+      document.getElementById("title").innerHTML = "Il mio cartone";
+      var page = new CartoneView();
         this.changePage(page);
     },
 

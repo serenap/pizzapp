@@ -140,26 +140,3 @@ input[type="search"][placeholder]{
 }
 
 .close:hover { background: #00d9ff; }
-
-.popover {
-position: fixed;
-top: 55px;
-height: 80% !important;
-left: 5% !important;
-z-index: 20;
-display: none;
-width: 90% !important;
-margin-left: 0px;
-background-color: #fff;
-border-radius: 6px;
-}
-
-.popover .table-view {
-  max-height: 100% !important;
-}
-
-.popover:before {
-  top: -15px;
-  left: 95% !important;
- 
-}

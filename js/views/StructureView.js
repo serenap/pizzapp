@@ -17,7 +17,8 @@ define(function(require) {
     events: {
       "touchend #back": "goBack",
       "touchend #nav1": "myView",
-      "touchend #nav2": "profilo"
+      "touchend #nav2": "profilo",
+      "touchend #cartone": "riepilogo"
      
 
     },
@@ -61,6 +62,12 @@ define(function(require) {
 
     pizzerie: function(event) {
       Backbone.history.navigate("pizzerie", {
+        trigger: true
+      });
+    },
+
+    riepilogo: function(event) {
+      Backbone.history.navigate("cartone", {
         trigger: true
       });
     },
