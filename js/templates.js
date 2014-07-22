@@ -14,6 +14,5 @@ define({
     pizzerie: "templates/pizzerie.html",
     profilo: "templates/profilo.html",
     menu: "templates/menu.html",
-    localizzazione: "templates/localizzazione.html",
     cartone: "templates/cartone.html"
 });

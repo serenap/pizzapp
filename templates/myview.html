@@ -1,12 +1,30 @@
 
 <button id="pizzerie" class="btn btn-negative btn-block btn-outlined"><span class="icon icon-search"></span> {{key1}}</button>
 	
-<button id="localizzazione" class="btn btn-negative btn-block btn-outlined"><span class="icon icon-home"></span> {{key2}}</button>
+<a href="#local"><button id="localizzazione" class="btn btn-negative btn-block btn-outlined"><span class="icon icon-home"></span> {{key2}}</button></a>
 	
-	
+
+<div id="local" class="popover">
+
+  
+<form class="input-group">
+  <div class="input-row">
+    <label>Citt&agrave;</label>
+    <input id="citta" type="text" >
+  </div>
+  <div class="input-row">
+    <label>Via</label>
+    <input id="via" type="text">
+  </div>
+  <div class="input-row">
+    <label>n civico</label>
+    <input id="civico" type="text">
+  </div>
+
+</form>
+<br/>
+<button id="relocal" class="btn btn-primary btn-outlined pull-left"><span class="icon icon-refresh"></span> Ricalcola</button>
+<button class="btn btn-primary btn-outlined pull-right"><span class="icon icon-check"></span> Conferma</button>
 
 
-<!--<div class="i-4">Name</div>
-<div class="i-8">{{ key }}</div>-->
-
-
+</div>

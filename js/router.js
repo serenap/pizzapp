@@ -9,7 +9,6 @@ define(function(require) {
   var PizzerieView = require("views/pages/PizzerieView");
   var ProfiloView = require("views/pages/ProfiloView");
   var MenuView = require("views/pages/MenuView");
-  var LocalizzazioneView = require("views/pages/LocalizzazioneView");
   var CartoneView = require("views/pages/CartoneView");
   
 
@@ -25,7 +24,6 @@ define(function(require) {
       "pizzerie": "pizzerie",
       "profilo": "profilo",
       "menu" : "menu",
-      "localizzazione" : "local",
       "cartone" : "riepilogo"
     },
 
@@ -71,16 +69,6 @@ define(function(require) {
       var page = new MenuView();
         this.changePage(page);
     },
-
-    local: function() {
-      document.getElementById("title").innerHTML = "CERCAMI";
-     // highlight the nav2 tab bar element as the current one
-     // this.structureView.setActiveTabBarElement("nav3");
-     // create the view and show it
-      var page = new LocalizzazioneView();
-        this.changePage(page);
-    },
-
 
     riepilogo: function() {
       document.getElementById("title").innerHTML = "Il mio cartone";
