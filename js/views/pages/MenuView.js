@@ -38,11 +38,10 @@ define(function(require) {
       $(this.el).html(this.template({}));
 
       var instance = this;
-      console.log(JSON.stringify(this.collection));
 
       this.collection.each(function(pizza){
         var pizzaSV = new PizzaSubView({model: pizza});
-        $(instance.el).append(pizzaSV.el);
+        $(instance.el).find("#menu").append(pizzaSV.el);
       }, this);
       return this;
     },

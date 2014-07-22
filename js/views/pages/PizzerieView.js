@@ -42,7 +42,7 @@ define(function(require) {
 
       this.collection.each(function(pizzeria){
         var pizzeriaSV = new PizzeriaSubView({model: pizzeria});
-        $(instance.el).append(pizzeriaSV.el);
+        $(instance.el).find("ul").append(pizzeriaSV.el);
       }, this);
       return this;
     },

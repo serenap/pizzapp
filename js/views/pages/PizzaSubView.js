@@ -14,7 +14,7 @@ define(function(require) {
 
       // load the precompiled template
       this.template = Utils.templates.pizza_sub;
-
+      this.render();
       // here we can register to inTheDOM or removing events
       // this.listenTo(this, "inTheDOM", function() {
       //   $('#content').on("swipe", function(data){
