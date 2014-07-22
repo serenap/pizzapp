@@ -18,7 +18,8 @@ define(function(require) {
       "touchend #back": "goBack",
       "touchend #nav1": "myView",
       "touchend #nav2": "profilo",
-      "touchend #cartone": "riepilogo"
+      "touchend #cartone": "cartone",
+      "touchend #goRiepilogo": "goRiepilogo"
      
 
     },
@@ -45,6 +46,7 @@ define(function(require) {
 
     // generic go-back function
     goBack: function() {
+     
       window.history.back();
     },
 
@@ -54,11 +56,7 @@ define(function(require) {
       document.getElementById(elementId).classList.add("active");
     },
 
-    map: function(event) {
-      Backbone.history.navigate("map", {
-        trigger: true
-      });
-    },
+    
 
     pizzerie: function(event) {
       Backbone.history.navigate("pizzerie", {
@@ -66,8 +64,15 @@ define(function(require) {
       });
     },
 
-    riepilogo: function(event) {
-      Backbone.history.navigate("cartone", {
+    cartone: function(event) {
+       Backbone.history.navigate("cartone", {
+        trigger: true
+      });
+        
+    },
+
+    goRiepilogo: function(event){
+       Backbone.history.navigate("riepilogo", {
         trigger: true
       });
     },

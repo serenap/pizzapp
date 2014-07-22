@@ -37,13 +37,15 @@ define(function(require) {
     },
 
     render: function() {
-      $(this.el).html(this.template(this.model.toJSON()));
+      this.el.innerHTML = this.template({});
+      // cache a reference to the content element
+      this.contentElement = this.$el.find('#content')[0];
       return this;
     },
 
     local: function() {
         
-        
+      
 
        navigator.geolocation.getCurrentPosition(function(position) {
        var lat = position.coords.latitude;

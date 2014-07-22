@@ -5,11 +5,11 @@ define(function(require) {
   var MyModel = require("models/MyModel");
   var StructureView = require("views/StructureView");
   var MyView = require("views/pages/MyView");
-  var MapView = require("views/pages/MapView");
   var PizzerieView = require("views/pages/PizzerieView");
   var ProfiloView = require("views/pages/ProfiloView");
   var MenuView = require("views/pages/MenuView");
   var CartoneView = require("views/pages/CartoneView");
+  var RiepilogoView = require("views/pages/RiepilogoView");
   
 
   var AppRouter = Backbone.Router.extend({
@@ -20,47 +20,45 @@ define(function(require) {
       // the default is the structure view
       "": "showStructure",
       "myview": "myView",
-      "map": "map",
       "pizzerie": "pizzerie",
       "profilo": "profilo",
       "menu" : "menu",
-      "cartone" : "riepilogo"
+      "cartone" : "cartone",
+      "riepilogo" : "goRiepilogo"
     },
 
     firstView: "myview",
 
     initialize: function(options) {
       this.currentView = undefined;
+      
     },
 
     myView: function() {
+      document.getElementById("cartone").style.display="block";
+     document.getElementById("goRiepilogo").style.display="none";
       // highlight the nav1 tab bar element as the current one
       document.getElementById("title").innerHTML = "HOME";
       this.structureView.setActiveTabBarElement("nav1");
-
-      // create a model with an arbitrary attribute for testing the template engine
-      var model = new MyModel({
-        key2: "Cercami",
-        key1: "Consegna a casa mia"
-
-      });
       // create the view
-      var page = new MyView({
-        model: model
-      });
+      var page = new MyView();
       // show the view
       this.changePage(page);
     },
 
     pizzerie: function() {
-
+      document.getElementById("cartone").style.display="block";
+     document.getElementById("goRiepilogo").style.display="none";
      document.getElementById("title").innerHTML = "PIZZERIE";
+
      // create the view and show it
       var page = new PizzerieView();
         this.changePage(page);
     },
 
     menu: function() {
+     document.getElementById("cartone").style.display="block";
+     document.getElementById("goRiepilogo").style.display="none";
       document.getElementById("title").innerHTML = "MENU'";
      
      // highlight the nav2 tab bar element as the current one
@@ -70,13 +68,20 @@ define(function(require) {
         this.changePage(page);
     },
 
-    riepilogo: function() {
-      document.getElementById("title").innerHTML = "Il mio cartone";
-      var page = new CartoneView();
+    cartone: function() {
+     document.getElementById("cartone").style.display="none";
+     document.getElementById("goRiepilogo").style.display="block";
+     document.getElementById("title").innerHTML = "IL MIO CARTONE";
+      
+       var page = new CartoneView();
         this.changePage(page);
+      
+     
     },
 
      profilo: function() {
+      document.getElementById("cartone").style.display="block";
+      document.getElementById("goRiepilogo").style.display="none";
       document.getElementById("title").innerHTML = "PROFILO";
      // highlight the nav2 tab bar element as the current one
        this.structureView.setActiveTabBarElement("nav2");
@@ -85,16 +90,24 @@ define(function(require) {
         this.changePage(page);
     },
 
-    map: function() {
-      // highlight the nav2 tab bar element as the current one
-    //  this.structureView.setActiveTabBarElement("nav2");
-      // create the view and show it
-      var page = new MapView();
-      this.changePage(page);
+     goRiepilogo: function() {
+
+      document.getElementById("cartone").style.display="none";
+      document.getElementById("goRiepilogo").style.display="none"; 
+      document.getElementById("title").innerHTML = "RIEPILOGO";
+
+     // highlight the nav2 tab bar element as the current one
+     this.structureView.setActiveTabBarElement("nav1");
+     // create the view and show it
+     var page = new RiepilogoView();
+        this.changePage(page);
     },
 
+ 
     // load the structure view
     showStructure: function() {
+       
+         
       if (!this.structureView) {   
         this.structureView = new StructureView();
         // put the el element of the structure view into the DOM

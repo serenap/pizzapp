@@ -1,30 +1,26 @@
 
-<button id="pizzerie" class="btn btn-negative btn-block btn-outlined"><span class="icon icon-search"></span> {{key1}}</button>
-	
-<a href="#local"><button id="localizzazione" class="btn btn-negative btn-block btn-outlined"><span class="icon icon-home"></span> {{key2}}</button></a>
-	
+<button id="pizzerie" class="btn btn-negative btn-block"><span class="icon icon-search"></span>Consegna a casa mia</button>
 
-<div id="local" class="popover">
+<a href="#local"><button id="localizzazione" class="btn btn-negative btn-block"><span class="icon icon-home"></span>Cercami</button></a>
 
-  
-<form class="input-group">
-  <div class="input-row">
-    <label>Citt&agrave;</label>
+<div id="local" class="modal"><header class="bar bar-nav">
+    <a class="icon icon-close pull-right" href="#local"></a>
+    <h1 class="title">Mi trovo qui</h1>
+  </header> <div class="content">
+ <div class="input-row">
+     <label>Citt&agrave;</label>
     <input id="citta" type="text" >
   </div>
-  <div class="input-row">
+   <div class="input-row">
     <label>Via</label>
     <input id="via" type="text">
   </div>
-  <div class="input-row">
+ <div class="input-row">
     <label>n civico</label>
-    <input id="civico" type="text">
+    <input type="number" id="civico" type="text">
   </div>
+  
+  <button id="relocal" class="btn btn-negative btn-block btn-outlined"><span class="icon icon-refresh"></span> Ricalcola</button>
 
-</form>
-<br/>
-<button id="relocal" class="btn btn-primary btn-outlined pull-left"><span class="icon icon-refresh"></span> Ricalcola</button>
-<button class="btn btn-primary btn-outlined pull-right"><span class="icon icon-check"></span> Conferma</button>
-
-
+  <button id="pizzerie" class="btn btn-negative btn-block btn-outlined"><span class="icon icon-check"></span> Conferma</button>
 </div>

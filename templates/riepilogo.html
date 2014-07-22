@@ -1,27 +1,19 @@
-<ul class="table-view" id="riepilogo">
-	<li class="table-view-divider">Totale</li>
-	<li class="table-view-cell">4 Pizze: 25.00 &euro;</li>
-	<li class="table-view-divider">Orario di Consegna</li>
-	<li class="table-view-cell">
-		<input class="delivery-time" type="number" name="quantity" min="00" max="23">
-		<input class="delivery-time" type="number" name="quantity" min="00" max="59">
-	</li>
-	<li class="table-view-divider">Dettagli Cliente</li>
-	<li class="table-view-cell">
-		<p>Dettaglio 1, dettaglio 2, dettaglio 3, dettaglio 4</p>
-	</li>
-	<li class="table-view-divider">Dettagli Pizzeria</li>
-	<li class="table-view-cell">
-		<p>Dettaglio 1, dettaglio 2, dettaglio 3, dettaglio 4</p>
-	</li>
-	<li class="table-view-divider">Pagamento</li>
-	<li class="table-view-cell">
-		<form action="">
-			<input type="radio" name="payment" value="cash">Alla Consegna
-			<input type="radio" name="payment" value="online">Online
-		</form>
-	</li>
-</ul>
-<button class="btn btn-block" id="ordina">
-	<span class="icon icon-check"></span> Ordina
-</button>
+ <ul class="table-view">
+     <fieldset>
+        <legend>Ordine</legend>
+     <li class="table-view-cell">Q.t&agrave; 0 <div class="pull-right">&euro; 0</div> </li>
+ </fieldset><br/>
+ <fieldset>
+        <legend>Orario di consegna</legend>
+ 	<input type="time"/>
+ 	</fieldset>
+ <br/>
+ 	<fieldset>
+        <legend>Pagamento</legend><br/>
+        Alla consegna: <input class="pull-right" type="radio" name="pagamento" value="contanti"/><br/>
+       <br/> Carta di Credito:  <input class="pull-right" type="radio" name="pagamento" value="carta"/>
+    </fieldset>
+
+    <button class="btn btn-negative btn-block">Invia Ordine</button>
+
+  </ul>

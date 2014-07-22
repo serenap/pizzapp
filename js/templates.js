@@ -16,5 +16,6 @@ define({
     pizza_sub: "templates/pizza_sub.html",
     profilo: "templates/profilo.html",
     menu: "templates/menu.html",
-    cartone: "templates/cartone.html"
+    cartone: "templates/cartone.html",
+    riepilogo : "templates/riepilogo.html"
 });

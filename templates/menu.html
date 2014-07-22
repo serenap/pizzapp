@@ -1,3 +1,4 @@
+
 <div class="segmented-control">
   <a class="control-item active" href="#item1mobile">
    Tutte
@@ -19,7 +20,7 @@
         <p id="dettaglio" class="displaynone"> Ingrediente1,ingrediente2,..<br/>Ingrediente1,ingrediente2,..
         <br/>Ingrediente1,ingrediente2,..
         <br/><br/></a>
-        <a href="#openModal"><button class="btn"><span class="icon icon-edit"></span> Personalizza</button></a></p>
+        <a href="#personalizza"><button class="btn"><span class="icon icon-edit"></span> Personalizza</button></a></p>
       </div><button class="btn" id="pizz1">+5 &euro;</button>
     
   </li>
@@ -37,28 +38,27 @@
   </li>
   
 </ul>
-<div id="openModal" class="modalDialog">
-  <div>
-    
-    <h5>Personalizza</h5>
-  <ul class="table-view">
+<div id="personalizza" class="modal">
+  <header class="bar bar-nav">
+    <a class="icon icon-close pull-right" href="#personalizza"></a>
+    <h1 class="title">Personalizza</h1>
+  </header>
+
+  <div class="content">
+   <ul class="table-view">
     <li class="table-view-cell">
-    Ingrediente 1
-    <div class="toggle active">
-      <div class="toggle-handle"></div>
-    </div>
+    <label>Ingrediente 1</label>
+    <input class="pull-right" type="checkbox" checked="true" />
+  
+    
   </li>
   <li class="table-view-cell">
-    Ingrediente 2
-    <div class="toggle active">
-      <div class="toggle-handle"></div>
-    </div>
+    <label>Ingrediente 2</label>
+  <input class="pull-right" type="checkbox" checked="true" />
   </li>
   <li class="table-view-cell">
-    Ingrediente 3
-    <div class="toggle active">
-      <div class="toggle-handle"></div>
-    </div>
+    <label>Ingrediente 3</label>
+    <input class="pull-right" type="checkbox" checked="true" />
   </li>
   <li class="table-view-cell">
     {{ingrediente}}
@@ -68,6 +68,9 @@
   </li>
   
 </ul>
-<a href="#close" title="Close"><button class="btn">OK</button></a>
+ <button class="btn btn-block btn-outlined"><span class="icon icon-check"></span>OK</button>
   </div>
+
+
 </div>
+ 
