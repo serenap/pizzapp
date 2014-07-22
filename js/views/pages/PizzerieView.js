@@ -2,6 +2,7 @@ define(function(require) {
 
   var Backbone = require("backbone");
   var ListaPizzerie = require("collections/ListaPizzerie");
+  var PizzeriaSubView = require("views/pages/PizzeriaSubView");
   var Utils = require("utils");
 
   var PizzerieView = Utils.Page.extend({
@@ -10,26 +11,15 @@ define(function(require) {
     collection: ListaPizzerie,
     
     initialize: function() {
+      var instance = this;
+
       // load the precompiled template
       this.template = Utils.templates.pizzerie;
-
-      var lista = new ListaPizzerie();
-      lista.fetch({success: function(collection){
-          
+      this.collection = new ListaPizzerie();
+      this.collection.fetch({success: function(collection){
+          instance.render();
         }
       });
-
-      //this.render();
-
-      // here we can register to inTheDOM or removing events
-      // this.listenTo(this, "inTheDOM", function() {
-      //   $('#content').on("swipe", function(data){
-      //     console.log(data);
-      //   });
-      // });
-      // this.listenTo(this, "removing", functionName);
-
-      // by convention, all the inner views of a view must be stored in this.subViews
     },
 
     id: "pizzerie",
@@ -38,8 +28,6 @@ define(function(require) {
     events: {
       "touchend #pizz1": "menu",
       "touchend #pizz2": "menu"
-
-
     },   
 
 
@@ -48,15 +36,14 @@ define(function(require) {
       this.el.innerHTML = this.template({});
       // cache a reference to the content element
       this.contentElement = this.$el.find('#content')[0];
-     //$(this.el).html(this.template(this.model.toJSON()));
+      $(this.el).html(this.template({}));
 
+      var instance = this;
 
-
-    //Forse c'è bisogno di un oggetto PizzeriaView - questo va rinominato in ListaPizzerieView
-    /*  this.collection.each(function(pizzeria){
-          var pizzeria = new PizzeriaView({model: pizzeria});
-          this.$el.append(pizzeria.el);
-      }, this);*/
+      this.collection.each(function(pizzeria){
+        var pizzeriaSV = new PizzeriaSubView({model: pizzeria});
+        $(instance.el).append(pizzeriaSV.el);
+      }, this);
       return this;
     },
 

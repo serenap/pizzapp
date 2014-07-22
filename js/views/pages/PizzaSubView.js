@@ -4,14 +4,16 @@ define(function(require) {
   var Pizza = require("models/Pizza");
   var Utils = require("utils");
 
-  var IngredientiView = Utils.Page.extend({
+  var PizzaSubView = Utils.Page.extend({
 
-    constructorName: "IngredientiView",
+    constructorName: "PizzaSubView",
     model: Pizza,
     
     initialize: function() {
+      var instance = this;
+
       // load the precompiled template
-      this.template = Utils.templates.listaIngredienti;
+      this.template = Utils.templates.pizza_sub;
 
       // here we can register to inTheDOM or removing events
       // this.listenTo(this, "inTheDOM", function() {
@@ -24,13 +26,13 @@ define(function(require) {
       // by convention, all the inner views of a view must be stored in this.subViews
     },
 
-    id: "listaIngredienti",
+    /*id: "pizzerie",
     //className: "i-g page",
 
     events: {
-    
-
-    },   
+      "touchend #pizz1": "menu",
+      "touchend #pizz2": "menu"
+    },   */
 
 
     render: function() {
@@ -38,13 +40,18 @@ define(function(require) {
       this.el.innerHTML = this.template({});
       // cache a reference to the content element
       this.contentElement = this.$el.find('#content')[0];
-     //$(this.el).html(this.template(this.model.toJSON()));
+      $(this.el).html(this.template(this.model.toJSON()));
       return this;
     },
 
+    menu: function(event) {
+        Backbone.history.navigate("menu", {
+        trigger: true
+      });
+    }
   
   });
 
-  return IngredientiView;
+  return PizzaSubView;
 
 });
