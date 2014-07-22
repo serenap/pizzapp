@@ -3,7 +3,7 @@
 		"nome": "Boh",
 		"indirizzo": "Viale della Croce Rossa, 48, 67100, L'Aquila",
 		"telefono": "086200000",
-		"immagine": "null",
+		"immagine": "img/pizzeria.png",
 		"maxDistanza": 10,
 		"giorniApertura": [1,6],
 		"orarioApertura": [9,22]
@@ -12,7 +12,7 @@
 		"nome": "Mah",
 		"indirizzo": "Viale Aldo Moro, 26, 67100, L'Aquila",
 		"telefono": "086211111",
-		"immagine": "null",
+		"immagine": "img/pizzeria.png",
 		"maxDistanza": 8,
 		"giorniApertura": [2,6],
 		"orarioApertura": [8,23]
@@ -21,7 +21,7 @@
 		"nome": "Eh",
 		"indirizzo": "Via Strinella, 60, 67100, L'Aquila",
 		"telefono": "086222222",
-		"immagine": "null",
+		"immagine": "img/pizzeria.png",
 		"maxDistanza": 8,
 		"giorniApertura": [0,6],
 		"orarioApertura": [2,3]
@@ -30,7 +30,7 @@
 		"nome": "Che?",
 		"indirizzo": "Via Sallustio, 7, 67039, Sulmona",
 		"telefono": "086400000",
-		"immagine": "null",
+		"immagine": "img/pizzeria.png",
 		"maxDistanza": 8,
 		"giorniApertura": [1,6],
 		"orarioApertura": [8,22]

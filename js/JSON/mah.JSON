@@ -2,7 +2,7 @@
 	{
 		"nome": "Margherita",
 		"categoria": "Rossa",
-		"immagine": "null",
+		"immagine": "img/pizza.png",
 		"ingredienti": [
 			"Mozzarella",
 			"Pomodoro"
@@ -12,7 +12,7 @@
 	{
 		"nome": "Rustica",
 		"categoria": "Bianca",
-		"immagine": "null",
+		"immagine": "img/pizza.png",
 		"ingredienti": [
 			"Mozzarella",
 			"Pachino",
