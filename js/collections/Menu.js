@@ -7,7 +7,7 @@ define(function(require) {
 		constructorName : "Menu",
 		model : Pizza,
 		pizzeria : "",
-		url : "JSON/"
+		url : "js/JSON/mah.JSON"
 	});
 
 	return Menu;

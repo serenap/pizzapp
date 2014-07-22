@@ -1,7 +1,7 @@
 define(function(require) {
 
 	var Backbone = require("backbone");
-	var Menu = require("models/Menu");
+	var Menu = require("collections/Menu");
 
 	var Pizzeria = Backbone.Model.extend({
 		constructorName: "Pizzeria",

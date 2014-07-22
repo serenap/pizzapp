@@ -1,18 +1,23 @@
 define(function(require) {
 
   var Backbone = require("backbone");
-  var MyModel = require("models/MyModel");
+  var Menu = require("collections/Menu");
   var Utils = require("utils");
 
   var MenuView = Utils.Page.extend({
 
     constructorName: "MenuView",
-
-    model: MyModel,
+    collection: Menu,
     
     initialize: function() {
       // load the precompiled template
       this.template = Utils.templates.menu;
+
+      var menu = new Menu();
+      menu.fetch({success: function(collection){
+          
+        }
+      });
 
       // here we can register to inTheDOM or removing events
       // this.listenTo(this, "inTheDOM", function() {
