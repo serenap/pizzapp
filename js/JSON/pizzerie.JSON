@@ -1,7 +1,7 @@
 [
 	{
 		"nome": "Boh",
-		"indirizzo": "Viale della Croce Rossa, 48, 67100, L'Aquila",
+		"indirizzo": "Viale della Croce Rossa 48, 67100 L'Aquila",
 		"telefono": "086200000",
 		"immagine": "img/pizzeria.png",
 		"menu": "null",
@@ -11,7 +11,7 @@
 	},
 	{
 		"nome": "Mah",
-		"indirizzo": "Viale Aldo Moro, 26, 67100, L'Aquila",
+		"indirizzo": "Viale Aldo Moro 26, 67100 L'Aquila",
 		"telefono": "086211111",
 		"immagine": "img/pizzeria.png",
 		"menu": "null",
@@ -21,7 +21,7 @@
 	},
 	{
 		"nome": "Eh",
-		"indirizzo": "Via Strinella, 60, 67100, L'Aquila",
+		"indirizzo": "Via Strinella 60, 67100 L'Aquila",
 		"telefono": "086222222",
 		"immagine": "img/pizzeria.png",
 		"menu": "null",
@@ -31,7 +31,7 @@
 	},
 	{
 		"nome": "Che?",
-		"indirizzo": "Via Sallustio, 7, 67039, Sulmona",
+		"indirizzo": "Via Sallustio 7, 67039 Sulmona",
 		"telefono": "086400000",
 		"immagine": "img/pizzeria.png",
 		"menu": "null",

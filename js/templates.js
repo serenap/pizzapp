@@ -14,6 +14,7 @@ define({
     pizzerie: "templates/pizzerie.html",
     pizzeria_sub: "templates/pizzeria_sub.html",
     pizza_sub: "templates/pizza_sub.html",
+    pizza_cartone_sub: "templates/pizza_cartone_sub.html",
     profilo: "templates/profilo.html",
     menu: "templates/menu.html",
     cartone: "templates/cartone.html",

@@ -4,16 +4,16 @@ define(function(require) {
   var Pizza = require("models/Pizza");
   var Utils = require("utils");
 
-  var PizzaSubView = Utils.Page.extend({
+  var PizzaCartoneSubView = Utils.Page.extend({
 
-    constructorName: "PizzaSubView",
+    constructorName: "PizzaCartoneSubView",
     model: Pizza,
     
     initialize: function() {
       var instance = this;
 
       // load the precompiled template
-      this.template = Utils.templates.pizza_sub;
+      this.template = Utils.templates.pizza_cartone_sub;
       this.render();
     },
 
@@ -43,6 +43,6 @@ define(function(require) {
   
   });
 
-  return PizzaSubView;
+  return PizzaCartoneSubView;
 
 });
