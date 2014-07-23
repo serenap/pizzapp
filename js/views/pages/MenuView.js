@@ -26,7 +26,7 @@ define(function(require) {
     //className: "i-g page",
 
     events: {
-      "touchend #mostra" : "mostra"
+      
     },   
 
 
@@ -44,25 +44,9 @@ define(function(require) {
         $(instance.el).find("#menu").append(pizzaSV.el);
       }, this);
       return this;
-    },
+    }
 
-    mostra: function(){
-
-      if(!($("#dettaglio").is(':hidden'))){    
-         
-           $("#dettaglio").hide();
-           $("#anteprima").show();
-
-           }
-      
-      else
-      {
-        $("#dettaglio").show();
-        $("#anteprima").hide();
-        }
-  }
-    
-  
+     
   });
 
   return MenuView;

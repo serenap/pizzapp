@@ -109,7 +109,14 @@ height: 500px !important;
   margin-top: 10px;
   border-radius: 20px;
   height: 6em;
-  background:#bbb;
+  font-size: 1.2em;
+  color: #444;
+  -moz-box-shadow:inset -21px -40px 21px -30px #fed897;
+  -webkit-box-shadow:inset -21px -40px 21px -30px #fed897;
+  box-shadow:inset -21px -40px 21px -30px #fed897;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f0c911), color-stop(1, #f2ab1e) );
+  background:-moz-linear-gradient( center top, #f0c911 5%, #f2ab1e 100% );
+  background-color:#f6b33d;
 
 }
 
@@ -127,7 +134,7 @@ background: #fff;
   background: red;
 }
 
-a{
+.bar a{
   color: #fff;
 }
 

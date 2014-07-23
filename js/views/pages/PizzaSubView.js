@@ -17,13 +17,12 @@ define(function(require) {
       this.render();
     },
 
-    /*id: "pizzerie",
+    //id: "pizzerie",
     //className: "i-g page",
 
     events: {
-      "touchend #pizz1": "menu",
-      "touchend #pizz2": "menu"
-    },   */
+      "touchend #mostra": "mostra"
+    },   
 
 
     render: function() {
@@ -34,6 +33,22 @@ define(function(require) {
       $(this.el).html(this.template(this.model.toJSON()));
       return this;
     },
+
+      mostra: function(){
+
+      if(!($("#dettaglio").is(':hidden'))){    
+         
+           this.$("#dettaglio").hide();
+           this.$("#anteprima").show();
+
+           }
+      
+      else
+      {
+        this.$("#dettaglio").show();
+        this.$("#anteprima").hide();
+        }
+  },
 
     menu: function(event) {
         Backbone.history.navigate("menu", {
