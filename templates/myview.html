@@ -1,10 +1,13 @@
 
-<button id="pizzerie" class="btn btn-negative btn-block"><span class="icon icon-search"></span>Consegna a casa mia</button>
+<button id="pizzerie" class="btn btn-negative btn-block home"><span class="icon icon-home"></span> Consegna a casa mia</button>
+<div id="spinner"></div>
 
-<a href="#local"><button id="localizzazione" class="btn btn-negative btn-block"><span class="icon icon-home"></span>Cercami</button></a>
+<a href="#local"><button id="localizzazione" class="btn btn-negative btn-block home"><span class="icon icon-search"></span> Cercami</button></a>
 
-<div id="local" class="modal"><header class="bar bar-nav">
-    <a class="icon icon-close pull-right" href="#local"></a>
+<div id="local" class="modal">
+
+  <header class="bar bar-nav popup">
+   <a class="icon icon-close pull-right" href="#local"></a>
     <h1 class="title">Mi trovo qui</h1>
   </header> <div class="content">
  <div class="input-row">
@@ -23,4 +26,5 @@
   <button id="relocal" class="btn btn-negative btn-block btn-outlined"><span class="icon icon-refresh"></span> Ricalcola</button>
 
   <button id="pizzerie" class="btn btn-negative btn-block btn-outlined"><span class="icon icon-check"></span> Conferma</button>
+</div>
 </div>

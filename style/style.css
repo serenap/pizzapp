@@ -105,6 +105,42 @@ height: 500px !important;
 
 }
 
-.btn-block{
-  margin-top: 10px;  
+.btn-block.home{
+  margin-top: 10px;
+  border-radius: 20px;
+  height: 6em;
+  background:#bbb;
+
+}
+
+.bar.popup{
+  opacity: 0.6;
+}
+
+.bar-tab .tab-item.active, .bar-tab .tab-item:active {
+color: red;
+background: #fff;
+}
+
+.bar.bar-nav{
+  color: #fff;
+  background: red;
+}
+
+a{
+  color: #fff;
+}
+
+ .bar-tab .tab-item {
+  color: #fff;
+  background: red;
+}
+
+
+.title{
+  color: #fff;
+}
+
+#spinner{
+  z-index: 5;  
 }

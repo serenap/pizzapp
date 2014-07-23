@@ -3,6 +3,7 @@ define(function(require) {
   var Backbone = require("backbone");
   var MyModel = require("models/MyModel");
   var Utils = require("utils");
+  var Spinner = require("spin");
 
   var MyView = Utils.Page.extend({
 
@@ -44,17 +45,38 @@ define(function(require) {
     },
 
     local: function() {
-        
+        var opts = {
+            lines: 15, // The number of lines to draw
+            length: 25, // The length of each line
+            width: 20, // The line thickness
+            radius: 30, // The radius of the inner circle
+            corners: 1, // Corner roundness (0..1)
+            shadow: true, // Whether to render a shadow
+            hwaccel: true, // Whether to use hardware acceleration
+        };
+        var target = document.getElementById('spinner');
+        var spinner = new Spinner(opts).spin(target);
+
       
 
-       navigator.geolocation.getCurrentPosition(function(position) {
+       navigator.geolocation.getCurrentPosition(onSuccess,Error);
+
+       function onSuccess(position){
+      
        var lat = position.coords.latitude;
        var lng = position.coords.longitude;     
        var latlng = new google.maps.LatLng(lat, lng);
        var addr = codeLatLng(latlng);
-    
-       }, function() {});
 
+       spinner.stop();
+       
+       }
+
+       function Error(error){
+          spinner.stop();
+       }
+
+    
 
       function codeLatLng(latlng) {
 
@@ -84,11 +106,8 @@ define(function(require) {
              }
            }
 
-          if(typeof(civico)=='undefined')
-            document.getElementById('civico').value = "";  
-          else{
+        
            document.getElementById('civico').value = civico;  
-         } 
          if(typeof(via)=='undefined')
            document.getElementById('via').value = "";
          else{document.getElementById('via').value = via;}
