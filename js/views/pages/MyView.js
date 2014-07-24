@@ -53,10 +53,13 @@ define(function(require) {
             corners: 1, // Corner roundness (0..1)
             shadow: true, // Whether to render a shadow
             hwaccel: true, // Whether to use hardware acceleration
-        };
+        };  
         var target = document.getElementById('spinner');
         var spinner = new Spinner(opts).spin(target);
-
+        document.getElementById("local").disabled = true;
+            var nodes = document.getElementById("local").getElementsByTagName('*');
+            for(var i = 0; i < nodes.length; i++){
+                nodes[i].disabled = true;}
       
 
        navigator.geolocation.getCurrentPosition(onSuccess,Error);
@@ -69,6 +72,10 @@ define(function(require) {
        var addr = codeLatLng(latlng);
 
        spinner.stop();
+       document.getElementById("local").disabled = false;
+            var nodes = document.getElementById("local").getElementsByTagName('*');
+            for(var i = 0; i < nodes.length; i++){
+                nodes[i].disabled = false;}
        
        }
 

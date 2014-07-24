@@ -3,6 +3,7 @@ define(function(require) {
   var Backbone = require("backbone");
   var Pizza = require("models/Pizza");
   var Utils = require("utils");
+ 
 
   var PizzaSubView = Utils.Page.extend({
 
@@ -21,7 +22,8 @@ define(function(require) {
     //className: "i-g page",
 
     events: {
-      "touchend #mostra": "mostra"
+      "touchend #mostra": "mostra",
+      "touchend #addpizza": "transferpizza"
     },   
 
 
@@ -54,6 +56,10 @@ define(function(require) {
         Backbone.history.navigate("menu", {
         trigger: true
       });
+    },
+
+    transferpizza: function(){
+       $("#imgpizza").effect("transfer", {to: $("#addpizza"), className: "transfer_effects" }, 100 );
     }
   
   });

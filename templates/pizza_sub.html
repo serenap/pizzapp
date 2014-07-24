@@ -1,12 +1,12 @@
 <li class="table-view-cell media" >
-   <img class="media-object pull-left" src="http://placehold.it/42x42">
+   <img class="media-object pull-left" id="imgpizza" src="img/pizza.png">
       <div class="media-body" > <a id="mostra">
         <h3>{{nome}}</h3> 
         <p id="anteprima">{{ingredienti}}</p>
         <p id="dettaglio" class="displaynone">{{ingredienti}}
         <br/><br/></a>
         <a href="#personalizza"><button class="btn"><span class="icon icon-edit"></span> Personalizza</button></a></p>
-      </div><button class="btn">{{prezzo}} &euro;</button>  
+      </div><button id="addpizza" class="btn">{{prezzo}} &euro;</button>  
  </li>
 
  <div id="personalizza" class="modal">
