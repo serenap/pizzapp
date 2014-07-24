@@ -4,18 +4,35 @@ define(function(require) {
 
 	var Utente = Backbone.Model.extend({
 		constructorName: "Utente",
-		default:{
+		defaults:{
 			nome: '',
-			cognome:'',
+			cognome: '',
 			citta: '',
-			via:'',
+			via: '',
 			n_civico: '',
-			telefono:''
+			telefono: ''
 		},
 		
 		initialize: function(){
-			alert("Welcome");
+			this.salva();
 		},
+
+		salva: function(){
+			//window.localStorage.setItem("utente", JSON.stringify(this));
+			window.localStorage.setItem("utente", JSON.stringify({
+				"nome": "Filippo",
+				"cognome": "Tirabassi",
+				"citta": "Sulmona",
+				"via": "Via S. Polo",
+				"n_civico": "60",
+				"telefono": "3479833024"
+			}));
+		},
+
+		carica: function(){
+			this.clone((JSON.parse(window.localStorage.getItem("utente"))).attributes);
+			console.log(JSON.stringify(this));
+		}
 	});
 
 	return Utente;
