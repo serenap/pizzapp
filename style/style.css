@@ -86,8 +86,12 @@ input[type="search"][placeholder]{
     padding-left: 35px;
 }
 
-#anteprima{
+.anteprima{
    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(100%, rgba(0,0,0,0)), to(rgba(0,0,0,1)));
+}
+
+.dettaglio{
+  visibility: hidden;
 }
 
 input[type="checkbox"] {
@@ -140,13 +144,13 @@ height: 500px !important;
 }
 
 .bar-tab .tab-item.active, .bar-tab .tab-item:active {
-color: red;
+color: rgb(212,62,55);
 background: #fff;
 }
 
 .bar.bar-nav{
   color: #fff;
-  background: red;
+  background: rgb(212,62,55);
 }
 
 .bar a{
@@ -155,7 +159,7 @@ background: #fff;
 
  .bar-tab .tab-item {
   color: #fff;
-  background: red;
+  background: rgb(212,62,55);
 }
 
 
@@ -175,16 +179,34 @@ background: #fff;
 }
 
 #quantity{
-  font-size: 0.8em;
+  font-size: 0.7em;
   text-align: center;
-   text-shadow: 0 1px 0 #bbb;
-  border:1px solid #FFBF00;
-  background-color: rgba(255,191,0,0.7);
+  text-shadow: 0 1px 0 #bbb;
+  border:2px solid rgb(212,62,55);
+  background-color: rgb(255,255,255);
   width: 22px;
   border-radius: 50px;
   position: fixed;
-  color:#444;
+  color:rgb(212,62,55);
   z-index: 25;
-  top:7px;
-  right:28px;
+  top:4px;
+  right:5px;
 }
+
+.segmented-control{
+  position: relative;
+  top:1em;
+  border-color: rgb(246,189,110) !important;
+}
+
+.segmented-control .control-item.active{
+  background-color:rgb(246,189,110);
+  color: #fff !important;
+}
+
+.segmented-control .control-item{
+  color: rgb(246,189,110);
+  font-size: 1.3em;
+  border-color: rgb(246,189,110) !important;
+}
+

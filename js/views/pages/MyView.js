@@ -80,7 +80,7 @@ define(function(require) {
        }
 
        function Error(error){
-          spinner.stop();
+       spinner.stop();
        }
 
     

@@ -38,17 +38,17 @@ define(function(require) {
 
       mostra: function(){
 
-      if(!($("#dettaglio").is(':hidden'))){    
+      if(!(this.$(".displaynone").is(':hidden'))){    
          
-           this.$("#dettaglio").hide();
-           this.$("#anteprima").show();
+           this.$(".displaynone").hide();
+           this.$(".anteprima").show();
 
            }
       
       else
       {
-        this.$("#dettaglio").show();
-        this.$("#anteprima").hide();
+        this.$(".displaynone").show();
+        this.$(".anteprima").hide();
         }
   },
 
