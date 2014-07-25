@@ -56,6 +56,7 @@ define(function(require) {
         };  
         var target = document.getElementById('spinner');
         var spinner = new Spinner(opts).spin(target);
+        
         document.getElementById("local").disabled = true;
             var nodes = document.getElementById("local").getElementsByTagName('*');
             for(var i = 0; i < nodes.length; i++){
@@ -71,12 +72,12 @@ define(function(require) {
        var latlng = new google.maps.LatLng(lat, lng);
        var addr = codeLatLng(latlng);
 
-       spinner.stop();
+       
        document.getElementById("local").disabled = false;
             var nodes = document.getElementById("local").getElementsByTagName('*');
             for(var i = 0; i < nodes.length; i++){
                 nodes[i].disabled = false;}
-       
+       spinner.stop();
        }
 
        function Error(error){
