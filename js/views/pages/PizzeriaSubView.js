@@ -21,13 +21,7 @@ define(function(require) {
     //className: "i-g page",
 
     events: {
-<<<<<<< HEAD
-
       "touchend .pizzeria": "menu"
-
-=======
-      "touchend .pizzeria": "menu"
->>>>>>> origin/master
     },
 
 

@@ -25,18 +25,10 @@ define(function(require) {
     id: "pizzerie",
     //className: "i-g page",
 
-<<<<<<< HEAD
-
     events: {
       
     },   
 
-
-=======
-    events: {
-      
-    },
->>>>>>> origin/master
 
     render: function() {
        // load the template
@@ -52,20 +44,7 @@ define(function(require) {
         $(instance.el).find("ul").append(pizzeriaSV.el);
       }, this);
       return this;
-<<<<<<< HEAD
-
-    }
-
-    /*menu: function(event) {
-      Backbone.history.navigate("menu", {
-        trigger: true
-      });
-    }*/
-
-=======
-    }
-  
->>>>>>> origin/master
+}
   });
 
   return PizzerieView;
