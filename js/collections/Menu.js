@@ -9,7 +9,7 @@ define(function(require) {
 		pizzeria : "",
 		url : "js/JSON/mah.JSON",
 
-		setPizzeria: function(pizzeria){
+		setUrl: function(pizzeria){
 			this.set("url", "js/JSON/" + pizzeria + ".JSON");
 		}
 	});

@@ -12,11 +12,13 @@ define(function(require) {
     
     initialize: function() {
       var instance = this;
+      var pizzeria = windwow.localStorage.getItem("pizzeria", this.model.get("nome"));
 
       // load the precompiled template
       this.template = Utils.templates.menu;
       this.collection = new Menu();
-      //this.collection.setPizzeria();
+      this.collection.set("pizzeria", pizzeria);
+      this.collection.setUrl(pizzeria);
       this.collection.fetch({success: function(collection){
           instance.render();
         }
