@@ -25,11 +25,16 @@ define(function(require) {
     id: "pizzerie",
     //className: "i-g page",
 
-
+<<<<<<< HEAD
     events: {
       
     },   
-
+=======
+    /*events: {
+      "touchend #pizz1": "menu",
+      "touchend #pizz2": "menu"
+    },*/
+>>>>>>> origin/master
 
 
     render: function() {
@@ -46,17 +51,17 @@ define(function(require) {
         $(instance.el).find("ul").append(pizzeriaSV.el);
       }, this);
       return this;
-
+<<<<<<< HEAD
     }
-
-  
+=======
+    },
 
     /*menu: function(event) {
       Backbone.history.navigate("menu", {
         trigger: true
       });
     }*/
-
+>>>>>>> origin/master
   
   });
 
