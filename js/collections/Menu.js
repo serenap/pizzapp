@@ -6,7 +6,12 @@ define(function(require) {
 	var Menu = Backbone.Collection.extend({
 		constructorName : "Menu",
 		model : Pizza,
-		url : "js/JSON/mah.JSON"
+		pizzeria : "",
+		url : "js/JSON/mah.JSON",
+
+		setPizzeria: function(pizzeria){
+			this.set("url", "js/JSON/" + pizzeria + ".JSON");
+		}
 	});
 
 	return Menu;
