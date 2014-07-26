@@ -12,11 +12,13 @@ define(function(require) {
     
     initialize: function() {
       var instance = this;
+      var pizzeria = window.localStorage.getItem("pizzeria");
 
       // load the precompiled template
       this.template = Utils.templates.menu;
       this.collection = new Menu();
-      //this.collection.setPizzeria();
+      this.collection.setUrl(pizzeria);
+      console.log(JSON.stringify(this.collection));
       this.collection.fetch({success: function(collection){
           instance.render();
         }

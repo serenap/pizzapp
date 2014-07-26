@@ -35,6 +35,7 @@ define(function(require) {
     },
 
     menu: function(event) {
+      window.localStorage.setItem("pizzeria", this.model.get("nome"));
       Backbone.history.navigate("menu", {
         trigger: true
       });
