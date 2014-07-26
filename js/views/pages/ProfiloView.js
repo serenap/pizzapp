@@ -32,7 +32,6 @@ define(function(require) {
       // cache a reference to the content element
       this.contentElement = this.$el.find('#content')[0];
       $(this.el).html(this.template(this.model.toJSON()));
-      console.log(JSON.stringify(this.model));
       return this;
     },
 
