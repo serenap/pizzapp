@@ -14,7 +14,9 @@ define(function(require) {
 		},
 		
 		initialize: function(){
-			this.salva();
+			if(window.localStorage.getItem("utente"))
+				this.carica();
+			else this.salva();
 		},
 
 		salva: function(){
