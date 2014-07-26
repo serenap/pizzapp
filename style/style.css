@@ -11,7 +11,7 @@ body {
   -webkit-user-select: none;
   /* no copy and paste, etc. */
   background-attachment: fixed;
-  font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+  
   height: 100%;
   margin: 0px;
   padding: 0px;
@@ -22,8 +22,9 @@ body {
 /* END STANDARD MOBILE */
 /* CUSTOM FONTS */
 @font-face {
-  font-family: 'Dax';
-  src: url("../fonts/DaxBold.ttf") format("truetype"); }
+  font-family: 'Helvetica Neue' !important;
+  src: url("../fonts/HelveticaNeue-Thin.otf") format("opentype");
+}
 
 /* END CUSTOM FONTS */
 /* START STRUCTURE */
@@ -90,8 +91,10 @@ input[type="search"][placeholder]{
    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(100%, rgba(0,0,0,0)), to(rgba(0,0,0,1)));
 }
 
-.dettaglio{
-  visibility: hidden;
+
+#mostra{
+  
+  word-wrap:break-word
 }
 
 input[type="checkbox"] {
@@ -147,6 +150,10 @@ height: 500px !important;
 .bar-tab .tab-item.active, .bar-tab .tab-item:active {
 color: rgb(212,62,55);
 background: #fff;
+}
+
+.bar-tab .tab-item .icon~.tab-label{
+  font-size: 1em;
 }
 
 .bar.bar-nav{

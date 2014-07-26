@@ -2,6 +2,7 @@
 require.config({
   paths: {
     jquery: '../lib/zepto/zepto', // ../lib/jquery/jquery', 
+    jqui : '../lib/jquery-ui/jquery-ui', 
     underscore: '../lib/underscore/underscore',
     backbone: "../lib/backbone/backbone",
     text: '../lib/require/text',

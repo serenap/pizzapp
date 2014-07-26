@@ -1,5 +1,6 @@
 define(function(require) {
 
+  
   var Backbone = require("backbone");
   var Pizza = require("models/Pizza");
   var Utils = require("utils");
@@ -58,8 +59,10 @@ define(function(require) {
       });
     },
 
-    transferpizza: function(){
-       $("#imgpizza").effect("transfer", {to: $("#addpizza"), className: "transfer_effects" }, 100 );
+    transferpizza: function(event){
+     
+       //this.$("#imgpizza").effect("transfer", { to: this.$("#addpizza") }, 1000);
+
     }
   
   });
