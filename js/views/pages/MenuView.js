@@ -27,7 +27,7 @@ define(function(require) {
     //className: "i-g page",
 
     events: {
-      
+                
     },   
 
 
@@ -42,22 +42,28 @@ define(function(require) {
 
       this.collection.each(function(pizza){
         var pizzaSV = new PizzaSubView({model: pizza});
+        var pizzaSVall = new PizzaSubView({model: pizza});
         var categoria = pizzaSV.model.toJSON().categoria;
-        
-        $(instance.el).find("#tutte").append(pizzaSV.el);
-       
-        if(categoria == 'Rossa')
-          $(pizzaSV.el).clone(true).appendTo("#rosse");
+
+          $(instance.el).find("#tutte").append(pizzaSVall.el);
           
-        if(categoria == 'Bianca')
-          $(pizzaSV.el).clone(true).appendTo("#bianche");
-      
+        if(categoria == 'Rossa'){
+          $(instance.el).find("#rosse").append(pizzaSV.el);
+        }         
+        if(categoria == 'Bianca'){
+          $(instance.el).find("#bianche").append(pizzaSV.el);
+        }
+
+        
+
+
 
        }, this);
 
       return this;
     }
 
+ 
      
   });
 
