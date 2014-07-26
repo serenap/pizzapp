@@ -19,14 +19,6 @@ define(function(require) {
 
 		salva: function(){
 			window.localStorage.setItem("utente", JSON.stringify(this));
-			/*window.localStorage.setItem("utente", JSON.stringify({
-				"nome": "Filippo",
-				"cognome": "Tirabassi",
-				"citta": "Sulmona",
-				"via": "Via S. Polo",
-				"n_civico": "60",
-				"telefono": "3479833024"
-			}));*/
 		},
 
 		carica: function(){

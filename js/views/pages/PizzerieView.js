@@ -25,12 +25,18 @@ define(function(require) {
     id: "pizzerie",
     //className: "i-g page",
 
+<<<<<<< HEAD
 
     events: {
       
     },   
 
 
+=======
+    events: {
+      
+    },
+>>>>>>> origin/master
 
     render: function() {
        // load the template
@@ -46,6 +52,7 @@ define(function(require) {
         $(instance.el).find("ul").append(pizzeriaSV.el);
       }, this);
       return this;
+<<<<<<< HEAD
 
     }
 
@@ -55,6 +62,10 @@ define(function(require) {
       });
     }*/
 
+=======
+    }
+  
+>>>>>>> origin/master
   });
 
   return PizzerieView;

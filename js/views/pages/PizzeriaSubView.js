@@ -21,9 +21,13 @@ define(function(require) {
     //className: "i-g page",
 
     events: {
+<<<<<<< HEAD
 
       "touchend .pizzeria": "menu"
 
+=======
+      "touchend .pizzeria": "menu"
+>>>>>>> origin/master
     },
 
 
@@ -37,6 +41,7 @@ define(function(require) {
     },
 
     menu: function(event) {
+      window.localStorage.setItem("pizzeria", this.model.get("nome"));
       Backbone.history.navigate("menu", {
         trigger: true
       });
