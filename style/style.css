@@ -80,10 +80,13 @@ body {
 input[type="search"] {
   background-image: url('../img/lente.gif') ;
   background-repeat:no-repeat;
+  position: relative;
+  top:1em;
 }
 
 
 input[type="search"][placeholder]{
+
     padding-left: 35px;
 }
 
@@ -208,7 +211,7 @@ background: #fff;
 }
 
 .segmented-control .control-item.active{
-  background-color:rgb(246,189,110);
+  background-color:rgb(246,189,110) !important;
   color: #fff !important;
 }
 

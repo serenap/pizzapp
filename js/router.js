@@ -35,11 +35,10 @@ define(function(require) {
     },
 
     myView: function() {
-      document.getElementById("cartone").style.display="block";
+     document.getElementById("cartone").style.display="block";
      document.getElementById("goRiepilogo").style.display="none";
-      // highlight the nav1 tab bar element as the current one
-      document.getElementById("title").innerHTML = "Home";
-      this.structureView.setActiveTabBarElement("nav1");
+     document.getElementById("title").innerHTML = "Home";
+     this.structureView.setActiveTabBarElement("nav1");
       // create the view
       var page = new MyView();
       // show the view
@@ -47,7 +46,7 @@ define(function(require) {
     },
 
     pizzerie: function() {
-      document.getElementById("cartone").style.display="block";
+     document.getElementById("cartone").style.display="block";
      document.getElementById("goRiepilogo").style.display="none";
      document.getElementById("title").innerHTML = "Pizzerie";
 
@@ -59,7 +58,7 @@ define(function(require) {
     menu: function() {
      document.getElementById("cartone").style.display="block";
      document.getElementById("goRiepilogo").style.display="none";
-      document.getElementById("title").innerHTML = "Menu'";
+     document.getElementById("title").innerHTML = "Menu'";
      
      // highlight the nav2 tab bar element as the current one
      // this.structureView.setActiveTabBarElement("nav3");

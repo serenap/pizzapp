@@ -41,8 +41,19 @@ define(function(require) {
 
       this.collection.each(function(pizza){
         var pizzaSV = new PizzaSubView({model: pizza});
-        $(instance.el).find("#menu").append(pizzaSV.el);
-      }, this);
+        var categoria = pizzaSV.model.toJSON().categoria;
+        
+        $(instance.el).find("#tutte").append(pizzaSV.el);
+       
+        if(categoria == 'Rossa')
+          $(pizzaSV.el).clone(true).appendTo("#rosse");
+          
+        if(categoria == 'Bianca')
+          $(pizzaSV.el).clone(true).appendTo("#bianche");
+      
+
+       }, this);
+
       return this;
     }
 

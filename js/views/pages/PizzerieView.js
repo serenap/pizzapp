@@ -26,8 +26,7 @@ define(function(require) {
     //className: "i-g page",
 
     events: {
-      "touchend #pizz1": "menu",
-      "touchend #pizz2": "menu"
+      
     },   
 
 
@@ -45,12 +44,6 @@ define(function(require) {
         $(instance.el).find("ul").append(pizzeriaSV.el);
       }, this);
       return this;
-    },
-
-    menu: function(event) {
-        Backbone.history.navigate("menu", {
-        trigger: true
-      });
     }
   
   });

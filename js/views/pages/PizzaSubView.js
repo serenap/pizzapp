@@ -19,12 +19,13 @@ define(function(require) {
       this.render();
     },
 
-    //id: "pizzerie",
+    
     //className: "i-g page",
 
     events: {
       "touchend #mostra": "mostra",
-      "touchend #addpizza": "transferpizza"
+      
+      
     },   
 
 
@@ -34,6 +35,7 @@ define(function(require) {
       // cache a reference to the content element
       this.contentElement = this.$el.find('#content')[0];
       $(this.el).html(this.template(this.model.toJSON()));
+
       return this;
     },
 
@@ -41,29 +43,22 @@ define(function(require) {
 
       if(!(this.$(".displaynone").is(':hidden'))){    
          
-           this.$(".displaynone").hide();
-           this.$(".anteprima").show();
+          this.$(".displaynone").hide();
+          this.$(".anteprima").show();
 
-           }
-      
-      else
-      {
-        this.$(".displaynone").show();
-        this.$(".anteprima").hide();
+           }else{
+          this.$(".displaynone").show();
+          this.$(".anteprima").hide();
         }
   },
+
 
     menu: function(event) {
         Backbone.history.navigate("menu", {
         trigger: true
       });
-    },
-
-    transferpizza: function(event){
-     
-       //this.$("#imgpizza").effect("transfer", { to: this.$("#addpizza") }, 1000);
-
     }
+   
   
   });
 

@@ -15,6 +15,7 @@ define(function(require) {
 		initialize: function(){
 		},
 
+		
 		serializzaIngredienti: function(){
 			/*var ingredientiString = [];
 			for (var i = 0; i < this.ingredienti.length; i++) {

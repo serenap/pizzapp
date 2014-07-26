@@ -21,8 +21,7 @@ define(function(require) {
     //className: "i-g page",
 
     events: {
-      "touchend #pizz1": "menu",
-      "touchend #pizz2": "menu"
+      "touchend #goMenu": "menu"
     },
 
 
