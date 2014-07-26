@@ -12,7 +12,7 @@ define(function(require) {
     
     initialize: function() {
       var instance = this;
-      var pizzeria = windwow.localStorage.getItem("pizzeria", this.model.get("nome"));
+      var pizzeria = window.localStorage.getItem("pizzeria");
 
       // load the precompiled template
       this.template = Utils.templates.menu;

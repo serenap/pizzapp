@@ -21,11 +21,8 @@ define(function(require) {
     //className: "i-g page",
 
     events: {
-<<<<<<< HEAD
-      "touchend #goMenu": "menu"
-=======
+      "touchend #goMenu": "menu",
       "touchend .pizzeria": "menu"
->>>>>>> origin/master
     },
 
 
@@ -39,7 +36,7 @@ define(function(require) {
     },
 
     menu: function(event) {
-      windwow.localStorage.setItem("pizzeria", this.model.get("nome"));
+      window.localStorage.setItem("pizzeria", this.model.get("nome"));
       Backbone.history.navigate("menu", {
         trigger: true
       });
