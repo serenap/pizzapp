@@ -16,6 +16,7 @@ define(function(require) {
       // load the precompiled template
       this.template = Utils.templates.menu;
       this.collection = new Menu();
+      //this.collection.setPizzeria();
       this.collection.fetch({success: function(collection){
           instance.render();
         }
