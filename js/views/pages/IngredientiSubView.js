@@ -2,6 +2,7 @@ define(function(require) {
 
   var Backbone = require("backbone");
   var Pizza = require("models/Pizza");
+  var Cartone = require("collections/Cartone");
   var Utils = require("utils");
 
   var IngredientiSubView = Utils.Page.extend({
@@ -40,11 +41,13 @@ define(function(require) {
     },
 
     modifica: function() {
+      var cartone = new Cartone();
       var ingredienti_aggiornati = [];
       $(".selezionato:checked").each(function(){
         ingredienti_aggiornati.push($(this).val());
       });
-      //this.model.set("ingredienti", ingredienti_aggiornati);
+      this.model.set("ingredienti", ingredienti_aggiornati);
+      cartone.aggiungiPizza(this.model);
       this.mostra();
       this.remove();
     },

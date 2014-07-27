@@ -7,7 +7,7 @@
 			"Mozzarella",
 			"Pomodoro"
 		],
-		"prezzo": "5,00"
+		"prezzo": "5.00"
 	},
 	{
 		"nome": "Tartufo",
@@ -17,6 +17,6 @@
 			"Mozzarella",
 			"Tartufo"
 		],
-		"prezzo": "6,00"
+		"prezzo": "6.00"
 	}
 ]

@@ -7,7 +7,7 @@
 			"Mozzarella",
 			"Pomodoro"
 		],
-		"prezzo": "4,50"
+		"prezzo": "4.50"
 	},
 	{
 		"nome": "Porcellona",
@@ -20,6 +20,6 @@
 			"Wurstel",
 			"Prosciutto Cotto"
 		],
-		"prezzo": "6,50"
+		"prezzo": "6.50"
 	}
 ]

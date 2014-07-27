@@ -2,6 +2,7 @@ define(function(require) {
 
   var $ = require("jquery");
   var Backbone = require("backbone");
+  var Cartone = require("collections/Cartone");
   var Utils = require("utils");
 
   var StructureView = Backbone.View.extend({
@@ -18,6 +19,8 @@ define(function(require) {
     },
 
     initialize: function(options) {
+      var cartone = new Cartone();
+      cartone.svuota();
       // load the precompiled template
       this.template = Utils.templates.structure;
       //this.on("inTheDOM", this.rendered);

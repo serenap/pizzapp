@@ -2,6 +2,7 @@ define(function(require) {
 
   var Backbone = require("backbone");
   var Pizza = require("models/Pizza");
+  var Cartone = require("collections/Cartone");
   var Utils = require("utils");
 
   var PizzaCartoneSubView = Utils.Page.extend({
@@ -10,16 +11,13 @@ define(function(require) {
     model: Pizza,
     
     initialize: function() {
-      var instance = this;
-
       // load the precompiled template
       this.template = Utils.templates.pizza_cartone_sub;
       this.render();
     },
 
-    id: "pizzerie",
-
     events: {
+      "touchend .rimuovi_cartone" : "rimuovi"
     },
 
     render: function() {
@@ -31,10 +29,15 @@ define(function(require) {
       return this;
     },
 
-    menu: function(event) {
-        Backbone.history.navigate("menu", {
-        trigger: true
-      });
+    rimuovi: function() {
+      var cartone = new Cartone();
+      var i = _.indexOf(cartone, this.model);
+      var quantita_residua = cartone.rimuoviPizza(this.model);
+      if(quantita_residua != 0){
+        this.model = cartone.at(i);
+        this.render();
+      }
+      else this.remove();
     }
   
   });

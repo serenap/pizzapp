@@ -7,7 +7,7 @@
 			"Mozzarella",
 			" Pomodoro"
 		],
-		"prezzo": "3,50"
+		"prezzo": "3.50"
 	},
 	{
 		"nome": "Rustica",
@@ -19,6 +19,6 @@
 			" Rucola",
 			" Mais"
 		],
-		"prezzo": "4,00"
+		"prezzo": "4.00"
 	}
 ]

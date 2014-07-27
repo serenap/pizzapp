@@ -2,6 +2,7 @@ define(function(require) {
   
   var Backbone = require("backbone");
   var Pizza = require("models/Pizza");
+  var Cartone = require("collections/Cartone");
   var IngredientiSubView = require("views/pages/IngredientiSubView");
   var Utils = require("utils");
 
@@ -43,7 +44,8 @@ define(function(require) {
     },
 
     aggiungi: function() {
-
+      var cartone = new Cartone();
+      cartone.aggiungiPizza(this.model);
     },
 
     personalizza: function() {
