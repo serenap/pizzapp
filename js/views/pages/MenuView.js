@@ -1,6 +1,7 @@
 define(function(require) {
 
   var Backbone = require("backbone");
+  var Pizzeria = require("models/Pizzeria");
   var Menu = require("collections/Menu");
   var PizzaSubView = require("views/pages/PizzaSubView");
   var Utils = require("utils");
@@ -12,12 +13,12 @@ define(function(require) {
     
     initialize: function() {
       var instance = this;
-      var pizzeria = window.localStorage.getItem("pizzeria");
+      var pizzeria = new Pizzeria(JSON.parse(window.localStorage.getItem("pizzeria")));
 
       // load the precompiled template
       this.template = Utils.templates.menu;
       this.collection = new Menu();
-      this.collection.setUrl(pizzeria);
+      this.collection.setUrl(pizzeria.get("nome"));
       this.collection.fetch({success: function(collection){
           instance.render();
         }

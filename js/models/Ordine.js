@@ -11,6 +11,7 @@ define(function(require) {
 			nomePizzeria: '',
 			indirizzoPizzeria: '',
 			telefonoPizzeria: '',
+			cartone: '',
 			numeroPizze: 0,
 			totale: 0,
 			orarioConsegna: '',

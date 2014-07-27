@@ -90,6 +90,20 @@ define(function(require) {
 
 			this.salva();
 			return nuova_quantita;
+		},
+
+		getNumeroPizze: function() {
+
+		},
+
+		getTotale: function() {
+			var totale = 0;
+
+			this.each(function(model) {
+				totale += parseFloat(model.get("prezzo"));
+			});
+
+			return totale;
 		}
 
 	});

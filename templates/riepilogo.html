@@ -1,22 +1,22 @@
 <ul class="table-view">
     <fieldset>
         <legend>Ordine</legend>
-    <li class="table-view-cell">Q.t&agrave; 0 
-        <div class="pull-right">&euro; 0</div>
+    <li class="table-view-cell">Q.t&agrave; {{numeroPizze}} 
+        <div class="pull-right">&euro; {{totale}}</div>
     </li>
     </fieldset>
     <br/>
     <fieldset>
         <legend>Orario di consegna</legend>
- 	  <input type="time"/>
+ 	  <input type="time" id="orario"/>
  	</fieldset>
     <br/>
  	<fieldset>
         <legend>Pagamento</legend>
         <br/>Alla consegna: 
-        <input class="pull-right" type="radio" name="pagamento" value="contanti" checked/><br/>
+        <input class="pull-right pagamento" type="radio" name="pagamento" value="contanti" checked/><br/>
         <br/> Carta di Credito: 
-        <input class="pull-right" type="radio" name="pagamento" value="carta"/>
+        <input class="pull-right pagamento" type="radio" name="pagamento" value="carta"/>
     </fieldset>
-    <button class="btn btn-negative btn-block">Invia Ordine</button>
+    <button class="btn btn-negative btn-block" id="invia_ordine">Invia Ordine</button>
 </ul>
