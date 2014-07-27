@@ -18,7 +18,6 @@ define(function(require) {
     },
 
     id: "profilo",
-    //className: "i-g page",
 
     events: {
       "touchend #salva" : "salvaUtente",
@@ -123,13 +122,9 @@ define(function(require) {
         document.getElementById('citta_profilo').value = citta;   
         }
         });
-    
       }
-
-    }
-    
+    }   
   }
-
   
   });
 

@@ -18,12 +18,10 @@ define(function(require) {
     },
 
     id: "pizzerie",
-    //className: "i-g page",
 
     events: {
       "touchend .pizzeria": "menu"
     },
-
 
     render: function() {
        // load the template

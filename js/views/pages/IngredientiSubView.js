@@ -1,10 +1,8 @@
 define(function(require) {
 
-  
   var Backbone = require("backbone");
   var Pizza = require("models/Pizza");
   var Utils = require("utils");
- 
 
   var IngredientiSubView = Utils.Page.extend({
     constructorName: "IngredientiSubView",

@@ -23,15 +23,9 @@ define(function(require) {
     },
 
     id: "pizzerie",
-    //className: "i-g page",
-
-    events: {
-      
-    },   
-
 
     render: function() {
-       // load the template
+      // load the template
       this.el.innerHTML = this.template({});
       // cache a reference to the content element
       this.contentElement = this.$el.find('#content')[0];
@@ -44,7 +38,8 @@ define(function(require) {
         $(instance.el).find("ul").append(pizzeriaSV.el);
       }, this);
       return this;
-}
+    }
+    
   });
 
   return PizzerieView;

@@ -104,7 +104,7 @@ input[type="search"][placeholder]{
 }
 
 
-#mostra{
+.mostra{
   
   word-wrap:break-word
 }
@@ -124,7 +124,7 @@ input[type="checkbox"] {
   margin: 0;
 }
 
-.modal{
+.modal, #personalizza{
 height: 500px !important;
 
 }
@@ -157,11 +157,11 @@ height: 500px !important;
   background:-moz-linear-gradient( center top, #f0c911 5%, #f2ab1e 100% );
   background-color:#f6b33d;}
 
-.bar.popup{
+.bar.popup, #personalizza{
   position: relative;
   top: 0;
   z-index: 25;
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .bar-tab .tab-item.active, .bar-tab .tab-item:active {

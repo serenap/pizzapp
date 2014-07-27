@@ -1,11 +1,9 @@
 define(function(require) {
-
   
   var Backbone = require("backbone");
   var Pizza = require("models/Pizza");
   var IngredientiSubView = require("views/pages/IngredientiSubView");
   var Utils = require("utils");
- 
 
   var PizzaSubView = Utils.Page.extend({
 
@@ -13,8 +11,6 @@ define(function(require) {
     model: Pizza,
     
     initialize: function() {
-      //var instance = this;
-
       // load the precompiled template
       this.template = Utils.templates.pizza_sub;
       this.render();
@@ -24,8 +20,7 @@ define(function(require) {
       "touchend .mostra": "mostra",
       "touchend .personalizza" : "personalizza",
       "touchend .aggiungi" : "aggiungi"
-    },   
-
+    },
 
     render: function() {
       // load the template
@@ -54,6 +49,7 @@ define(function(require) {
     personalizza: function() {
       var ingredientiSV = new IngredientiSubView({model: this.model});
       $(this.el).parent().append(ingredientiSV.el);
+      this.mostra();
     }
  
   });

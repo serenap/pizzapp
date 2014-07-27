@@ -17,14 +17,10 @@ define(function(require) {
       this.render();
     },
 
-    /*id: "pizzerie",
-    //className: "i-g page",
+    id: "pizzerie",
 
     events: {
-      "touchend #pizz1": "menu",
-      "touchend #pizz2": "menu"
-    },   */
-
+    },
 
     render: function() {
        // load the template

@@ -25,12 +25,9 @@ define(function(require) {
     },
 
     id: "menu",
-    //className: "i-g page",
 
     events: {
-                
     },   
-
 
     render: function() {
        // load the template
@@ -54,18 +51,11 @@ define(function(require) {
         if(categoria == 'Bianca'){
           $(instance.el).find("#bianche").append(pizzaSV.el);
         }
-
-        
-
-
-
        }, this);
 
       return this;
     }
-
- 
-     
+   
   });
 
   return MenuView;

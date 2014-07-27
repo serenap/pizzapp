@@ -3,15 +3,10 @@ define(function(require) {
   var $ = require("jquery");
   var Backbone = require("backbone");
   var Utils = require("utils");
-  
 
   var StructureView = Backbone.View.extend({
 
     constructorName: "StructureView",
-
-    
-
-
     id: "main",
 
     events: {
@@ -20,8 +15,6 @@ define(function(require) {
       "touchend #nav2": "profilo",
       "touchend #cartone": "cartone",
       "touchend #goRiepilogo": "goRiepilogo"
-     
-
     },
 
     initialize: function(options) {
@@ -41,9 +34,6 @@ define(function(require) {
       return this;
     },
 
-    // rendered: function(e) {
-    // },
-
     // generic go-back function
     goBack: function() {
      
@@ -55,8 +45,6 @@ define(function(require) {
       document.getElementsByClassName("active")[0].classList.remove("active");
       document.getElementById(elementId).classList.add("active");
     },
-
-    
 
     pizzerie: function(event) {
       Backbone.history.navigate("pizzerie", {
@@ -83,8 +71,7 @@ define(function(require) {
       });
     },
 
-     profilo: function(event) {
-      
+    profilo: function(event) {
       Backbone.history.navigate("profilo", {
         trigger: true
       });
