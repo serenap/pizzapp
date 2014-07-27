@@ -17,11 +17,6 @@ define(function(require) {
 
 		
 		serializzaIngredienti: function(){
-			/*var ingredientiString = [];
-			for (var i = 0; i < this.ingredienti.length; i++) {
-				ingredientiString.push(this.ingredienti[i]);
-			};
-			return ingredientiString.join(", ");*/
 			return this.ingredienti.join(", ");
 		}
 	});

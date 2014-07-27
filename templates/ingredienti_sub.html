@@ -1,0 +1,17 @@
+<div id="personalizza">
+  <header class="bar bar-nav popup">
+    <a class="icon icon-close pull-right" id="chiudi_popup" href="#personalizza"></a>
+    <h1 class="title">Personalizza</h1>
+  </header>
+  <div class="content">
+    <ul class="table-view lista_ingredienti">
+      {{#each ingredienti}}
+        <li class="table-view-cell">
+          <input class="pull-right selezionato" type="checkbox" value="{{this}}" checked="true" />
+          <label calss="nome_ingrediente">{{this}}</label>
+        </li>
+      {{/each}}
+    </ul>
+    <button class="btn btn-block btn-outlined" id="modifica_ingredienti"><span class="icon icon-check"></span>OK</button>
+  </div>
+</div>

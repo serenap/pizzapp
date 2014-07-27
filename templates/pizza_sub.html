@@ -1,30 +1,18 @@
 <li class="table-view-cell media" >
   <img class="media-object pull-left" id="imgpizza" src="img/pizza.png">
-    <div class="media-body" > <a id="mostra">
-        <h4>{{nome}}</h4> 
-        <p class="anteprima">{{ingredienti}}</p>
-        <p class="displaynone">{{ingredienti}}
-        <br/><br/></a>
-        <a href="#personalizza"><button class="btn"><span class="icon icon-edit"></span> Personalizza</button></a></p>
+    <div class="media-body" >
+    	<a class="mostra">
+	        <h4>{{nome}}</h4> 
+	        <p class="anteprima">{{ingredienti}}</p>
+	        <p class="displaynone">{{ingredienti}}<br/><br/>
+        		<a href="#personalizza">
+        			<button class="btn personalizza">
+        				<span class="icon icon-edit"></span> Personalizza
+        			</button>
+        		</a>
+        	</p>
+        </a>
     </div>
-  <button id="addpizza" class="btn">{{prezzo}} &euro;</button>  
+  <button class="btn aggiungi">{{prezzo}} &euro;</button>  
 </li>
-
-<div id="personalizza" class="modal">
-  <header class="bar bar-nav popup">
-    <a class="icon icon-close pull-right" href="#personalizza"></a>
-    <h1 class="title">Personalizza</h1>
-  </header>
-  <div class="content">
-    <ul class="table-view">
-      {{#each ingredienti}}
-        <li class="table-view-cell">
-          <input class="pull-right" type="checkbox" checked="true" />
-          <label>{{this}}</label>
-        </li>
-      {{/each}}
-    </ul>
-    <button class="btn btn-block btn-outlined"><span class="icon icon-check"></span>OK</button>
-  </div>
-</div>
 

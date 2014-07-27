@@ -3,6 +3,7 @@ define(function(require) {
   
   var Backbone = require("backbone");
   var Pizza = require("models/Pizza");
+  var IngredientiSubView = require("views/pages/IngredientiSubView");
   var Utils = require("utils");
  
 
@@ -12,25 +13,22 @@ define(function(require) {
     model: Pizza,
     
     initialize: function() {
-      var instance = this;
+      //var instance = this;
 
       // load the precompiled template
       this.template = Utils.templates.pizza_sub;
       this.render();
     },
 
-    
-    //className: "i-g page",
-
     events: {
-      "touchend #mostra": "mostra",
-      
-      
+      "touchend .mostra": "mostra",
+      "touchend .personalizza" : "personalizza",
+      "touchend .aggiungi" : "aggiungi"
     },   
 
 
     render: function() {
-       // load the template
+      // load the template
       this.el.innerHTML = this.template({});
       // cache a reference to the content element
       this.contentElement = this.$el.find('#content')[0];
@@ -39,27 +37,25 @@ define(function(require) {
       return this;
     },
 
-      mostra: function(){
-
+    mostra: function() {
       if(!(this.$(".displaynone").is(':hidden'))){    
-         
-          this.$(".displaynone").hide();
-          this.$(".anteprima").show();
+        this.$(".displaynone").hide();
+        this.$(".anteprima").show();
+      } else {
+        this.$(".displaynone").show();
+        this.$(".anteprima").hide();
+      }
+    },
 
-           }else{
-          this.$(".displaynone").show();
-          this.$(".anteprima").hide();
-        }
-  },
+    aggiungi: function() {
 
+    },
 
-    menu: function(event) {
-        Backbone.history.navigate("menu", {
-        trigger: true
-      });
+    personalizza: function() {
+      var ingredientiSV = new IngredientiSubView({model: this.model});
+      $(this.el).parent().append(ingredientiSV.el);
     }
-   
-  
+ 
   });
 
   return PizzaSubView;

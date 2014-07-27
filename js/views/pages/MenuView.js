@@ -18,7 +18,6 @@ define(function(require) {
       this.template = Utils.templates.menu;
       this.collection = new Menu();
       this.collection.setUrl(pizzeria);
-      console.log(JSON.stringify(this.collection));
       this.collection.fetch({success: function(collection){
           instance.render();
         }
