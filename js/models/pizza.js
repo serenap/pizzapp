@@ -9,7 +9,8 @@ define(function(require) {
 			categoria: '',
 			immagine: null,
 			ingredienti: [],
-			prezzo:''
+			prezzo: '',
+			quantita: 0
 		},
 
 		initialize: function(){

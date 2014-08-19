@@ -20,7 +20,7 @@ define(function(require) {
 
     events: {
       "touchend #modifica_ingredienti" : "modifica",
-      "touchend #chiudi_popup" : "mostra"
+      "touchend #chiudi_popup" : "annulla"
     },   
 
     render: function() {
@@ -42,12 +42,18 @@ define(function(require) {
 
     modifica: function() {
       var cartone = new Cartone();
+      var pizza = this.model.clone();
       var ingredienti_aggiornati = [];
       $(".selezionato:checked").each(function(){
         ingredienti_aggiornati.push($(this).val());
       });
-      this.model.set("ingredienti", ingredienti_aggiornati);
-      cartone.aggiungiPizza(this.model);
+      pizza.set("ingredienti", ingredienti_aggiornati);
+      cartone.aggiungiPizza(pizza);
+      this.mostra();
+      this.remove();
+    },
+
+    annulla: function() {
       this.mostra();
       this.remove();
     },

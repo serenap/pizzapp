@@ -5,7 +5,7 @@
 		"immagine": "img/pizza.png",
 		"ingredienti": [
 			"Mozzarella",
-			" Pomodoro"
+			"Pomodoro"
 		],
 		"prezzo": "3.50"
 	},
@@ -15,9 +15,9 @@
 		"immagine": "img/pizza.png",
 		"ingredienti": [
 			"Mozzarella",
-			" Pachino",
-			" Rucola",
-			" Mais"
+			"Pachino",
+			"Rucola",
+			"Mais"
 		],
 		"prezzo": "4.00"
 	}

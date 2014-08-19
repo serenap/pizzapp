@@ -10,7 +10,6 @@ define(function(require) {
 		initialize: function(){
 			if(window.localStorage.getItem("cartone"))
 				this.carica();
-			//else this.salva();
 		},
 
 		salva: function(){
@@ -60,7 +59,6 @@ define(function(require) {
 		},
 
 		rimuoviPizza: function(pizza){
-			//this.remove(pizza, this.salva());
 			var nome_pizza = pizza.get("nome");
 			var ingredienti_pizza = JSON.stringify(pizza.get("ingredienti"));
 			var prezzo_pizza = pizza.get("prezzo");
@@ -93,16 +91,18 @@ define(function(require) {
 		},
 
 		getNumeroPizze: function() {
-
+			var count = 0;
+			this.each(function(model) {
+				count += model.get("quantita");
+			});
+			return count;
 		},
 
 		getTotale: function() {
 			var totale = 0;
-
 			this.each(function(model) {
 				totale += parseFloat(model.get("prezzo"));
 			});
-
 			return totale;
 		}
 

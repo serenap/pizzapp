@@ -31,9 +31,13 @@ define(function(require) {
 
     rimuovi: function() {
       var cartone = new Cartone();
-      var i = _.indexOf(cartone, this.model);
-      var quantita_residua = cartone.rimuoviPizza(this.model);
-      if(quantita_residua != 0){
+      var instance = this;
+      var i = 0;
+      cartone.each(function(model, index) {
+        if(model.attributes == instance.model.attributes)
+          i = index;
+      });
+      if(cartone.rimuoviPizza(this.model) != 0) {
         this.model = cartone.at(i);
         this.render();
       }

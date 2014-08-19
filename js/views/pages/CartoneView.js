@@ -29,8 +29,8 @@ define(function(require) {
 
       var instance = this;
 
-      this.collection.each(function(pizza){
-        var pizzaCartoneSV = new PizzaCartoneSubView({model: pizza});
+      this.collection.each(function(model){
+        var pizzaCartoneSV = new PizzaCartoneSubView({model: model});
         $(instance.el).find("ul").append(pizzaCartoneSV.el);
       }, this);
 
