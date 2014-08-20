@@ -51,11 +51,14 @@ define(function(require) {
     aggiungi: function() {
       var cartone = new Cartone();
       cartone.aggiungiPizza(this.model);
+      $("#quantita_cartone").html(cartone.getNumeroPizze());
     },
 
     personalizza: function() {
+      var cartone = new Cartone();
       var ingredientiSV = new IngredientiSubView({model: this.model});
       $(this.el).parent().append(ingredientiSV.el);
+      $("#quantita_cartone").html(cartone.getNumeroPizze());
       this.mostra();
     }
  

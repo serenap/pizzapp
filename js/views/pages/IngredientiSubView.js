@@ -49,6 +49,7 @@ define(function(require) {
       });
       pizza.set("ingredienti", ingredienti_aggiornati);
       cartone.aggiungiPizza(pizza);
+      $("#quantita_cartone").html(cartone.getNumeroPizze());
       this.mostra();
       this.remove();
     },

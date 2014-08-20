@@ -38,6 +38,7 @@ define(function(require) {
           i = index;
       });
       if(cartone.rimuoviPizza(this.model) != 0) {
+        $("#quantita_cartone").html(cartone.getNumeroPizze());
         this.model = cartone.at(i);
         this.render();
       }

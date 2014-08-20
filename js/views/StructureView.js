@@ -38,8 +38,7 @@ define(function(require) {
     },
 
     // generic go-back function
-    goBack: function() {
-     
+    goBack: function() {  
       window.history.back();
     },
 
@@ -58,8 +57,7 @@ define(function(require) {
     cartone: function(event) {
        Backbone.history.navigate("cartone", {
         trigger: true
-      });
-        
+      });     
     },
 
     goRiepilogo: function(event){

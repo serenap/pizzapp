@@ -3,6 +3,7 @@ define(function(require) {
   var Backbone = require("backbone");
   var Pizzeria = require("models/Pizzeria");
   var Menu = require("collections/Menu");
+  var Cartone = require("collections/Cartone");
   var PizzaSubView = require("views/pages/PizzaSubView");
   var Utils = require("utils");
 
@@ -25,10 +26,7 @@ define(function(require) {
       });
     },
 
-    id: "menu",
-
-    events: {
-    },   
+    id: "menu", 
 
     render: function() {
        // load the template
@@ -38,13 +36,16 @@ define(function(require) {
       $(this.el).html(this.template({}));
 
       var instance = this;
+      var cartone = new Cartone();
+
+      $("#quantita_cartone").html(cartone.getNumeroPizze());
 
       this.collection.each(function(pizza){
         var pizzaSV = new PizzaSubView({model: pizza});
         var pizzaSVall = new PizzaSubView({model: pizza});
         var categoria = pizzaSV.model.toJSON().categoria;
 
-          $(instance.el).find("#tutte").append(pizzaSVall.el);
+        $(instance.el).find("#tutte").append(pizzaSVall.el);
           
         if(categoria == 'Rossa'){
           $(instance.el).find("#rosse").append(pizzaSV.el);
