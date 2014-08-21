@@ -130,11 +130,13 @@ height: 500px !important;
 }
 
 .btn-block.home{
-  position: relative;
-  top:2em;
-  margin-bottom: 2em;
+  position: absolute;
+  margin-bottom: 10%;
   border-radius: 20px;
-  height: 6em;
+  height: 6.5em;
+  width: 90% !important;
+  margin-left: 5%;
+  margin-right: 5%;
   font-size: 1.2em;
   color: #444;
   -moz-box-shadow:inset -21px -40px 21px -30px #fed897;
@@ -148,7 +150,10 @@ height: 500px !important;
 
 .btn-negative.btn-block{
   position:relative;  
-  top: 1em;
+  width: 90% !important;
+  margin-top: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
   color: #444;
   -moz-box-shadow:inset -21px -40px 21px -30px #fed897;
   -webkit-box-shadow:inset -21px -40px 21px -30px #fed897;
@@ -235,4 +240,15 @@ background: #fff;
 
 a, a:active{
   color: #000;
+}
+
+#myview{
+  margin-top: 10%;
+}
+
+#myview #local{
+  position: absolute;
+  margin-top: -10% !important;
+  height: 1000px !important;
+
 }

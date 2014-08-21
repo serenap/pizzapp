@@ -37,6 +37,7 @@ define(function(require) {
     myView: function() {
      document.getElementById("cartone").style.display="block";
      document.getElementById("goRiepilogo").style.display="none";
+     document.getElementById("back").style.display="none";
      document.getElementById("title").innerHTML = "Home";
      this.structureView.setActiveTabBarElement("nav1");
       // create the view
@@ -48,7 +49,9 @@ define(function(require) {
     pizzerie: function() {
      document.getElementById("cartone").style.display="block";
      document.getElementById("goRiepilogo").style.display="none";
+     document.getElementById("back").style.display="block";
      document.getElementById("title").innerHTML = "Pizzerie";
+
 
      // create the view and show it
       var page = new PizzerieView();
@@ -58,6 +61,7 @@ define(function(require) {
     menu: function() {
      document.getElementById("cartone").style.display="block";
      document.getElementById("goRiepilogo").style.display="none";
+     document.getElementById("back").style.display="block";
      document.getElementById("title").innerHTML = "Menu'";
      
      // highlight the nav2 tab bar element as the current one
@@ -70,6 +74,7 @@ define(function(require) {
     cartone: function() {
      document.getElementById("cartone").style.display="none";
      document.getElementById("goRiepilogo").style.display="block";
+     document.getElementById("back").style.display="block";
      document.getElementById("title").innerHTML = "Il mio cartone";
       
        var page = new CartoneView();
@@ -81,6 +86,7 @@ define(function(require) {
      profilo: function() {
       document.getElementById("cartone").style.display="block";
       document.getElementById("goRiepilogo").style.display="none";
+      document.getElementById("back").style.display="block";
       document.getElementById("title").innerHTML = "Profilo";
      // highlight the nav2 tab bar element as the current one
        this.structureView.setActiveTabBarElement("nav2");
@@ -93,6 +99,7 @@ define(function(require) {
 
       document.getElementById("cartone").style.display="none";
       document.getElementById("goRiepilogo").style.display="none"; 
+      document.getElementById("back").style.display="block";
       document.getElementById("title").innerHTML = "Riepilogo";
 
      // highlight the nav2 tab bar element as the current one
