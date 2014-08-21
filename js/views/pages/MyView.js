@@ -108,7 +108,7 @@ define(function(require) {
                  var civico = results[0].address_components[i].long_name;
 
                
-                if (results[0].address_components[i].types[j] == "administrative_area_level_2")
+                if (results[0].address_components[i].types[j] == "locality")
                   var citta = results[0].address_components[i].long_name;
               }
              }
