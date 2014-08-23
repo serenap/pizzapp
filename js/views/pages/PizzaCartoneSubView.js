@@ -31,15 +31,11 @@ define(function(require) {
 
     rimuovi: function() {
       var cartone = new Cartone();
-      var instance = this;
-      var i = 0;
-      cartone.each(function(model, index) {
-        if(model.attributes == instance.model.attributes)
-          i = index;
-      });
-      if(cartone.rimuoviPizza(this.model) != 0) {
+
+      quantita_residua = cartone.rimuoviPizza(this.model);
+      if(quantita_residua != 0) {
         $("#quantita_cartone").html(cartone.getNumeroPizze());
-        this.model = cartone.at(i);
+        this.model.set("quantita", quantita_residua);
         this.render();
       }
       else this.remove();
