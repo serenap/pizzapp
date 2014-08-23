@@ -15,12 +15,12 @@ define(function(require) {
     initialize: function() {
       var instance = this;
       var pizzeria = new Pizzeria(JSON.parse(window.localStorage.getItem("pizzeria")));
+      var url = "js/JSON/" + pizzeria.get("nome") + ".JSON";
 
       // load the precompiled template
       this.template = Utils.templates.menu;
-      this.collection = new Menu();
-      this.collection.setUrl(pizzeria.get("nome"));
-      this.collection.fetch({success: function(collection){
+      this.collection = new Menu(url);
+      this.collection.fetch({success: function(collection) {
           instance.render();
         }
       });
@@ -40,7 +40,7 @@ define(function(require) {
 
       $("#quantita_cartone").html(cartone.getNumeroPizze());
 
-      this.collection.each(function(pizza){
+      this.collection.each(function(pizza) {
         var pizzaSV = new PizzaSubView({model: pizza});
         var pizzaSVall = new PizzaSubView({model: pizza});
         var categoria = pizzaSV.model.toJSON().categoria;
@@ -53,7 +53,7 @@ define(function(require) {
         if(categoria == 'Bianca'){
           $(instance.el).find("#bianche").append(pizzaSV.el);
         }
-       }, this);
+      }, this);
 
       return this;
     }
