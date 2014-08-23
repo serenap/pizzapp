@@ -28,11 +28,15 @@ define(function(require) {
       $(this.el).html(this.template({}));
 
       var instance = this;
+      if(this.collection.length!=0){
+          this.collection.each(function(model){
+          var pizzaCartoneSV = new PizzaCartoneSubView({model: model});
+          $(instance.el).find("ul").append(pizzaCartoneSV.el);
+        }, this);
 
-      this.collection.each(function(model){
-        var pizzaCartoneSV = new PizzaCartoneSubView({model: model});
-        $(instance.el).find("ul").append(pizzaCartoneSV.el);
-      }, this);
+        }else{
+            $(this.el).html("<div class='centered'>Non ci sono pizze nel tuo cartone</div>");
+          }
 
       return this;
     }

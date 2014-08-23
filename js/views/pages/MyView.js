@@ -47,8 +47,8 @@ define(function(require) {
     local: function() {
         var opts = {
             lines: 15, // The number of lines to draw
-            length: 25, // The length of each line
-            width: 20, // The line thickness
+            length: 20, // The length of each line
+            width: 10, // The line thickness
             radius: 30, // The radius of the inner circle
             corners: 1, // Corner roundness (0..1)
             shadow: true, // Whether to render a shadow
