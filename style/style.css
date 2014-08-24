@@ -118,7 +118,7 @@ input[type="checkbox"] {
   height: 30px;  
 }
 
-#goRiepilogo{
+#riepilogo{
   display:none;
 }
 
@@ -132,7 +132,7 @@ height: 500px !important;
 
 }
 
-.btn-block.home{
+.btn-block.home_button{
   position: absolute;
   margin-bottom: 10%;
   border-radius: 20px;
@@ -276,4 +276,9 @@ a, a:active{
 #cartone_vuoto{
   padding: 10px !important;
   text-align: center;
+}
+
+#bottoni_popup{
+  max-width: 100%;
+  margin
 }

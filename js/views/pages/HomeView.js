@@ -1,19 +1,16 @@
 define(function(require) {
 
   var Backbone = require("backbone");
-  var MyModel = require("models/MyModel");
   var Utils = require("utils");
   var Spinner = require("spin");
+  var PopupView = require("views/PopupView");
 
-  var MyView = Utils.Page.extend({
-
-    constructorName: "MyView",
-
-    model: MyModel,
+  var HomeView = Utils.Page.extend({
+    constructorName: "HomeView",
     
     initialize: function() {
       // load the precompiled template
-      this.template = Utils.templates.myview;
+      this.template = Utils.templates.home;
 
       // here we can register to inTheDOM or removing events
       // this.listenTo(this, "inTheDOM", function() {
@@ -26,15 +23,12 @@ define(function(require) {
       // by convention, all the inner views of a view must be stored in this.subViews
     },
 
-    id: "myview",
-    //className: "i-g page",
+    id: "home",
 
     events: {
-      
       "touchend #pizzerie": "pizzerie",
-      "touchend #localizzazione": "local",
-      "touchend #relocal" : "local"
-
+      "touchend #localizzazione": "localizza",
+      "touchend #relocal" : "localizza"
     },
 
     render: function() {
@@ -44,7 +38,7 @@ define(function(require) {
       return this;
     },
 
-    local: function() {
+    localizza: function() {
         var opts = {
             lines: 15, // The number of lines to draw
             length: 20, // The length of each line
@@ -131,13 +125,25 @@ define(function(require) {
   },
 
     pizzerie: function(event) {
+      //if(navigator.connection.type != Connection.NONE)
         Backbone.history.navigate("pizzerie", {
-        trigger: true
-      });
+          trigger: true
+        });
+      /*else {
+        var testo = "Nessuna connessione disponibile. Devi essere connesso alla rete per usare pizzApp.";
+        var popup = new PopupView({
+          message: testo,
+          second_button: true,
+          ok: function() {
+            this.mostra();
+            this.remove();
+          }
+        });
+      }*/
     }
 
   });
 
-  return MyView;
+  return HomeView;
 
 });

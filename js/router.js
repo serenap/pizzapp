@@ -2,9 +2,9 @@ define(function(require) {
 
   var $ = require("jquery");
   var Backbone = require("backbone");
-  var MyModel = require("models/MyModel");
+  var Cartone = require("collections/Cartone");
   var StructureView = require("views/StructureView");
-  var MyView = require("views/pages/MyView");
+  var HomeView = require("views/pages/HomeView");
   var PizzerieView = require("views/pages/PizzerieView");
   var ProfiloView = require("views/pages/ProfiloView");
   var MenuView = require("views/pages/MenuView");
@@ -18,37 +18,36 @@ define(function(require) {
 
     routes: {
       // the default is the structure view
-      "": "showStructure",
-      "myview": "myView",
+      "": "structure",
+      "home": "home",
       "pizzerie": "pizzerie",
       "profilo": "profilo",
       "menu" : "menu",
       "cartone" : "cartone",
-      "riepilogo" : "goRiepilogo"
+      "riepilogo" : "riepilogo"
     },
 
-    firstView: "myview",
+    firstView: "home",
 
     initialize: function(options) {
-      this.currentView = undefined;
-      
+      this.currentView = undefined;  
     },
 
-    myView: function() {
+    home: function() {
      document.getElementById("cartone").style.display="block";
-     document.getElementById("goRiepilogo").style.display="none";
+     document.getElementById("riepilogo").style.display="none";
      document.getElementById("back").style.display="none";
      document.getElementById("title").innerHTML = "Home";
      this.structureView.setActiveTabBarElement("nav1");
       // create the view
-      var page = new MyView();
+      var page = new HomeView();
       // show the view
       this.changePage(page);
     },
 
     pizzerie: function() {
      document.getElementById("cartone").style.display="block";
-     document.getElementById("goRiepilogo").style.display="none";
+     document.getElementById("riepilogo").style.display="none";
      document.getElementById("back").style.display="block";
      document.getElementById("title").innerHTML = "Pizzerie";
 
@@ -60,7 +59,7 @@ define(function(require) {
 
     menu: function() {
      document.getElementById("cartone").style.display="block";
-     document.getElementById("goRiepilogo").style.display="none";
+     document.getElementById("riepilogo").style.display="none";
      document.getElementById("back").style.display="block";
      document.getElementById("title").innerHTML = "Menu'";
      
@@ -72,20 +71,20 @@ define(function(require) {
     },
 
     cartone: function() {
-     document.getElementById("cartone").style.display="none";
-     document.getElementById("goRiepilogo").style.display="block";
-     document.getElementById("back").style.display="block";
-     document.getElementById("title").innerHTML = "Il mio cartone";
+      var cartone = new Cartone();
+      if(cartone.length != 0)
+        document.getElementById("riepilogo").style.display="block";
+      document.getElementById("cartone").style.display="none";
+      document.getElementById("back").style.display="block";
+      document.getElementById("title").innerHTML = "Il mio cartone";
       
-       var page = new CartoneView();
-        this.changePage(page);
-      
-     
+      var page = new CartoneView();
+      this.changePage(page);
     },
 
-     profilo: function() {
+    profilo: function() {
       document.getElementById("cartone").style.display="block";
-      document.getElementById("goRiepilogo").style.display="none";
+      document.getElementById("riepilogo").style.display="none";
       document.getElementById("back").style.display="block";
       document.getElementById("title").innerHTML = "Profilo";
      // highlight the nav2 tab bar element as the current one
@@ -95,25 +94,22 @@ define(function(require) {
         this.changePage(page);
     },
 
-     goRiepilogo: function() {
-
+    riepilogo: function() {
       document.getElementById("cartone").style.display="none";
-      document.getElementById("goRiepilogo").style.display="none"; 
+      document.getElementById("riepilogo").style.display="none"; 
       document.getElementById("back").style.display="block";
       document.getElementById("title").innerHTML = "Riepilogo";
 
-     // highlight the nav2 tab bar element as the current one
-     this.structureView.setActiveTabBarElement("nav1");
-     // create the view and show it
-     var page = new RiepilogoView();
+      // highlight the nav2 tab bar element as the current one
+      this.structureView.setActiveTabBarElement("nav1");
+      // create the view and show it
+      var page = new RiepilogoView();
         this.changePage(page);
     },
 
  
     // load the structure view
-    showStructure: function() {
-       
-         
+    structure: function() {    
       if (!this.structureView) {   
         this.structureView = new StructureView();
         // put the el element of the structure view into the DOM

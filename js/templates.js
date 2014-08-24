@@ -10,12 +10,13 @@
 //  - value: the path of the html file containing the HTML fragment of the template
 define({
     structure: "templates/structure.html",
-    myview: "templates/myview.html",
+    home: "templates/home.html",
     pizzerie: "templates/pizzerie.html",
     pizzeria_sub: "templates/pizzeria_sub.html",
     pizza_sub: "templates/pizza_sub.html",
     pizza_cartone_sub: "templates/pizza_cartone_sub.html",
     ingredienti_sub: "templates/ingredienti_sub.html",
+    popup: "templates/popup.html",
     profilo: "templates/profilo.html",
     menu: "templates/menu.html",
     cartone: "templates/cartone.html",

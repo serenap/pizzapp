@@ -12,10 +12,10 @@ define(function(require) {
 
     events: {
       "touchend #back": "goBack",
-      "touchend #nav1": "myView",
+      "touchend #nav1": "home",
       "touchend #nav2": "profilo",
       "touchend #cartone": "cartone",
-      "touchend #goRiepilogo": "goRiepilogo"
+      "touchend #riepilogo": "riepilogo"
     },
 
     initialize: function(options) {
@@ -60,14 +60,14 @@ define(function(require) {
       });     
     },
 
-    goRiepilogo: function(event){
+    riepilogo: function(event){
        Backbone.history.navigate("riepilogo", {
         trigger: true
       });
     },
 
-    myView: function(event) {
-      Backbone.history.navigate("myview", {
+    home: function(event) {
+      Backbone.history.navigate("home", {
         trigger: true
       });
     },

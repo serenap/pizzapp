@@ -34,7 +34,6 @@ define(function(require) {
 
       quantita_residua = cartone.rimuoviPizza(this.model);
       if(quantita_residua != 0) {
-        $("#quantita_cartone").html(cartone.getNumeroPizze());
         this.model.set("quantita", quantita_residua);
         this.render();
       }
@@ -43,6 +42,7 @@ define(function(require) {
           $(this.el).parent().find("#cartone_vuoto").show("fast");
         this.remove();
       }
+      $("#quantita_cartone").html(cartone.getNumeroPizze());
     }
   
   });
