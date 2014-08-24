@@ -30,6 +30,8 @@ define(function(require) {
         "orarioConsegna": '',
         "modalitaPagamento": ''
       });
+      window.localStorage.setItem("ordine", JSON.stringify(this.model));
+      
       // load the precompiled template
       this.template = Utils.templates.riepilogo;
     },

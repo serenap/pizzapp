@@ -38,7 +38,11 @@ define(function(require) {
         this.model.set("quantita", quantita_residua);
         this.render();
       }
-      else this.remove();
+      else {
+        if(cartone.length == 0)
+          $(this.el).parent().find("#cartone_vuoto").show("fast");
+        this.remove();
+      }
     }
   
   });

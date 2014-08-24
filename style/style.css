@@ -272,3 +272,8 @@ a, a:active{
   text-align: center;
   margin-top: 10px;
 }
+
+#cartone_vuoto{
+  padding: 10px !important;
+  text-align: center;
+}
