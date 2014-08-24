@@ -257,15 +257,12 @@ a, a:active{
   color: #000;
 }
 
-#myview{
+#home{
   margin-top: 10%;
 }
 
-#myview #local{
-  position: absolute;
+#local{
   margin-top: -10% !important;
-  height: 1000px !important;
-
 }
 
 .centered{

@@ -62,8 +62,7 @@ define(function(require) {
       window.localStorage.setItem("ordine", JSON.stringify(this.model));
       alert("Ordine inviato");
 
-      //al più presto cambiare nome a myview e tutte le classi relative
-      Backbone.history.navigate("myview", {
+      Backbone.history.navigate("home", {
         trigger: true
       });
     }
