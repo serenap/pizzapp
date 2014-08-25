@@ -64,6 +64,7 @@ define(function(require) {
 			var prezzo_pizza = pizza.get("prezzo");
 			var nuova_quantita = 0;
 			var indice = null;
+			var rimuovi = false;
 
 			this.each(function(model, index) {
 				var quantita = model.get("quantita");
@@ -78,16 +79,16 @@ define(function(require) {
 						model.set("prezzo", (prezzo/quantita)*nuova_quantita);
 					}
 					else {
-						nuova_quantita = 0;
-						indice = index;
+						rimuovi = true;
 					};
+					indice = index;
 				}
 			});
-			if(indice != null)
+			if(rimuovi == true)
 				this.remove(this.at(indice));
 
 			this.salva();
-			return nuova_quantita;
+			return this.at(indice);
 		},
 
 		getNumeroPizze: function() {

@@ -32,9 +32,9 @@ define(function(require) {
     rimuovi: function() {
       var cartone = new Cartone();
 
-      quantita_residua = cartone.rimuoviPizza(this.model);
-      if(quantita_residua != 0) {
-        this.model.set("quantita", quantita_residua);
+      pizza_aggiornata = cartone.rimuoviPizza(this.model);
+      if(pizza_aggiornata != null) {
+        this.model = pizza_aggiornata;
         this.render();
       }
       else {

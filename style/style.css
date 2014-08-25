@@ -118,10 +118,6 @@ input[type="checkbox"] {
   height: 30px;  
 }
 
-#riepilogo{
-  display:none;
-}
-
 .card{
   border: 0px;
   margin: 0;
