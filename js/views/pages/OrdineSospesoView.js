@@ -7,9 +7,9 @@ define(function(require) {
   var Cartone = require("collections/Cartone");
   var Utils = require("utils"); 
 
-  var RiepilogoView = Utils.Page.extend({
+  var OrdineSospesoView = Utils.Page.extend({
 
-    constructorName: "RiepilogoView",
+    constructorName: "OrdineSospesoView",
     model: Ordine,
     
     initialize: function() {
@@ -33,37 +33,29 @@ define(function(require) {
       window.localStorage.setItem("ordine", JSON.stringify(this.model));
       
       // load the precompiled template
-      this.template = Utils.templates.riepilogo;
+      this.template = Utils.templates.ordineSospeso;
     },
 
-    id: "riepilogo",
+    id: "ordine_sospeso",
 
     events: {
-      "touchend #invia_ordine" : "invia"
+      "touchend #archivia" : "archivia"
     },   
 
     render: function() {
       // load the template
       this.el.innerHTML = this.template({});
       // cache a reference to the content element
+      document.getElementById("info_ordine_sospeso").style.visibility='hidden';
+      document.getElementById("normal").style.visibility='visible';
       this.contentElement = this.$el.find('#content')[0];
       $(this.el).html(this.template(this.model.toJSON()));
 
       return this;
     },
 
-    invia: function() {
-      var orario = this.$el.find("#orario").val();
-      var pagamento = this.$el.find(".pagamento:checked").val();
-      this.model.set({
-        "orarioConsegna": orario,
-        "modalitaPagamento": pagamento
-      });
-      window.localStorage.setItem("ordine", JSON.stringify(this.model));
-      //alert("Ordine inviato");
-      document.getElementById("info_ordine_sospeso").style.visibility='visible';
-      document.getElementById("normal").style.visibility='hidden';
-
+    archivia: function() {
+      
       Backbone.history.navigate("home", {
         trigger: true
       });
@@ -71,6 +63,6 @@ define(function(require) {
 
   });
 
-  return RiepilogoView;
+  return OrdineSospesoView;
 
 });

@@ -11,6 +11,7 @@ define(function(require) {
   var CartoneView = require("views/pages/CartoneView");
   var RiepilogoView = require("views/pages/RiepilogoView");
   var AlertView = require("views/AlertView");
+  var OrdineSospesoView = require("views/pages/OrdineSospesoView");
 
   var AppRouter = Backbone.Router.extend({
 
@@ -24,7 +25,8 @@ define(function(require) {
       "profilo": "profilo",
       "menu" : "menu",
       "cartone" : "cartone",
-      "riepilogo" : "riepilogo"
+      "riepilogo" : "riepilogo",
+      "ordine_sospeso": "ordine_sospeso"
     },
 
     firstView: "home",
@@ -117,6 +119,18 @@ define(function(require) {
       this.structureView.setActiveTabBarElement("nav1");
       // create the view and show it
       var page = new RiepilogoView();
+      this.changePage(page);
+    },
+
+    ordine_sospeso: function() {
+      document.getElementById("cartone").style.display="none";
+      document.getElementById("riepilogo").style.display="none"; 
+      document.getElementById("back").style.display="block";
+      document.getElementById("title").innerHTML = "Il mio ordine";
+      // highlight the nav2 tab bar element as the current one
+      this.structureView.setActiveTabBarElement("nav1");
+      // create the view and show it
+      var page = new OrdineSospesoView();
       this.changePage(page);
     },
  

@@ -1,11 +1,16 @@
 <header class="bar bar-nav">
+  <div id="normal">
 	<a class="icon icon-left-nav pull-left" id="back"></a>
   <a id="riepilogo" class="icon icon-check pull-right"></a>
   <a id="cartone" class="icon pull-right">
     <img src="img/cartone.png">
     <div id="quantita_cartone">0</div>
   </a>
-  <h1 id="title" class="title"></h1>
+  <h1 id="title" class="title"></h1></div>
+  <div id="info_ordine_sospeso" style="visibility: hidden">
+      <h1 class="title">Hai un ordine da ricevere</h1>
+     <a href="#ordine_sospeso"> <button id="dettaglio_ordine_sospeso" class="btn pull-right">Dettaglio</button></a>
+  </div>
 </header>
 <nav class="bar bar-tab">
   <a class="tab-item active" id="nav1">

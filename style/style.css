@@ -51,7 +51,7 @@ body {
   left: 0;
   top: 0;
   bottom: 0;
-  overflow-y: hidden;
+  overflow-y: auto;
   overflow-x: hidden; }
 
 .page {
@@ -269,4 +269,15 @@ a, a:active{
 #lista_pizzerie_aperte, #lista_pizzerie_chiuse, #lista_pizzerie_riposo{
   margin-bottom: 0 !important;
   border: 0;
+}
+
+#info_ordine_sospeso button{
+  position: absolute;
+  right: 5px !important;
+  top: 8px;
+}
+
+#info_ordine_sospeso h1{
+  text-align:left !important;
+  margin-left: 5px;
 }

@@ -1,0 +1,23 @@
+<ul class="table-view">
+    <fieldset>
+        <legend>Ordine</legend>
+    <li class="table-view-cell">Q.t&agrave; {{numeroPizze}} 
+        <div class="pull-right">&euro; {{totale}}</div>
+    </li>
+    </fieldset>
+    <br/>
+     <fieldset>
+        <legend>Luogo di consegna</legend>
+        {{indirizzoCliente}}
+    </fieldset>
+    <br/>
+    <fieldset>
+        <legend>Pizzeria</legend>
+        <li class="table-view-cell">{{nomePizzeria}}
+        <div class="pull-right">Tel. {{telefonoPizzeria}}</div>
+    </li>
+    </fieldset>
+    <br/>
+   
+    <button class="btn btn-negative btn-block" id="archivia">Ricevuto</button>
+</ul>

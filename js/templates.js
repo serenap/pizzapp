@@ -21,5 +21,6 @@ define({
     profilo: "templates/profilo.html",
     menu: "templates/menu.html",
     cartone: "templates/cartone.html",
-    riepilogo : "templates/riepilogo.html"
+    riepilogo : "templates/riepilogo.html",
+    ordineSospeso: "templates/ordineSospeso.html"
 });

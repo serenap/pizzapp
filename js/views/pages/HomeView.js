@@ -19,7 +19,8 @@ define(function(require) {
     events: {
       "touchend #pizzerie": "pizzerie",
       "touchend #localizzazione": "localizza",
-      "touchend #relocal" : "localizza"
+      "touchend #relocal" : "localizza",
+      "touchend #dettaglio_ordine_sospeso": "ordine_sospeso"
     },
 
     render: function() {
@@ -34,9 +35,9 @@ define(function(require) {
       if(1) {
         var opts = {
             lines: 15, // The number of lines to draw
-            length: 20, // The length of each line
-            width: 10, // The line thickness
-            radius: 30, // The radius of the inner circle
+            length: 15, // The length of each line
+            width: 5, // The line thickness
+            radius: 20, // The radius of the inner circle
             corners: 1, // Corner roundness (0..1)
             shadow: true, // Whether to render a shadow
             hwaccel: true, // Whether to use hardware acceleration
@@ -108,7 +109,14 @@ define(function(require) {
       Backbone.history.navigate("pizzerie", {
         trigger: true
       });
+    },
+
+   ordine_sospeso: function(event){
+       document.getElementById("ordine_sospeso").style.visibility='hidden';
+       document.getElementById("normal").style.visibility='visible';
+     
     }
+
   });
 
   return HomeView;
