@@ -29,6 +29,17 @@ define(function(require) {
       // cache a reference to the content element
       this.contentElement = this.$el.find('#content')[0];
       $(this.el).html(this.template(this.model.toJSON()));
+      if(this.model.riposoSettimanale()&&this.model.aperta()){
+        $(this.el).find(".chiusa").hide();
+        $(this.el).find(".riposo").hide();
+      }else if(this.model.riposoSettimanale()&&!this.model.aperta()){
+        $(this.el).find(".aperta").hide();
+        $(this.el).find(".riposo").hide();}
+      else{
+        $(this.el).find(".orario").hide();
+        $(this.el).find(".chiusa").hide();
+        $(this.el).find(".aperta").hide();
+      }
       return this;
     },
 

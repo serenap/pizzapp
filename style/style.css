@@ -138,11 +138,6 @@ height: 500px !important;
   margin-right: 5%;
   font-size: 1.2em;
   color: #444;
-  -moz-box-shadow:inset -21px -40px 21px -30px #fed897;
-  -webkit-box-shadow:inset -21px -40px 21px -30px #fed897;
-  box-shadow:inset -21px -40px 21px -30px #fed897;
-  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f0c911), color-stop(1, #f2ab1e) );
-  background:-moz-linear-gradient( center top, #f0c911 5%, #f2ab1e 100% );
   background-color:#f6b33d;
 
 }
@@ -154,11 +149,6 @@ height: 500px !important;
   margin-left: 5%;
   margin-right: 5%;
   color: #444;
-  -moz-box-shadow:inset -21px -40px 21px -30px #fed897;
-  -webkit-box-shadow:inset -21px -40px 21px -30px #fed897;
-  box-shadow:inset -21px -40px 21px -30px #fed897;
-  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f0c911), color-stop(1, #f2ab1e) );
-  background:-moz-linear-gradient( center top, #f0c911 5%, #f2ab1e 100% );
   background-color:#f6b33d;}
 
 .btn-block.btn-outlined{
@@ -274,4 +264,9 @@ a, a:active{
 #bottoni_popup{
   max-width: 100%;
   margin
+}
+
+#lista_pizzerie_aperte, #lista_pizzerie_chiuse, #lista_pizzerie_riposo{
+  margin-bottom: 0 !important;
+  border: 0;
 }

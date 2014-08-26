@@ -35,7 +35,15 @@ define(function(require) {
 
       this.collection.each(function(pizzeria){
         var pizzeriaSV = new PizzeriaSubView({model: pizzeria});
-        $(instance.el).find("ul").append(pizzeriaSV.el);
+        
+      if(pizzeriaSV.model.riposoSettimanale()&&pizzeriaSV.model.aperta()){
+        $(instance.el).find("ul#lista_pizzerie_aperte").append(pizzeriaSV.el);
+      }else if(pizzeriaSV.model.riposoSettimanale()&&!pizzeriaSV.model.aperta()){
+        $(instance.el).find("ul#lista_pizzerie_chiuse").append(pizzeriaSV.el);
+      }else{
+        $(instance.el).find("ul#lista_pizzerie_riposo").append(pizzeriaSV.el);
+        }
+
       }, this);
       return this;
     }

@@ -34,6 +34,11 @@ define(function(require) {
 			return this.get("giorniChiusura").indexOf(this.mappaGiorni[data.getDay()]) == -1 && 
 					data.getHours() >= this.get("orarioApertura")[0] && 
 					data.getHours() <= this.get("orarioApertura")[1];
+		},
+
+		riposoSettimanale: function(){
+			var data = new Date();
+			return this.get("giorniChiusura").indexOf(this.mappaGiorni[data.getDay()]) == -1;
 		}
 	});
 
