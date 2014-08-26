@@ -38,7 +38,7 @@ define(function(require) {
     },
 
     ok: function() {
-
+      this.options.ok();
     },
 
     annulla: function() {

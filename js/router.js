@@ -34,11 +34,11 @@ define(function(require) {
     },
 
     home: function() {
-     document.getElementById("cartone").style.display="block";
-     document.getElementById("riepilogo").style.display="none";
-     document.getElementById("back").style.display="none";
-     document.getElementById("title").innerHTML = "Home";
-     this.structureView.setActiveTabBarElement("nav1");
+      document.getElementById("cartone").style.display="block";
+      document.getElementById("riepilogo").style.display="none";
+      document.getElementById("back").style.display="none";
+      document.getElementById("title").innerHTML = "Home";
+      this.structureView.setActiveTabBarElement("nav1");
       // create the view
       var page = new HomeView();
       // show the view
@@ -70,7 +70,7 @@ define(function(require) {
         document.getElementById("cartone").style.display="block";
         document.getElementById("riepilogo").style.display="none";
         document.getElementById("back").style.display="block";
-        document.getElementById("title").innerHTML = "Menu'";
+        document.getElementById("title").innerHTML = "Menu";
 
         // create the view and show it
         var page = new MenuView();

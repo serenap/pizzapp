@@ -18,12 +18,20 @@ define(function(require) {
 			modalitaPagamento: ''
 		},
 
-		initialize: function() {
-			window.setTimeout(this.destroy({
-				success: function() {
-					window.localStorage.removeItem("ordine");
-				}
-			}), 30000);
+		salva: function() {
+			window.localStorage.setItem("ordine", JSON.stringify(this));
+		},
+
+		countdown: function() {
+			var instance = this;
+			window.setTimeout(function() {
+				instance.destroy({
+					success: function() {
+						window.localStorage.removeItem("ordine");
+						console.log("Ordine scaduto");
+					}
+				});
+			}, 30000);
 		}
 	});
 

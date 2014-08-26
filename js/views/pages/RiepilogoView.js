@@ -5,15 +5,15 @@ define(function(require) {
   var Utente = require("models/Utente");
   var Pizzeria = require("models/Pizzeria");
   var Cartone = require("collections/Cartone");
-  var Utils = require("utils"); 
+  var Utils = require("utils");
 
   var RiepilogoView = Utils.Page.extend({
-
     constructorName: "RiepilogoView",
+    collection: Cartone,
     model: Ordine,
     
     initialize: function() {
-      var cartone = new Cartone();
+      this.collection = new Cartone();
       var utente = new Utente();
       var pizzeria = new Pizzeria(JSON.parse(window.localStorage.getItem("pizzeria")));
 
@@ -24,13 +24,13 @@ define(function(require) {
         "nomePizzeria": pizzeria.get("nome"),
         "indirizzoPizzeria": pizzeria.get("indirizzo"),
         "telefonoPizzeria": pizzeria.get("telefono"),
-        "cartone": cartone,
-        "numeroPizze": cartone.getNumeroPizze(),
-        "totale": cartone.getTotale(),
+        "cartone": JSON.stringify(this.collection),
+        "numeroPizze": this.collection.getNumeroPizze(),
+        "totale": this.collection.getTotale(),
         "orarioConsegna": '',
         "modalitaPagamento": ''
       });
-      window.localStorage.setItem("ordine", JSON.stringify(this.model));
+      this.model.salva();
       
       // load the precompiled template
       this.template = Utils.templates.riepilogo;
@@ -59,12 +59,11 @@ define(function(require) {
         "orarioConsegna": orario,
         "modalitaPagamento": pagamento
       });
-      window.localStorage.setItem("ordine", JSON.stringify(this.model));
-      alert("Ordine inviato");
-
-      Backbone.history.navigate("home", {
-        trigger: true
-      });
+      this.model.salva();
+      this.collection.svuota();
+      $("#quantita_cartone").html(this.collection.getNumeroPizze());
+      this.model.countdown();
+      this.remove();
     }
 
   });

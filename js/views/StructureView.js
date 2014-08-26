@@ -4,10 +4,11 @@ define(function(require) {
   var Backbone = require("backbone");
   var Cartone = require("collections/Cartone");
   var Utils = require("utils");
+  var PromptView = require("views/PromptView");
 
   var StructureView = Backbone.View.extend({
-
     constructorName: "StructureView",
+    collection: Cartone,
     id: "main",
 
     events: {
@@ -15,15 +16,15 @@ define(function(require) {
       "touchend #nav1": "home",
       "touchend #nav2": "profilo",
       "touchend #cartone": "cartone",
-      "touchend #riepilogo": "riepilogo"
+      "touchend #riepilogo": "riepilogo",
+      "touchend #invia_ordine": "home"
     },
 
     initialize: function(options) {
-      var cartone = new Cartone();
-      cartone.svuota();
+      this.collection = new Cartone();
+      this.collection.svuota();
       // load the precompiled template
       this.template = Utils.templates.structure;
-      //this.on("inTheDOM", this.rendered);
       // bind the back event to the goBack function
       //document.getElementById("back").addEventListener("back", this.goBack(), false);
     },
@@ -49,7 +50,20 @@ define(function(require) {
     },
 
     pizzerie: function(event) {
-      Backbone.history.navigate("pizzerie", {
+      if(this.collection.length != 0) {
+        var messaggio = "Cambiando pizzeria dovrai svuotare il tuo Cartone. Vuoi continuare?";
+        var conferma = function() {
+          this.collection.svuota();
+          Backbone.history.navigate("pizzerie", {
+            trigger: true
+          });
+        };
+        var prompt = new PromptView({
+          message: messaggio,
+          ok: conferma
+        });
+      }
+      else Backbone.history.navigate("pizzerie", {
         trigger: true
       });
     },
