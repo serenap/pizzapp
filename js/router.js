@@ -10,7 +10,7 @@ define(function(require) {
   var MenuView = require("views/pages/MenuView");
   var CartoneView = require("views/pages/CartoneView");
   var RiepilogoView = require("views/pages/RiepilogoView");
-  
+  var AlertView = require("views/AlertView");
 
   var AppRouter = Backbone.Router.extend({
 
@@ -46,28 +46,41 @@ define(function(require) {
     },
 
     pizzerie: function() {
-     document.getElementById("cartone").style.display="block";
-     document.getElementById("riepilogo").style.display="none";
-     document.getElementById("back").style.display="block";
-     document.getElementById("title").innerHTML = "Pizzerie";
+      //if(navigator.connection.type != Connection.NONE) {
+      if(1) {
+        document.getElementById("cartone").style.display="block";
+        document.getElementById("riepilogo").style.display="none";
+        document.getElementById("back").style.display="block";
+        document.getElementById("title").innerHTML = "Pizzerie";
 
-
-     // create the view and show it
-      var page = new PizzerieView();
+        // create the view and show it
+        var page = new PizzerieView();
         this.changePage(page);
+      }
+      else {
+        var messaggio = "Nessuna connessione. Devi essere connesso per procedere.";
+        var alert = new AlertView({message: messaggio});
+        console.log(alert.options);
+      }
     },
 
     menu: function() {
-     document.getElementById("cartone").style.display="block";
-     document.getElementById("riepilogo").style.display="none";
-     document.getElementById("back").style.display="block";
-     document.getElementById("title").innerHTML = "Menu'";
-     
-     // highlight the nav2 tab bar element as the current one
-     // this.structureView.setActiveTabBarElement("nav3");
-     // create the view and show it
-      var page = new MenuView();
+      //if(navigator.connection.type != Connection.NONE) {
+      if(1) {
+        document.getElementById("cartone").style.display="block";
+        document.getElementById("riepilogo").style.display="none";
+        document.getElementById("back").style.display="block";
+        document.getElementById("title").innerHTML = "Menu'";
+
+        // create the view and show it
+        var page = new MenuView();
         this.changePage(page);
+      }
+      else {
+        var messaggio = "Nessuna connessione. Devi essere connesso per procedere.";
+        var alert = new AlertView({message: messaggio});
+        console.log(alert.options);
+      }
     },
 
     cartone: function() {
@@ -87,11 +100,11 @@ define(function(require) {
       document.getElementById("riepilogo").style.display="none";
       document.getElementById("back").style.display="block";
       document.getElementById("title").innerHTML = "Profilo";
-     // highlight the nav2 tab bar element as the current one
-       this.structureView.setActiveTabBarElement("nav2");
-     // create the view and show it
+      // highlight the nav2 tab bar element as the current one
+      this.structureView.setActiveTabBarElement("nav2");
+      // create the view and show it
       var page = new ProfiloView();
-        this.changePage(page);
+      this.changePage(page);
     },
 
     riepilogo: function() {
@@ -104,9 +117,8 @@ define(function(require) {
       this.structureView.setActiveTabBarElement("nav1");
       // create the view and show it
       var page = new RiepilogoView();
-        this.changePage(page);
+      this.changePage(page);
     },
-
  
     // load the structure view
     structure: function() {    

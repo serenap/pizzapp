@@ -3,7 +3,7 @@ define(function(require) {
   var Backbone = require("backbone");
   var Utils = require("utils");
   var Spinner = require("spin");
-  var PopupView = require("views/PopupView");
+  var AlertView = require("views/AlertView");
 
   var HomeView = Utils.Page.extend({
     constructorName: "HomeView",
@@ -11,16 +11,7 @@ define(function(require) {
     initialize: function() {
       // load the precompiled template
       this.template = Utils.templates.home;
-
-      // here we can register to inTheDOM or removing events
-      // this.listenTo(this, "inTheDOM", function() {
-      //   $('#content').on("swipe", function(data){
-      //     console.log(data);
-      //   });
-      // });
-      // this.listenTo(this, "removing", functionName);
-
-      // by convention, all the inner views of a view must be stored in this.subViews
+      this.render();
     },
 
     id: "home",
@@ -39,6 +30,8 @@ define(function(require) {
     },
 
     localizza: function() {
+      //if(navigator.connection.type != Connection.NONE) {
+      if(1) {
         var opts = {
             lines: 15, // The number of lines to draw
             length: 20, // The length of each line
@@ -55,93 +48,67 @@ define(function(require) {
             var nodes = document.getElementById("local").getElementsByTagName('*');
             for(var i = 0; i < nodes.length; i++){
                 nodes[i].disabled = true;}
+
+        navigator.geolocation.getCurrentPosition(onSuccess,Error);
+
+        function onSuccess(position){
+          var lat = position.coords.latitude;
+          var lng = position.coords.longitude;     
+          var latlng = new google.maps.LatLng(lat, lng);
+          var addr = codeLatLng(latlng);
+           
+          document.getElementById("local").disabled = false;
+          var nodes = document.getElementById("local").getElementsByTagName('*');
+          for(var i = 0; i < nodes.length; i++) {
+            nodes[i].disabled = false;
+          }
+          spinner.stop();
+        }
+
+        function Error(error) {
+          spinner.stop();
+        }
+
+        function codeLatLng(latlng) {
+          var geocoder = new google.maps.Geocoder();
       
-
-       navigator.geolocation.getCurrentPosition(onSuccess,Error);
-
-       function onSuccess(position){
-      
-       var lat = position.coords.latitude;
-       var lng = position.coords.longitude;     
-       var latlng = new google.maps.LatLng(lat, lng);
-       var addr = codeLatLng(latlng);
-
-       
-       document.getElementById("local").disabled = false;
-            var nodes = document.getElementById("local").getElementsByTagName('*');
-            for(var i = 0; i < nodes.length; i++){
-                nodes[i].disabled = false;}
-       spinner.stop();
-       }
-
-       function Error(error){
-       spinner.stop();
-       }
-
-    
-
-      function codeLatLng(latlng) {
-
-        var geocoder = new google.maps.Geocoder();
-    
-        if (geocoder) {
-           geocoder.geocode({'latLng': latlng}, function(results, status) {
-
-           if (status == google.maps.GeocoderStatus.OK) {
-
-
-            if (results[0]) {
-             for (i = 0; i < results[0].address_components.length; i++){
-              for (j = 0; j < results[0].address_components[i].types.length; j++) {
-
-                if (results[0].address_components[i].types[j] == "route")
-                 var via = results[0].address_components[i].long_name;
-
-                
-                if (results[0].address_components[i].types[j] == "street_number")
-                 var civico = results[0].address_components[i].long_name;
-
-               
-                if (results[0].address_components[i].types[j] == "locality")
-                  var citta = results[0].address_components[i].long_name;
+          if (geocoder) {
+            geocoder.geocode({'latLng': latlng}, function(results, status) {
+              if (status == google.maps.GeocoderStatus.OK) {
+                if (results[0]) {
+                  for (i = 0; i < results[0].address_components.length; i++) {
+                    for (j = 0; j < results[0].address_components[i].types.length; j++) {
+                      if (results[0].address_components[i].types[j] == "route")
+                        var via = results[0].address_components[i].long_name;
+                      if (results[0].address_components[i].types[j] == "street_number")
+                        var civico = results[0].address_components[i].long_name;
+                      if (results[0].address_components[i].types[j] == "locality")
+                        var citta = results[0].address_components[i].long_name;
+                    }
+                  }
+                }
+                document.getElementById('civico').value = civico;  
+                if(typeof(via) == 'undefined')
+                  document.getElementById('via').value = "";
+                else document.getElementById('via').value = via;
+                  document.getElementById('citta').value = citta;        
               }
-             }
-           }
-
-        
-           document.getElementById('civico').value = civico;  
-         if(typeof(via)=='undefined')
-           document.getElementById('via').value = "";
-         else{document.getElementById('via').value = via;}
-           document.getElementById('citta').value = citta;
-              
-}
-      });
-    
-  }
-
-    }
-    
-  },
+            });  
+          }
+        }
+      }
+      else {
+        var messaggio = "Nessuna connessione. Devi essere connesso per procedere.";
+        var alert = new AlertView({message: messaggio});
+        console.log(alert.options);
+      }
+    },
 
     pizzerie: function(event) {
-      //if(navigator.connection.type != Connection.NONE)
-        Backbone.history.navigate("pizzerie", {
-          trigger: true
-        });
-      /*else {
-        var testo = "Nessuna connessione disponibile. Devi essere connesso alla rete per usare pizzApp.";
-        var popup = new PopupView({
-          message: testo,
-          second_button: true,
-          ok: function() {
-            this.mostra();
-            this.remove();
-          }
-        });
-      }*/
+      Backbone.history.navigate("pizzerie", {
+        trigger: true
+      });
     }
-
   });
 
   return HomeView;

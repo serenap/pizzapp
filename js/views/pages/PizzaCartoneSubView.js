@@ -31,15 +31,16 @@ define(function(require) {
 
     rimuovi: function() {
       var cartone = new Cartone();
-
       pizza_aggiornata = cartone.rimuoviPizza(this.model);
       if(pizza_aggiornata != null) {
         this.model = pizza_aggiornata;
         this.render();
       }
       else {
-        if(cartone.length == 0)
+        if(cartone.length == 0) {
           $(this.el).parent().find("#cartone_vuoto").show("fast");
+          $("#riepilogo").hide("fast");
+        }
         this.remove();
       }
       $("#quantita_cartone").html(cartone.getNumeroPizze());

@@ -1,28 +1,22 @@
 define(function(require) {
-
-  var Backbone = require("backbone");
-  var Pizza = require("models/Pizza");
-  var Cartone = require("collections/Cartone");
+  
   var Utils = require("utils");
 
-  var PopupView = Utils.Page.extend({
-    constructorName: "PopupView",
-    message: "",
-    first_button: false,
-    second_button: false,
+  var AlertView = Utils.Page.extend({
+    constructorName: "AlertView",
     
-    initialize: function() {
+    initialize: function(options) {
       // load the precompiled template
-      this.template = Utils.templates.popup;
+      this.template = Utils.templates.alert;
+      this.options = options;
       this.render();
       this.mostra();
     },
 
-    id: "popup",
+    id: "alert",
 
     events: {
-      "touchend #ok" : "ok",
-      "touchend #annulla" : "annulla"
+      "touchend #ok" : "ok"
     },   
 
     render: function() {
@@ -30,6 +24,7 @@ define(function(require) {
       this.el.innerHTML = this.template({});
       // cache a reference to the content element
       this.contentElement = this.$el.find('#content')[0];
+      $(this.el).find(".message").html(this.options.message);
 
       return this;
     },
@@ -39,10 +34,15 @@ define(function(require) {
         $(this.el).show("fast");
       }
       else $(this.el).hide("fast");
+    },
+
+    ok: function() {
+      this.mostra();
+      this.remove();
     }
  
   });
 
-  return PopupView;
+  return AlertView;
 
 });
