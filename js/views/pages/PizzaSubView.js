@@ -34,7 +34,12 @@ define(function(require) {
       // cache a reference to the content element
       this.contentElement = this.$el.find('#content')[0];
       $(this.el).html(this.template(this.model.toJSON()));
-
+      var categoria = this.model.toJSON().categoria;
+      if(categoria=='Rossa'){
+        this.$("#imgpizza_bianca").hide("fast");
+      }else{
+        this.$("#imgpizza_rossa").hide("fast");
+      }
       return this;
     },
 
