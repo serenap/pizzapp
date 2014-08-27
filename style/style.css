@@ -221,6 +221,28 @@ background: #fff;
   right:5px;
 }
 
+@-webkit-keyframes 'pulse' {
+
+from {
+  background-color: white;
+  opacity: 1.0;
+  -webkit-transform: scale(1.0) rotate(0deg);
+}
+  
+to {
+  background-color: yellow;
+  opacity: 1.0;
+  -webkit-transform: scale(1.1) rotate(0deg);
+}
+}
+
+.quantita_aggiornata{
+-webkit-animation-name: pulse;
+-webkit-animation-duration: 0.8s;
+-webkit-animation-iteration-count: 4;
+-webkit-animation-timing-function: ease;
+}
+
 .segmented-control{
   position: relative;
   top:1em;

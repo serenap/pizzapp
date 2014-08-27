@@ -57,6 +57,11 @@ define(function(require) {
       var cartone = new Cartone();
       cartone.aggiungiPizza(this.model);
       $("#quantita_cartone").html(cartone.getNumeroPizze());
+      document.getElementById("quantita_cartone").className ="quantita_aggiornata";
+      setTimeout(function() {
+         $("#quantita_cartone").removeClass("quantita_aggiornata");
+      },3200);
+      
     },
 
     personalizza: function() {
