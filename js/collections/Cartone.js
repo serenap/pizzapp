@@ -84,8 +84,11 @@ define(function(require) {
 					indice = index;
 				}
 			});
-			if(rimuovi == true)
+			if(rimuovi == true) {
 				this.remove(this.at(indice));
+				this.salva();
+				return null;
+			}
 
 			this.salva();
 			return this.at(indice);

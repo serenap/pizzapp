@@ -40,8 +40,32 @@ define(function(require) {
     },
 
     // generic go-back function
-    goBack: function() {  
-      window.history.back();
+    goBack: function() {
+      this.collection.carica();
+      if(Backbone.history.fragment == "menu" && 
+          this.collection.length != 0) {
+        var messaggio = "Cambiando pizzeria dovrai svuotare il tuo Cartone. Vuoi continuare?";
+        /*var conferma = function() {
+          this.collection.svuota();
+          $("#quantita_cartone").html(this.collection.getNumeroPizze());
+          Backbone.history.navigate("pizzerie", {
+            trigger: true
+          });
+        };
+        var prompt = new PromptView({
+          message: messaggio,
+          ok: conferma
+        });*/
+        if(confirm(messaggio)==true) {
+          this.collection.svuota();
+          $("#quantita_cartone").html(this.collection.getNumeroPizze());
+          Backbone.history.navigate("pizzerie", {
+            trigger: true
+          });
+        }
+      }
+      //window.history.back();
+      else Backbone.history.history.back();
     },
 
     setActiveTabBarElement: function(elementId) {

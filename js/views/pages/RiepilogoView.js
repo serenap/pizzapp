@@ -18,7 +18,7 @@ define(function(require) {
       var pizzeria = new Pizzeria(JSON.parse(window.localStorage.getItem("pizzeria")));
 
       this.model = new Ordine({
-        "nomeCliente": utente.get("nome"),
+        "nomeCliente": utente.get("nome") + " " + utente.get("cognome"),
         "indirizzoCliente": utente.get("via") + ", " + utente.get("n_civico") + ", " + utente.get("citta"),
         "telefonoCliente": utente.get("telefono"),
         "nomePizzeria": pizzeria.get("nome"),

@@ -281,3 +281,16 @@ a, a:active{
   text-align:left !important;
   margin-left: 5px;
 }
+
+#alert, #prompt{
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  margin: auto;
+  z-index: 100;
+  vertical-align: center;
+  text-align: center;
+  background: rgb(212,62,55);
+  opacity: 0.4;
+}
