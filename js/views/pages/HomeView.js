@@ -111,10 +111,9 @@ define(function(require) {
       });
     },
 
-   ordine_sospeso: function(event){
-       document.getElementById("ordine_sospeso").style.visibility='hidden';
-       document.getElementById("normal").style.visibility='visible';
-     
+    ordine_sospeso: function(event) {
+      document.getElementById("ordine_sospeso").style.visibility='hidden';
+      document.getElementById("normal").style.visibility='visible';
     }
 
   });

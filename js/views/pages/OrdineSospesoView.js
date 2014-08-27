@@ -14,26 +14,13 @@ define(function(require) {
     
     initialize: function() {
       var cartone = new Cartone();
-      var utente = new Utente();
-      var pizzeria = new Pizzeria(JSON.parse(window.localStorage.getItem("pizzeria")));
+      cartone.svuota();
+      $("#quantita_cartone").html(cartone.getNumeroPizze());
 
-      this.model = new Ordine({
-        "nomeCliente": utente.get("nome"),
-        "indirizzoCliente": utente.get("via") + ", " + utente.get("n_civico") + ", " + utente.get("citta"),
-        "telefonoCliente": utente.get("telefono"),
-        "nomePizzeria": pizzeria.get("nome"),
-        "indirizzoPizzeria": pizzeria.get("indirizzo"),
-        "telefonoPizzeria": pizzeria.get("telefono"),
-        "cartone": cartone,
-        "numeroPizze": cartone.getNumeroPizze(),
-        "totale": cartone.getTotale(),
-        "orarioConsegna": '',
-        "modalitaPagamento": ''
-      });
-      window.localStorage.setItem("ordine", JSON.stringify(this.model));
-      
       // load the precompiled template
-      this.template = Utils.templates.ordineSospeso;
+      this.template = Utils.templates.ordine_sospeso;
+      this.model = new Ordine();
+      this.model.carica();
     },
 
     id: "ordine_sospeso",
@@ -55,7 +42,7 @@ define(function(require) {
     },
 
     archivia: function() {
-      
+      this.model.cancella();
       Backbone.history.navigate("home", {
         trigger: true
       });

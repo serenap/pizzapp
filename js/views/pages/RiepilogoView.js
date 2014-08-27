@@ -27,10 +27,10 @@ define(function(require) {
         "cartone": cartone,
         "numeroPizze": cartone.getNumeroPizze(),
         "totale": cartone.getTotale(),
-        "orarioConsegna": '',
-        "modalitaPagamento": ''
+        "orarioConsegna": "20:00",
+        "modalitaPagamento": "contanti"
       });
-      window.localStorage.setItem("ordine", JSON.stringify(this.model));
+      this.model.salva();
       
       // load the precompiled template
       this.template = Utils.templates.riepilogo;
@@ -53,20 +53,18 @@ define(function(require) {
     },
 
     invia: function() {
+      var cartone = new Cartone();
       var orario = this.$el.find("#orario").val();
       var pagamento = this.$el.find(".pagamento:checked").val();
       this.model.set({
         "orarioConsegna": orario,
         "modalitaPagamento": pagamento
       });
-      window.localStorage.setItem("ordine", JSON.stringify(this.model));
-      //alert("Ordine inviato");
+
+      this.model.salva();
+
       document.getElementById("info_ordine_sospeso").style.visibility='visible';
       document.getElementById("normal").style.visibility='hidden';
-
-      Backbone.history.navigate("home", {
-        trigger: true
-      });
     }
 
   });

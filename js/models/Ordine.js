@@ -22,6 +22,14 @@ define(function(require) {
 			window.localStorage.setItem("ordine", JSON.stringify(this));
 		},
 
+		carica: function() {
+			this.set(JSON.parse(window.localStorage.getItem("ordine")));
+		},
+
+		cancella: function() {
+			window.localStorage.removeItem("ordine");
+		},
+
 		countdown: function() {
 			var instance = this;
 			window.setTimeout(function() {

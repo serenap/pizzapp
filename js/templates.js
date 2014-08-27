@@ -22,5 +22,5 @@ define({
     menu: "templates/menu.html",
     cartone: "templates/cartone.html",
     riepilogo : "templates/riepilogo.html",
-    ordineSospeso: "templates/ordineSospeso.html"
+    ordine_sospeso: "templates/ordine_sospeso.html"
 });

@@ -17,7 +17,8 @@ define(function(require) {
       "touchend #nav2": "profilo",
       "touchend #cartone": "cartone",
       "touchend #riepilogo": "riepilogo",
-      "touchend #invia_ordine": "home"
+      "touchend #invia_ordine": "home",
+      "touchend #ordine_ricevuto": "home"
     },
 
     initialize: function(options) {
