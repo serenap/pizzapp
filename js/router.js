@@ -40,6 +40,7 @@ define(function(require) {
       document.getElementById("riepilogo").style.display="none";
       document.getElementById("back").style.display="none";
       document.getElementById("title").innerHTML = "Home";
+      document.getElementById("subtitle").innerHTML = "";
       this.structureView.setActiveTabBarElement("nav1");
       // create the view
       var page = new HomeView();
@@ -54,6 +55,7 @@ define(function(require) {
         document.getElementById("riepilogo").style.display="none";
         document.getElementById("back").style.display="block";
         document.getElementById("title").innerHTML = "Pizzerie";
+        document.getElementById("subtitle").innerHTML = "";
 
         // create the view and show it
         var page = new PizzerieView();
@@ -92,6 +94,7 @@ define(function(require) {
       document.getElementById("cartone").style.display="none";
       document.getElementById("back").style.display="block";
       document.getElementById("title").innerHTML = "Il mio cartone";
+      document.getElementById("subtitle").innerHTML = "";
       
       var page = new CartoneView();
       this.changePage(page);
@@ -102,6 +105,8 @@ define(function(require) {
       document.getElementById("riepilogo").style.display="none";
       document.getElementById("back").style.display="block";
       document.getElementById("title").innerHTML = "Profilo";
+      document.getElementById("subtitle").innerHTML = "";
+
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav2");
       // create the view and show it
@@ -114,6 +119,7 @@ define(function(require) {
       document.getElementById("riepilogo").style.display="none"; 
       document.getElementById("back").style.display="block";
       document.getElementById("title").innerHTML = "Riepilogo";
+      document.getElementById("subtitle").innerHTML = "";
 
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav1");
@@ -127,6 +133,7 @@ define(function(require) {
       document.getElementById("riepilogo").style.display="none"; 
       document.getElementById("back").style.display="block";
       document.getElementById("title").innerHTML = "Il mio ordine";
+      document.getElementById("subtitle").innerHTML = "";
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav1");
       // create the view and show it

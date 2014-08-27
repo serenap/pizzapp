@@ -39,7 +39,8 @@ define(function(require) {
       var cartone = new Cartone();
 
       $("#quantita_cartone").html(cartone.getNumeroPizze());
-
+      var pizzeria = new Pizzeria(JSON.parse(window.localStorage.getItem("pizzeria")));
+      document.getElementById("subtitle").innerHTML = 'pizzeria '+ pizzeria.get("nome");
       this.collection.each(function(pizza) {
         var pizzaSV = new PizzaSubView({model: pizza});
         var pizzaSVall = new PizzaSubView({model: pizza});
