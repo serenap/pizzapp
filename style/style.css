@@ -123,9 +123,12 @@ input[type="checkbox"] {
   margin: 0;
 }
 
-.modal, #personalizza{
+.modal{
 height: 500px !important;
+}
 
+#personalizza{
+  min-height: 150px !important;
 }
 
 .btn-block.home_button{
