@@ -3,6 +3,7 @@ define(function(require) {
   var Backbone = require("backbone");
   var Pizzeria = require("models/Pizzeria");
   var Utils = require("utils");
+  var AlertView = require("views/AlertView");
 
   var PizzeriaSubView = Utils.Page.extend({
 
@@ -44,10 +45,17 @@ define(function(require) {
     },
 
     menu: function(event) {
-      window.localStorage.setItem("pizzeria", JSON.stringify(this.model));
-      Backbone.history.navigate("menu", {
-        trigger: true
-      });
+      if(this.model.aperta()) {
+        window.localStorage.setItem("pizzeria", JSON.stringify(this.model));
+        Backbone.history.navigate("menu", {
+          trigger: true
+        });
+      }
+      else {
+        var messaggio = "Questa pizzeria è chiusa ora.";
+        //var alert = new AlertView({message: messaggio});
+        alert(messaggio);
+      }
     }
   
   });

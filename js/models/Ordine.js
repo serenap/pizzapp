@@ -17,6 +17,7 @@ define(function(require) {
 			orarioConsegna: '',
 			modalitaPagamento: ''
 		},
+		url: "",
 
 		salva: function() {
 			window.localStorage.setItem("ordine", JSON.stringify(this));

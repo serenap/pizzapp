@@ -5,6 +5,7 @@ define(function(require) {
   var Utente = require("models/Utente");
   var Pizzeria = require("models/Pizzeria");
   var Cartone = require("collections/Cartone");
+  var Spinner = require("spin");
   var Utils = require("utils"); 
 
   var RiepilogoView = Utils.Page.extend({
@@ -61,7 +62,23 @@ define(function(require) {
         "modalitaPagamento": pagamento
       });
 
-      this.model.salva();
+      var opts = {
+        lines: 15,
+        length: 15,
+        width: 5,
+        radius: 20,
+        corners: 1,
+        shadow: true,
+        hwaccel: true,
+      };  
+      var target = $("#spinner");
+      var spinner = new Spinner(opts).spin(target);
+      var instance = this.model;
+
+      setTimeout(function() {
+        instance.salva();
+        spinner.stop();
+      }, 10000);
 
       document.getElementById("info_ordine_sospeso").style.visibility='visible';
       document.getElementById("normal").style.visibility='hidden';
