@@ -341,3 +341,8 @@ a, a:active{
 .title{
   margin-top: -3px !important;
 }
+
+#no_result{
+  margin-top: 25px;
+  text-align: center;
+}

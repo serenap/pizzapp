@@ -39,7 +39,7 @@ define(function(require) {
       // cache a reference to the content element
       this.contentElement = this.$el.find('#content')[0];
       $(this.el).html(this.template({}));
-
+      $("#no_result").hide("fast");
       var instance = this;
       var cartone = new Cartone();
 
@@ -66,26 +66,28 @@ define(function(require) {
 
     filter: function(event){
         instance = this;
-
-        var key = $("#pizza_filter").val();
-              
+        $("#no_result").hide("fast");
+        key = $("#pizza_filter").val();
+      
             var categoria_corrente = $(".active")[2].id;
-            
-            //var tag = document.getElementsByTagName("h4")[0].childNodes[0].nodeValue;
             var l = document.getElementsByTagName("h4").length;
-            for(i=0; i<l; i++)
-              {
+            $("#kk").html(key);
+            for(i=0; i<l; i++){
             var ingredienti = document.getElementsByClassName("anteprima")[i].childNodes[0].nodeValue;
             var tag = document.getElementsByTagName("h4")[i].childNodes[0].nodeValue;
-            
-             if(ingredienti.indexOf(key) > -1){
-              this.$(".table-view-cell[name*="+tag+"]").show("fast");
+              if(ingredienti.indexOf(key) > -1){
+                this.$(".table-view-cell[name*="+tag+"]").show("fast");
+                
             }else{              
-              this.$(".table-view-cell[name*="+tag+"]").hide("fast");
-            }
-          
+                this.$(".table-view-cell[name*="+tag+"]").hide("fast");
+                if($(".table-view-cell")[0].style.display == 'none'){
+                    $("#no_result").show("fast");
+                   }else{
+                    }
+                }
+              }
+
           }
-         }
    
   });
 
