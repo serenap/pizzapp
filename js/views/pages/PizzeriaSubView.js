@@ -53,8 +53,7 @@ define(function(require) {
       }
       else {
         var messaggio = "Questa pizzeria è chiusa ora.";
-        //var alert = new AlertView({message: messaggio});
-        alert(messaggio);
+        var alert = new AlertView({message: messaggio});
       }
     }
   

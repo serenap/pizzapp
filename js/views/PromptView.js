@@ -16,8 +16,8 @@ define(function(require) {
     id: "prompt",
 
     events: {
-      "touchend #ok" : "ok",
-      "touchend #annulla" : "annulla"
+      "touchend #ok_prompt" : "ok",
+      "touchend #annulla_prompt" : "annulla"
     },   
 
     render: function() {
@@ -26,23 +26,26 @@ define(function(require) {
       // cache a reference to the content element
       this.contentElement = this.$el.find('#content')[0];
       $(this.el).find(".message").html(this.options.message);
+      $("body").prepend(this.el);
 
       return this;
     },
 
     mostra: function() {
-      if($(this.el).is(':hidden')) {
-        $(this.el).show("fast");
-      }
-      else $(this.el).hide("fast");
+      $(this.el).show("fast");
+    },
+
+    chiudi: function() {
+      $(this.el).hide("fast");
     },
 
     ok: function() {
       this.options.ok();
+      this.chiudi();
     },
 
     annulla: function() {
-      this.mostra();
+      this.chiudi();
       this.remove();
     }
  

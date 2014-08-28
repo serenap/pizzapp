@@ -41,13 +41,14 @@ define(function(require) {
 
     // generic go-back function
     goBack: function() {
-      this.collection.carica();
+      var cartone = this.collection;
+      cartone.carica();
       if(Backbone.history.fragment == "menu" && 
-          this.collection.length != 0) {
+          cartone.length != 0) {
         var messaggio = "Cambiando pizzeria dovrai svuotare il tuo Cartone. Vuoi continuare?";
-        /*var conferma = function() {
-          this.collection.svuota();
-          $("#quantita_cartone").html(this.collection.getNumeroPizze());
+        var conferma = function() {
+          cartone.svuota();
+          $("#quantita_cartone").html(cartone.getNumeroPizze());
           Backbone.history.navigate("pizzerie", {
             trigger: true
           });
@@ -55,16 +56,8 @@ define(function(require) {
         var prompt = new PromptView({
           message: messaggio,
           ok: conferma
-        });*/
-        if(confirm(messaggio)==true) {
-          this.collection.svuota();
-          $("#quantita_cartone").html(this.collection.getNumeroPizze());
-          Backbone.history.navigate("pizzerie", {
-            trigger: true
-          });
-        }
+        });
       }
-      //window.history.back();
       else Backbone.history.history.back();
     },
 

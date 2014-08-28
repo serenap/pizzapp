@@ -16,7 +16,7 @@ define(function(require) {
     id: "alert",
 
     events: {
-      "touchend #ok" : "ok"
+      "touchend #ok_alert" : "ok"
     },   
 
     render: function() {
@@ -25,19 +25,21 @@ define(function(require) {
       // cache a reference to the content element
       this.contentElement = this.$el.find('#content')[0];
       $(this.el).find(".message").html(this.options.message);
+      $("body").prepend(this.el);
 
       return this;
     },
 
     mostra: function() {
-      if($(this.el).is(':hidden')) {
-        $(this.el).show("fast");
-      }
-      else $(this.el).hide("fast");
+      $(this.el).show("fast");
+    },
+
+    chiudi: function() {
+      $(this.el).hide("fast");
     },
 
     ok: function() {
-      this.mostra();
+      this.chiudi();
       this.remove();
     }
  
