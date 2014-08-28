@@ -318,10 +318,12 @@ a, a:active{
   position: absolute;
   z-index: 100;
   text-align: center;
-  background-color: rgba(212,62,55, 0.4);
+  background-color: rgba(0,0,0, 0.5);
 }
 
+
 .message{
+  line-height: 30px;
   font-size: 24px;
   height: auto;
   color: #fff;
@@ -341,6 +343,13 @@ a, a:active{
   float: left;
   max-width: 45%;
 }
+
+#annulla_prompt{
+  position: relative;
+  right: 5% !important;
+}
+
+
 
 .subtitle {
   position: absolute;

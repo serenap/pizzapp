@@ -37,6 +37,6 @@
 		"menu": "null",
 		"maxDistanza": 8,
 		"giorniChiusura": ["Domenica"],
-		"orarioApertura": [8,22]
+		"orarioApertura": [19,22]
 	}
 ]
