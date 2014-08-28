@@ -4,8 +4,8 @@
 		"categoria": "Rossa",
 		"immagine": "img/pizza.png",
 		"ingredienti": [
-			"Mozzarella",
-			"Pomodoro"
+			"mozzarella",
+			" pomodoro"
 		],
 		"prezzo": "4.50"
 	},
@@ -14,11 +14,11 @@
 		"categoria": "Rossa",
 		"immagine": "img/pizza.png",
 		"ingredienti": [
-			"Mozzarella",
-			"Pomodoro",
-			"Salsiccia",
-			"Wurstel",
-			"Prosciutto Cotto"
+			"mozzarella",
+			" pomodoro",
+			" salsiccia",
+			" wurstel",
+			" prosciutto cotto"
 		],
 		"prezzo": "6.50"
 	}

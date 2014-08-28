@@ -28,6 +28,11 @@ define(function(require) {
 
     id: "menu", 
 
+    events: {
+
+      "input #pizza_filter": "filter"
+    },
+
     render: function() {
        // load the template
       this.el.innerHTML = this.template({});
@@ -57,7 +62,30 @@ define(function(require) {
       }, this);
 
       return this;
-    }
+    },
+
+    filter: function(event){
+        instance = this;
+
+        var key = $("#pizza_filter").val();
+              
+            var categoria_corrente = $(".active")[2].id;
+            
+            //var tag = document.getElementsByTagName("h4")[0].childNodes[0].nodeValue;
+            var l = document.getElementsByTagName("h4").length;
+            for(i=0; i<l; i++)
+              {
+            var ingredienti = document.getElementsByClassName("anteprima")[i].childNodes[0].nodeValue;
+            var tag = document.getElementsByTagName("h4")[i].childNodes[0].nodeValue;
+            
+             if(ingredienti.indexOf(key) > -1){
+              this.$(".table-view-cell[name*="+tag+"]").show("fast");
+            }else{              
+              this.$(".table-view-cell[name*="+tag+"]").hide("fast");
+            }
+          
+          }
+         }
    
   });
 

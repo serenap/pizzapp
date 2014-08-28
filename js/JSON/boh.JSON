@@ -4,8 +4,8 @@
 		"categoria": "Rossa",
 		"immagine": "img/pizza.png",
 		"ingredienti": [
-			"Mozzarella",
-			"Pomodoro"
+			"mozzarella",
+			" pomodoro"
 		],
 		"prezzo": "5.00"
 	},
@@ -14,8 +14,8 @@
 		"categoria": "Bianca",
 		"immagine": "img/pizza.png",
 		"ingredienti": [
-			"Mozzarella",
-			"Tartufo"
+			"mozzarella",
+			" tartufo"
 		],
 		"prezzo": "6.00"
 	}
