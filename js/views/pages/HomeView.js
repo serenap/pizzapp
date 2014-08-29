@@ -70,6 +70,8 @@ define(function(require) {
 
         function Error(error) {
           spinner.stop();
+          var messaggio = "Il GPS non è attivo. Attivalo per cercare la tua posizione";
+          var alert = new AlertView({message: messaggio});
         }
 
         function codeLatLng(latlng) {
