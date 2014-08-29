@@ -15,7 +15,7 @@ define(function(require) {
     
     initialize: function() {
       var cartone = new Cartone();
-      var utente = new Utente();
+      var utente = new Utente(false);
       var pizzeria = new Pizzeria(JSON.parse(window.localStorage.getItem("pizzeria")));
 
       this.model = new Ordine({

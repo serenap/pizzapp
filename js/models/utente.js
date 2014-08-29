@@ -4,7 +4,7 @@ define(function(require) {
 
 	var Utente = Backbone.Model.extend({
 		constructorName: "Utente",
-		defaults:{
+		defaults: {
 			nome: '',
 			cognome: '',
 			citta: '',
@@ -13,18 +13,22 @@ define(function(require) {
 			telefono: ''
 		},
 		
-		initialize: function(){
+		initialize: function(profilo) {
 			if(window.localStorage.getItem("utente"))
-				this.carica();
-			else this.salva();
+				this.carica(profilo);
+			else this.salva(false);
 		},
 
-		salva: function(){
-			window.localStorage.setItem("utente", JSON.stringify(this));
+		salva: function(non_a_casa) {
+			if(non_a_casa)
+				window.localStorage.setItem("utente_non_a_casa", JSON.stringify(this));
+			else window.localStorage.setItem("utente", JSON.stringify(this));
 		},
 
-		carica: function(){
-			this.set(JSON.parse(window.localStorage.getItem("utente")));
+		carica: function(profilo) {
+			if(profilo)
+				this.set(JSON.parse(window.localStorage.getItem("utente")));
+			else this.set(JSON.parse(window.localStorage.getItem("utente_non_a_casa")));
 		}
 	});
 

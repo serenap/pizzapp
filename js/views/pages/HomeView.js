@@ -3,6 +3,7 @@ define(function(require) {
   var Backbone = require("backbone");
   var Utils = require("utils");
   var Spinner = require("spin");
+  var Utente = require("models/Utente");
   var AlertView = require("views/AlertView");
 
   var HomeView = Utils.Page.extend({
@@ -17,7 +18,8 @@ define(function(require) {
     id: "home",
 
     events: {
-      "touchend #pizzerie": "pizzerie",
+      "touchend #consegna_a_casa": "pizzerie",
+      "touchend #conferma_indirizzo": "aggiorna_indirizzo",
       "touchend #localizzazione": "localizza",
       "touchend #relocal" : "localizza",
       "touchend #dettaglio_ordine_sospeso": "ordine_sospeso"
@@ -113,6 +115,26 @@ define(function(require) {
       Backbone.history.navigate("pizzerie", {
         trigger: true
       });
+    },
+
+    aggiorna_indirizzo: function() {
+      var utente = new Utente(true);
+      var nuova_citta = $("#citta").val();
+      var nuova_via = $("#via").val();
+      var nuovo_civico = $("#civico").val();
+      if(nuova_citta != "" && nuova_via != "" && nuovo_civico != "") {
+        utente.set({
+          citta: nuova_citta,
+          via: nuova_via,
+          n_civico: nuovo_civico
+        });
+        utente.salva(true);
+        this.pizzerie();
+      }
+      else {
+        var messaggio = "Indirizzo incompleto.";
+        var alert = new AlertView({message: messaggio});
+      }
     },
 
     ordine_sospeso: function(event) {
