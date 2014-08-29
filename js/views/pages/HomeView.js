@@ -85,6 +85,9 @@ define(function(require) {
                         var civico = results[0].address_components[i].long_name;
                       if (results[0].address_components[i].types[j] == "locality")
                         var citta = results[0].address_components[i].long_name;
+                      if (results[0].address_components[i].types[j] == "administrative_area_level_2")
+                        var provincia = results[0].address_components[i].long_name;
+                      
                     }
                   }
                 }
@@ -92,7 +95,9 @@ define(function(require) {
                 if(typeof(via) == 'undefined')
                   document.getElementById('via').value = "";
                 else document.getElementById('via').value = via;
-                  document.getElementById('citta').value = citta;        
+                if(typeof(citta) == 'undefined')
+                  document.getElementById('citta').value = "prov. di "+provincia;
+                else document.getElementById('via').value = citta;      
               }
             });  
           }
