@@ -310,6 +310,7 @@ a, a:active{
 #info_ordine_sospeso h1{
   text-align:left !important;
   margin-left: 5px;
+  margin-top: 0 !important;
 }
 
 #alert, #prompt{
@@ -339,17 +340,17 @@ a, a:active{
   list-style: none;
 }
 
-#annulla_prompt, #ok_prompt{
+#annulla_prompt{
   float: left;
   max-width: 45%;
+  margin-right : 1%;
 }
 
-#annulla_prompt{
-  position: relative;
-  right: 5% !important;
+#ok_prompt{
+  float: left;
+  max-width: 45%;
+  margin-left: 1%;
 }
-
-
 
 .subtitle {
   position: absolute;

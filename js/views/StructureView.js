@@ -5,11 +5,13 @@ define(function(require) {
   var Cartone = require("collections/Cartone");
   var Utils = require("utils");
   var PromptView = require("views/PromptView");
+  var Ordine = require("models/Ordine");
 
   var StructureView = Backbone.View.extend({
     constructorName: "StructureView",
     collection: Cartone,
     id: "main",
+    ordine: new Ordine(),
 
     events: {
       "touchend #back": "goBack",
@@ -17,8 +19,9 @@ define(function(require) {
       "touchend #nav2": "profilo",
       "touchend #cartone": "cartone",
       "touchend #riepilogo": "riepilogo",
+      "touchend #dettaglio_ordine_sospeso": "ordine_sospeso",
       "touchend #invia_ordine": "home",
-      "touchend #ordine_ricevuto": "home"
+      "touchend #ordine_ricevuto": "distruggi_ordine"
     },
 
     initialize: function(options) {
@@ -27,7 +30,7 @@ define(function(require) {
       // load the precompiled template
       this.template = Utils.templates.structure;
       // bind the back event to the goBack function
-      //document.getElementById("back").addEventListener("back", this.goBack(), false);
+      document.addEventListener("back", this.goBack(), false);
     },
 
     render: function() {
@@ -58,7 +61,13 @@ define(function(require) {
           ok: conferma
         });
       }
-      else Backbone.history.history.back();
+      else {
+        if(Backbone.history.fragment == "ordine_sospeso") {
+          document.getElementById("info_ordine_sospeso").style.visibility='visible';
+          document.getElementById("normal").style.visibility='hidden';
+        }
+        Backbone.history.history.back();
+      }
     },
 
     setActiveTabBarElement: function(elementId) {
@@ -87,15 +96,26 @@ define(function(require) {
     },
 
     cartone: function(event) {
-       Backbone.history.navigate("cartone", {
+      Backbone.history.navigate("cartone", {
         trigger: true
       });     
     },
 
-    riepilogo: function(event){
-       Backbone.history.navigate("riepilogo", {
+    riepilogo: function(event) {
+      Backbone.history.navigate("riepilogo", {
         trigger: true
       });
+    },
+
+    ordine_sospeso: function() {
+      Backbone.history.navigate("ordine_sospeso", {
+        trigger: true
+      });
+    },
+
+    distruggi_ordine: function() {
+      this.ordine.cancella();
+      this.home();
     },
 
     home: function(event) {

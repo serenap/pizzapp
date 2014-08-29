@@ -107,7 +107,7 @@ define(function(require) {
 			this.each(function(model) {
 				totale += parseFloat(model.get("prezzo"));
 			});
-			return totale;
+			return totale.toFixed(2);
 		}
 
 	});
