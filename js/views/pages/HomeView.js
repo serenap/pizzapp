@@ -34,7 +34,7 @@ define(function(require) {
 
     localizza: function() {
       //if(navigator.connection.type != Connection.NONE) {
-      if(1) {
+      if(navigator.onLine) {
         var opts = {
             lines: 15, // The number of lines to draw
             length: 15, // The length of each line
