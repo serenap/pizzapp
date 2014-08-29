@@ -46,7 +46,7 @@ define(function(require) {
 					var nuovo_prezzo = parseFloat(prezzo_nuova_pizza)*quantita;
 
 					pizza.set("quantita", quantita);
-					pizza.set("prezzo", nuovo_prezzo);
+					pizza.set("prezzo", nuovo_prezzo.toFixed(2));
 					presente = true;
 				}
 				i++;
@@ -76,7 +76,7 @@ define(function(require) {
 					if(quantita > 1) {
 						nuova_quantita = quantita-1;
 						model.set("quantita", nuova_quantita);
-						model.set("prezzo", (prezzo/quantita)*nuova_quantita);
+						model.set("prezzo", ((prezzo/quantita)*nuova_quantita).toFixed(2));
 					}
 					else {
 						rimuovi = true;

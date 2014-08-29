@@ -26,9 +26,6 @@ define(function(require) {
 			"Sabato"
 		],
 
-		initialize: function(){
-		},
-
 		aperta: function(){
 			var data = new Date();
 			return this.get("giorniChiusura").indexOf(this.mappaGiorni[data.getDay()]) == -1 && 

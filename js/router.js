@@ -63,8 +63,7 @@ define(function(require) {
       }
       else {
         var messaggio = "Nessuna connessione. Devi essere connesso per procedere.";
-        //var alert = new AlertView({message: messaggio});
-        alert(messaggio);
+        var alert = new AlertView({message: messaggio});
       }
     },
 

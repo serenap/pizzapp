@@ -12,10 +12,6 @@ define(function(require) {
 			prezzo: '',
 			quantita: 0
 		},
-
-		initialize: function(){
-		},
-
 		
 		serializzaIngredienti: function(){
 			return this.ingredienti.join(", ");
