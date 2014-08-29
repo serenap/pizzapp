@@ -67,7 +67,8 @@ define(function(require) {
     filter: function(event){
         instance = this;
         $("#no_result").hide("fast");
-        key = $("#pizza_filter").val();
+        
+        var key = $("#pizza_filter").val();
       
             var categoria_corrente = $(".active")[2].id;
             var l = document.getElementsByTagName("h4").length;
@@ -80,9 +81,11 @@ define(function(require) {
                 
             }else{              
                 this.$(".table-view-cell[name*="+tag+"]").hide("fast");
-                if($(".table-view-cell")[0].style.display == 'none'){
+
+                if(this.$(".active .table-view-cell").length==this.$(".active .table-view-cell:hidden").length){                  
                     $("#no_result").show("fast");
                    }else{
+                    $("#no_result").hide("fast");
                     }
                 }
               }
