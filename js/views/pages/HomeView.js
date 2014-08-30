@@ -117,15 +117,11 @@ define(function(require) {
       var utente = new Utente(true);
       var ordine = new Ordine();
 
-      if(ordine.carica()) {
-        var messaggio = "Hai ancora un ordine in sospeso.";
-        var alert = new AlertView({message: messaggio});
-      }
-      else Backbone.history.navigate("pizzerie", {
-        trigger: true
-      });
-
       if(utente.completo()) {
+        if(ordine.carica()) {
+          var messaggio = "Hai ancora un ordine in sospeso.";
+          var alert = new AlertView({message: messaggio});
+        }
         Backbone.history.navigate("pizzerie", {
           trigger: true
         });

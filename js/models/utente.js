@@ -31,13 +31,18 @@ define(function(require) {
 			else this.set(JSON.parse(window.localStorage.getItem("utente_non_a_casa")));
 		},
 
+		cancella: function() {
+			window.localStorage.removeItem("utente");
+			window.localStorage.removeItem("utente_non_a_casa");
+		},
+
 		completo: function() {
-			return this.nome != "" && 
-					this.cognome != "" && 
-					this.citta != "" && 
-					this.via != "" && 
-					this.n_civico != "" && 
-					this.telefono != "";
+			return this.get("nome") != "" && 
+					this.get("cognome") != "" && 
+					this.get("citta") != "" && 
+					this.get("via") != "" && 
+					this.get("n_civico") != "" && 
+					this.get("telefono") != "";
 		}
 	});
 
