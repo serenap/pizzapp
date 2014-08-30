@@ -24,7 +24,11 @@ define(function(require) {
 		},
 
 		carica: function() {
-			this.set(JSON.parse(window.localStorage.getItem("ordine")));
+			if(window.localStorage.getItem("ordine")) {
+				this.set(JSON.parse(window.localStorage.getItem("ordine")));
+				return true;
+			}
+			return false;
 		},
 
 		cancella: function() {

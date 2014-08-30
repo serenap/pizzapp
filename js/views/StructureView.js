@@ -11,7 +11,7 @@ define(function(require) {
     constructorName: "StructureView",
     collection: Cartone,
     id: "main",
-    ordine: new Ordine(),
+    ordine: null,
 
     events: {
       "touchend #back": "goBack",
@@ -26,7 +26,9 @@ define(function(require) {
 
     initialize: function(options) {
       this.collection = new Cartone();
+      this.ordine = new Ordine();
       this.collection.svuota();
+      this.ordine.cancella();
       // load the precompiled template
       this.template = Utils.templates.structure;
       // bind the back event to the goBack function

@@ -4,6 +4,7 @@ define(function(require) {
   var Utils = require("utils");
   var Spinner = require("spin");
   var Utente = require("models/Utente");
+  var Ordine = require("models/Ordine");
   var AlertView = require("views/AlertView");
 
   var HomeView = Utils.Page.extend({
@@ -70,7 +71,7 @@ define(function(require) {
 
         function Error(error) {
           spinner.stop();
-          var messaggio = "Il GPS non è attivo. Attivalo per cercare la tua posizione";
+          var messaggio = "Il GPS non è attivo. Attivalo per cercare la tua posizione.";
           var alert = new AlertView({message: messaggio});
         }
 
@@ -113,7 +114,12 @@ define(function(require) {
     },
 
     pizzerie: function(event) {
-      Backbone.history.navigate("pizzerie", {
+      var ordine = new Ordine();
+      if(ordine.carica()) {
+        var messaggio = "Hai ancora un ordine in sospeso.";
+        var alert = new AlertView({message: messaggio});
+      }
+      else Backbone.history.navigate("pizzerie", {
         trigger: true
       });
     },
