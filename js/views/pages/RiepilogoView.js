@@ -63,13 +63,13 @@ define(function(require) {
       });
 
       var opts = {
-        lines: 15,
-        length: 15,
-        width: 5,
-        radius: 20,
-        corners: 1,
-        shadow: true,
-        hwaccel: true,
+            lines: 15, // The number of lines to draw
+            length: 15, // The length of each line
+            width: 5, // The line thickness
+            radius: 20, // The radius of the inner circle
+            corners: 1, // Corner roundness (0..1)
+            shadow: true, // Whether to render a shadow
+            hwaccel: true, // Whether to use hardware acceleration
       };  
       var target = $("#spinner");
       var spinner = new Spinner(opts).spin(target);
