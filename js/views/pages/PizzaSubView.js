@@ -13,11 +13,6 @@ define(function(require) {
     
     initialize: function() {
       // load the precompiled template
-      /*var cartone = new Cartone();
-      cartone.on("add", function(){
-        this.$el.find("#quantity").html(cartone.getNumeroPizze());
-        console.log("Oh");
-      });*/
       this.template = Utils.templates.pizza_sub;
       this.render();
     },

@@ -41,7 +41,6 @@ define(function(require) {
 				instance.destroy({
 					success: function() {
 						window.localStorage.removeItem("ordine");
-						console.log("Ordine scaduto");
 					}
 				});
 			}, 30000);
