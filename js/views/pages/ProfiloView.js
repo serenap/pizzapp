@@ -121,8 +121,11 @@ define(function(require) {
         }
       }
 
+      
       function Error(error) {
         spinner.stop();
+        var messaggio = "Spiacenti, ci sono problemi con la geolocalizzazione. Assicurati di aver attivato il GPS.";
+        var alert = new AlertView({message: messaggio});
       }
 
       function codeLatLng(latlng) {
@@ -150,7 +153,7 @@ define(function(require) {
               document.getElementById('civico_profilo').value = civico;  
                 if(typeof(via)=='undefined')
               document.getElementById('via_profilo').value = "";
-                else{document.getElementById('via_profilo').value = via;}
+                else document.getElementById('via_profilo').value = via; 
               if(typeof(citta) == 'undefined')
                   document.getElementById('citta_profilo').value = "";
                 else document.getElementById('citta_profilo').value = citta;     

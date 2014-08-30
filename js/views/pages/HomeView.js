@@ -35,7 +35,24 @@ define(function(require) {
 
     localizza: function() {
       //if(navigator.connection.type != Connection.NONE) {
-      if(navigator.onLine) {
+    	function checkNetConnection(){
+    		 var xhr = new XMLHttpRequest();
+    		 var file = "http://demos.subinsb.com/cdn/dot.png";
+    		 var r = Math.round(Math.random() * 10000);
+    		 xhr.open('HEAD', file + "?subins=" + r, false);
+    		 try {
+    		  xhr.send();
+    		  if (xhr.status >= 200 && xhr.status < 304) {
+    		   return true;
+    		  } else {
+    		   return false;
+    		  }
+    		 } catch (e) {
+    		  return false;
+    		 }
+    		}
+    	
+      if(checkNetConnection()) {
         var opts = {
             lines: 15, // The number of lines to draw
             length: 15, // The length of each line
@@ -71,7 +88,7 @@ define(function(require) {
 
         function Error(error) {
           spinner.stop();
-          var messaggio = "Il GPS non è attivo. Attivalo per cercare la tua posizione.";
+          var messaggio = "Spiacenti, ci sono problemi con la geolocalizzazione. Assicurati di aver attivato il GPS.";
           var alert = new AlertView({message: messaggio});
         }
 
