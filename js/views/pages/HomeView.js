@@ -139,7 +139,7 @@ define(function(require) {
           var messaggio = "Hai ancora un ordine in sospeso.";
           var alert = new AlertView({message: messaggio});
         }
-        Backbone.history.navigate("pizzerie", {
+        else Backbone.history.navigate("pizzerie", {
           trigger: true
         });
       }
