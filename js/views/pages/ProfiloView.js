@@ -120,7 +120,7 @@ define(function(require) {
                     if (results[0].address_components[i].types[j] == "street_number")
                      var civico = results[0].address_components[i].long_name;
                    
-                    if (results[0].address_components[i].types[j] == "administrative_area_level_2")
+                    if (results[0].address_components[i].types[j] == "locality")
                       var citta = results[0].address_components[i].long_name;
                   }
                 }
@@ -130,7 +130,9 @@ define(function(require) {
                 if(typeof(via)=='undefined')
               document.getElementById('via_profilo').value = "";
                 else{document.getElementById('via_profilo').value = via;}
-              document.getElementById('citta_profilo').value = citta;   
+              if(typeof(citta) == 'undefined')
+                  document.getElementById('citta_profilo').value = "";
+                else document.getElementById('citta_profilo').value = citta;     
             }
           });
         }
