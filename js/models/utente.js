@@ -29,6 +29,15 @@ define(function(require) {
 			if(profilo)
 				this.set(JSON.parse(window.localStorage.getItem("utente")));
 			else this.set(JSON.parse(window.localStorage.getItem("utente_non_a_casa")));
+		},
+
+		completo: function() {
+			return this.nome != "" && 
+					this.cognome != "" && 
+					this.citta != "" && 
+					this.via != "" && 
+					this.n_civico != "" && 
+					this.telefono != "";
 		}
 	});
 

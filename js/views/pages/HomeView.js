@@ -114,7 +114,9 @@ define(function(require) {
     },
 
     pizzerie: function(event) {
+      var utente = new Utente(true);
       var ordine = new Ordine();
+
       if(ordine.carica()) {
         var messaggio = "Hai ancora un ordine in sospeso.";
         var alert = new AlertView({message: messaggio});
@@ -122,6 +124,16 @@ define(function(require) {
       else Backbone.history.navigate("pizzerie", {
         trigger: true
       });
+
+      if(utente.completo()) {
+        Backbone.history.navigate("pizzerie", {
+          trigger: true
+        });
+      }
+      else {
+        var messaggio = "Mancano alcuni dei tuoi dati per la consegna. Aggiorna il tuo Profilo.";
+        var alert = new AlertView({message: messaggio});
+      }
     },
 
     aggiorna_indirizzo: function() {

@@ -4,7 +4,9 @@ define(function(require) {
   var Utente = require("models/Utente");
   var Utils = require("utils");
   var Spinner = require("spin");
+  var Cartone = require("collections/Cartone");
   var AlertView = require("views/AlertView");
+  var PromptView = require("views/PromptView");
 
   var ProfiloView = Utils.Page.extend({
 
@@ -35,6 +37,8 @@ define(function(require) {
     },
 
     salvaUtente: function() {
+      var cartone = new Cartone();
+
       var nome = this.$el.find("#nome_profilo").val();
       var cognome = this.$el.find("#cognome_profilo").val();
       var citta = this.$el.find("#citta_profilo").val();
@@ -52,10 +56,27 @@ define(function(require) {
       });
 
       if(nome != "" && cognome != "" && citta != "" && via != "" && n_civico != "" && telefono != "") {
+        if(cartone.length == 0) {
+          Backbone.history.navigate("home", {
+            trigger: true
+          });
+        }
+        else {
+          var messaggio = "Aggiornando i tuoi dati dovrai svuotare il tuo Cartone. Vuoi continuare?";
+          var conferma = function() {
+            cartone.svuota();
+            $("#quantita_cartone").html(cartone.getNumeroPizze());
+            Backbone.history.navigate("home", {
+              trigger: true
+            });
+          };
+          var alert = new PromptView({
+            message: messaggio,
+            ok: conferma
+          });
+          this.render();
+        }
         this.model.salva(false);
-        Backbone.history.navigate("home", {
-          trigger: true
-        });
       }
       else {
         var messaggio = "Non hai compilato uno o più campi. Tutti i dettagli sono necessari.";
