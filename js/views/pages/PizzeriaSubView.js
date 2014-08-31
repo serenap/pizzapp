@@ -51,13 +51,14 @@ define(function(require) {
           trigger: true
         });
       }
-      else if(!this.model.riposoSettimanale()){ 
-        var messaggio = "Questa pizzeria è chiusa il "+ this.model.get('giorniChiusura');
-        var alert = new AlertView({message: messaggio});
-      }else{
-        var messaggio = "Questa pizzeria è chiusa ora. Aprirà alle ore "+ this.model.get('orarioApertura')[0]+":00";
-        var alert = new AlertView({message: messaggio});
-      }
+      else if(!this.model.riposoSettimanale()) { 
+          var messaggio = "Questa pizzeria è chiusa in questi giorni: "+ this.model.get('giorniChiusura');
+          var alert = new AlertView({message: messaggio});
+        }
+        else {
+          var messaggio = "Questa pizzeria è chiusa ora. Aprirà alle ore "+ this.model.get('orarioApertura')[0]+":00.";
+          var alert = new AlertView({message: messaggio});
+        }
     }
   
   });

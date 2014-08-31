@@ -99,7 +99,7 @@ define(function(require) {
     },
 
     profilo: function() {
-      document.getElementById("cartone").style.display="block";
+      document.getElementById("cartone").style.display="none";
       document.getElementById("riepilogo").style.display="none";
       document.getElementById("back").style.display="block";
       document.getElementById("title").innerHTML = "Profilo";

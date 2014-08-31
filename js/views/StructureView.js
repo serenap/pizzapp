@@ -14,8 +14,8 @@ define(function(require) {
     ordine: null,
 
     events: {
-      "touchend #back": "goBack",
-      "touchend #nav1": "home",
+      "touchend #back": "back",
+      "touchend #nav1": "ordina",
       "touchend #nav2": "profilo",
       "touchend #cartone": "cartone",
       "touchend #riepilogo": "riepilogo",
@@ -31,8 +31,8 @@ define(function(require) {
       this.ordine.cancella();
       // load the precompiled template
       this.template = Utils.templates.structure;
-      // bind the back event to the goBack function
-      document.addEventListener("back", this.goBack(), false);
+      // bind the back event to the back function
+      document.addEventListener("back", this.back(), false);
     },
 
     render: function() {
@@ -44,9 +44,55 @@ define(function(require) {
       return this;
     },
 
-    // generic go-back function
-    goBack: function() {
+    ordina: function() {
+      if(Backbone.history.fragment == "profilo")
+        Backbone.history.history.back();
+    },
+
+    back: function() {
       var cartone = this.collection;
+      var ordine = this.ordine;
+      cartone.carica();
+
+      switch(Backbone.history.fragment) {
+        case "pizzerie":
+          this.home();
+          break;
+        case "menu":
+          if(cartone.length != 0) {
+            var messaggio = "Cambiando pizzeria dovrai svuotare il tuo Cartone. Vuoi continuare?";
+            var conferma = function() {
+              cartone.svuota();
+              $("#quantita_cartone").html(cartone.getNumeroPizze());
+              Backbone.history.navigate("pizzerie", {
+                trigger: true
+              });
+            };
+            var prompt = new PromptView({
+              message: messaggio,
+              ok: conferma
+            });
+          }
+          else this.pizzerie();
+          break;
+        case "cartone":
+          Backbone.history.history.back();
+          break;
+        case "riepilogo":
+          if(ordine.carica())
+            ordine.cancella();
+          Backbone.history.history.back();
+          break;
+        case "ordine_sospeso":
+          document.getElementById("info_ordine_sospeso").style.visibility='visible';
+          document.getElementById("normal").style.visibility='hidden';
+          break;
+        case "profilo":
+          Backbone.history.history.back();
+          this.setActiveTabBarElement("nav1");
+          break;
+      }
+      /*var cartone = this.collection;
       cartone.carica();
       if(Backbone.history.fragment == "menu" && 
           cartone.length != 0) {
@@ -69,7 +115,7 @@ define(function(require) {
           document.getElementById("normal").style.visibility='hidden';
         }
         Backbone.history.history.back();
-      }
+      }*/
     },
 
     setActiveTabBarElement: function(elementId) {
