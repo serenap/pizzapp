@@ -20,7 +20,7 @@ define(function(require) {
 
       this.model = new Ordine({
         "nomeCliente": utente.get("nome") + " " + utente.get("cognome"),
-        "indirizzoCliente": utente.get("via") + " " + utente.get("n_civico") + ", " + utente.get("citta"),
+        "indirizzoCliente": utente.get("via") + ", " + utente.get("n_civico") + ", " + utente.get("citta"),
         "telefonoCliente": utente.get("telefono"),
         "nomePizzeria": pizzeria.get("nome"),
         "indirizzoPizzeria": pizzeria.get("indirizzo"),

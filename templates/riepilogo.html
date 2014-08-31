@@ -1,19 +1,19 @@
 <ul class="table-view">
     <fieldset>
         <legend>Ordine</legend>
-    <li class="table-view-cell">Quantit&agrave;: {{numeroPizze}} 
-        <div class="pull-right">Totale: &euro; {{totale}}</div>
+    <li class="table-view-cell">Numero pizze:<b> {{numeroPizze}} </b>
+      <br /><br />Totale: &euro; <b> {{totale}} </b>
     </li>
     </fieldset>
     <br/>
      <fieldset>
         <legend>Luogo di consegna</legend>
-        {{indirizzoCliente}}
+        <li class="table-view-cell">{{indirizzoCliente}}</li>
     </fieldset>
     <br/>
     <fieldset>
         <legend>Pizzeria</legend>
-        {{nomePizzeria}}
+      <li class="table-view-cell">  {{nomePizzeria}}</li>
     </fieldset>
     <br/>
     <fieldset>
@@ -22,11 +22,11 @@
  	</fieldset>
     <br/>
  	<fieldset>
-        <legend>Pagamento</legend>
-        <br/>Alla consegna: 
+       <legend>Pagamento</legend>
+         <li class="table-view-cell"><br/>Alla consegna: 
         <input class="pull-right pagamento" type="radio" name="pagamento" value="contanti" checked/><br/>
         <br/> Carta di Credito: 
-        <input class="pull-right pagamento" type="radio" name="pagamento" value="carta"/>
+        <input class="pull-right pagamento" type="radio" name="pagamento" value="carta"/></li>
     </fieldset>
     <button class="btn btn-negative btn-block btn-outlined" id="invia_ordine">
         <span class="icon icon-share"></span> Invia Ordine
