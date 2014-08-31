@@ -124,7 +124,7 @@ define(function(require) {
       
       function Error(error) {
         spinner.stop();
-        var messaggio = "Spiacenti, ci sono problemi con la geolocalizzazione. Assicurati di aver attivato il GPS.";
+        var messaggio = "Non riesco a trovarti. Assicurati di aver attivato il GPS.";
         var alert = new AlertView({message: messaggio});
       }
 

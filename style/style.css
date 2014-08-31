@@ -152,10 +152,6 @@ input[type="checkbox"] {
   background-color:#f6b33d;
 }
 
-#icona_local_home{
-  width: 30px;
-}
-
 #local{
   height: 700px !important;
   margin-top: -5%;
@@ -168,7 +164,7 @@ input[type="checkbox"] {
   border-radius: 10px;
   height: 50%;
   width: 100% !important;
-  font-size: 1.8em;
+  font-size: 1.2em;
   background: transparent;
 }
 

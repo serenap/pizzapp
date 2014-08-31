@@ -32,6 +32,7 @@ define(function(require) {
 		},
 
 		cancella: function() {
+			this.clear();
 			window.localStorage.removeItem("ordine");
 		},
 
