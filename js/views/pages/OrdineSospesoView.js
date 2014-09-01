@@ -13,12 +13,15 @@ define(function(require) {
     model: Ordine,
     
     initialize: function() {
+      //inizializza il Cartone e lo svuota
       var cartone = new Cartone();
       cartone.svuota();
+      //aggiorna il numero di pizze sull'icona del Cartone
       $("#quantita_cartone").html(cartone.getNumeroPizze());
 
-      // load the precompiled template
+      //carica il template precompilato
       this.template = Utils.templates.ordine_sospeso;
+      //inizializza l'Ordine e lo carica
       this.model = new Ordine();
       this.model.carica();
     },
@@ -30,11 +33,12 @@ define(function(require) {
     },   
 
     render: function() {
-      // load the template
+      //carica il template
       this.el.innerHTML = this.template({});
-      // cache a reference to the content element
+      //mostra l'Ordine Sospeso
       document.getElementById("info_ordine_sospeso").style.visibility='hidden';
       document.getElementById("normal").style.visibility='visible';
+      //crea un riferimento all'elemento di contenuto
       this.contentElement = this.$el.find('#content')[0];
       $(this.el).html(this.template(this.model.toJSON()));
 
@@ -42,6 +46,7 @@ define(function(require) {
     },
 
     archivia: function() {
+      //cancella l'Ordine e torna alla Home
       this.model.cancella();
       Backbone.history.navigate("home", {
         trigger: true

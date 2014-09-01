@@ -27,6 +27,16 @@ define(function(require) {
 			"Sabato"
 		],
 
+		//salva la Pizzeria scelta nel browser
+		salva: function() {
+			window.localStorage.setItem("pizzeria", JSON.stringify(this));
+		},
+
+		//carica la Pizzeria scelta dal browser
+		carica: function() {
+			this.set(JSON.parse(window.localStorage.getItem("pizzeria")));
+		},
+
 		//verifica se la pizzeria è aperta nel momento dell'invocazione
 		aperta: function(){
 			var data = new Date();

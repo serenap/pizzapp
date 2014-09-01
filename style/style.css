@@ -228,11 +228,9 @@ background: #fff;
   border: 1px solid yellow;
 }
 
-
 .choice{
   position: relative;
   top:2em;
-
 }
 
 #quantita_cartone{
@@ -266,10 +264,10 @@ to {
 }
 
 .quantita_aggiornata{
--webkit-animation-name: pulse;
--webkit-animation-duration: 0.8s;
--webkit-animation-iteration-count: 4;
--webkit-animation-timing-function: ease;
+  -webkit-animation-name: pulse;
+  -webkit-animation-duration: 0.8s;
+  -webkit-animation-iteration-count: 4;
+  -webkit-animation-timing-function: ease;
 }
 
 .segmented-control{
@@ -392,6 +390,7 @@ a, a:active{
 }
 
 #no_result{
+  display: none;
   margin-top: 25px;
   text-align: center;
 }

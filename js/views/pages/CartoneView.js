@@ -12,8 +12,9 @@ define(function(require) {
     collection: Cartone,
     
     initialize: function() {
-      // load the precompiled template
+      //carica il template precompilato
       this.template = Utils.templates.cartone;
+      //inizializza il Cartone
       this.collection = new Cartone();
       this.render();
     },
@@ -21,12 +22,13 @@ define(function(require) {
     id: "cartone",
 
     render: function() {
-      // load the template
+      //carica il template
       this.el.innerHTML = this.template({});
-      // cache a reference to the content element
+      //crea un riferimento all'elemento di contenuto
       this.contentElement = this.$el.find('#content')[0];
       $(this.el).html(this.template({}));
 
+      //crea tante PizzaCartoneSubView quanti sono i model nel Cartone
       var instance = this;
       if(this.collection.length != 0) {
         $(this.el).find("#cartone_vuoto").hide();

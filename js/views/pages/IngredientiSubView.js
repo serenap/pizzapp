@@ -10,7 +10,7 @@ define(function(require) {
     model: Pizza,
     
     initialize: function() {
-      // load the precompiled template
+      //carica il template precompilato
       this.template = Utils.templates.ingredienti_sub;
       this.render();
       this.mostra();
@@ -24,9 +24,9 @@ define(function(require) {
     },   
 
     render: function() {
-       // load the template
+      //carica il template
       this.el.innerHTML = this.template({});
-      // cache a reference to the content element
+      //crea un riferimento all'elemento di contenuto
       this.contentElement = this.$el.find('#content')[0];
       $(this.el).html(this.template(this.model.toJSON()));
 
@@ -34,6 +34,7 @@ define(function(require) {
     },
 
     mostra: function() {
+      //mostra o nasconde il popup
       if($(this.el).is(':hidden')) {
         $(this.el).show("fast");
       }
@@ -44,14 +45,19 @@ define(function(require) {
       var cartone = new Cartone();
       var pizza = this.model.clone();
       var ingredienti_aggiornati = [];
+      //recupera gli ingredienti selezionati
       $(".selezionato:checked").each(function(){
         ingredienti_aggiornati.push($(this).val());
       });
+      //imposta la nuova lista di ingredienti nella pizza da inserire nel Cartone
+      //e la aggiunge
       pizza.set("ingredienti", ingredienti_aggiornati);
       cartone.aggiungiPizza(pizza);
+      //aggiorna il numero di pizze sull'icona del Cartone
       $("#quantita_cartone").html(cartone.getNumeroPizze());
+
       document.getElementById("quantita_cartone").className ="quantita_aggiornata";
-       setTimeout(function() {
+      setTimeout(function() {
          $("#quantita_cartone").removeClass("quantita_aggiornata");
       },3200);
       
@@ -65,6 +71,7 @@ define(function(require) {
     },
 
     menu: function(event) {
+      //naviga alla pagina del Menu
       Backbone.history.navigate("menu", {
         trigger: true
       });

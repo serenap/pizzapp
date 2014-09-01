@@ -12,10 +12,11 @@ define(function(require) {
     constructorName: "HomeView",
     
     initialize: function() {
+      //svuota il Cartone
       var cartone = new Cartone();
       cartone.svuota();
 
-      // load the precompiled template
+      //carica il template precompilato
       this.template = Utils.templates.home;
       this.render();
     },
@@ -32,9 +33,10 @@ define(function(require) {
 
     render: function() {
       this.el.innerHTML = this.template({});
-      // cache a reference to the content element
+      //crea un riferimento all'elemento di contenuto
       this.contentElement = this.$el.find('#content')[0];
 
+      //se c'è un Ordine in sospeso mostra il reminder
       var ordine = new Ordine();
       if(ordine.carica()) {
         document.getElementById("info_ordine_sospeso").style.visibility='visible';
@@ -45,6 +47,7 @@ define(function(require) {
     },
 
     localizza: function() {
+      //controlla se il dispositivo è connesso
     	function checkNetConnection() {
     		var xhr = new XMLHttpRequest();
     		var file = "http://demos.subinsb.com/cdn/dot.png";
@@ -62,39 +65,45 @@ define(function(require) {
     		}
     	}
 
+      //se c'è un Ordine in sospeso impedisce la procedura
       var ordine = new Ordine();
-    	
       if(ordine.carica()) {
         var messaggio = "Hai ancora un ordine in sospeso.";
         var alert = new AlertView({message: messaggio});
       }
       else {
         if(checkNetConnection()) {
+          //inizializza uno spinner per il caricamento
           var opts = {
-              lines: 15, // The number of lines to draw
-              length: 15, // The length of each line
-              width: 5, // The line thickness
-              radius: 20, // The radius of the inner circle
-              corners: 1, // Corner roundness (0..1)
-              shadow: true, // Whether to render a shadow
-              hwaccel: true, // Whether to use hardware acceleration
+              lines: 15, //linee da disegnare
+              length: 15, //lunghezza delle linee
+              width: 5, //spessore delle linee
+              radius: 20, //raggio del cerchio interno
+              corners: 1, //rotondità degli angoli (0..1)
+              shadow: true, //ombra
+              hwaccel: true, //accelerazione hardware
           };  
           var target = document.getElementById('spinner');
           var spinner = new Spinner(opts).spin(target);
           
+          //disabilita il popup di localizzazione
           document.getElementById("local").disabled = true;
-              var nodes = document.getElementById("local").getElementsByTagName('*');
-              for(var i = 0; i < nodes.length; i++){
-                  nodes[i].disabled = true;}
+          var nodes = document.getElementById("local").getElementsByTagName('*');
+          for(var i = 0; i < nodes.length; i++) {
+              nodes[i].disabled = true;
+          }
 
+          //recupera la posizione dell'utente
           navigator.geolocation.getCurrentPosition(onSuccess,Error);
 
+          //callback di successo
           function onSuccess(position){
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;     
             var latlng = new google.maps.LatLng(lat, lng);
             var addr = codeLatLng(latlng);
-             
+            
+            //riabilita il popup e ferma lo spinner
             document.getElementById("local").disabled = false;
             var nodes = document.getElementById("local").getElementsByTagName('*');
             for(var i = 0; i < nodes.length; i++) {
@@ -103,15 +112,18 @@ define(function(require) {
             spinner.stop();
           }
 
+          //callback di errore
           function Error(error) {
             spinner.stop();
             var messaggio = "Non riesco a trovarti. Assicurati di aver attivato il GPS.";
             var alert = new AlertView({message: messaggio});
           }
 
+          //formatta la posizione trovata
           function codeLatLng(latlng) {
             var geocoder = new google.maps.Geocoder();
-        
+            
+            //recupera città, via e numero civico
             if (geocoder) {
               geocoder.geocode({'latLng': latlng}, function(results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
@@ -129,6 +141,7 @@ define(function(require) {
                       }
                     }
                   }
+                  //scrive i valori trovati nei campi della form
                   document.getElementById('civico').value = civico;  
                   if(typeof(via) == 'undefined')
                     document.getElementById('via').value = "";
@@ -149,9 +162,12 @@ define(function(require) {
     },
 
     pizzerie: function(event) {
+      //carica Utente e Ordine
       var utente = new Utente(true);
       var ordine = new Ordine();
 
+      //se sono presenti tutti i dati necessari e non c'è un Ordine in sospeso 
+      //procedi
       if(utente.completo()) {
         if(ordine.carica()) {
           var messaggio = "Hai ancora un ordine in sospeso.";
@@ -168,10 +184,13 @@ define(function(require) {
     },
 
     aggiorna_indirizzo: function() {
+      //carica l'Utente
       var utente = new Utente(true);
+      //recupera i valori immessi dal popup
       var nuova_citta = $("#citta").val();
       var nuova_via = $("#via").val();
       var nuovo_civico = $("#civico").val();
+      //se non sono stringhe vuote, salva l'Utente e vai alle Pizzerie
       if(nuova_citta != "" && nuova_via != "" && nuovo_civico != "") {
         utente.set({
           citta: nuova_citta,
@@ -188,6 +207,7 @@ define(function(require) {
     },
 
     ordine_sospeso: function(event) {
+      //mostra l'Ordine Sospeso
       document.getElementById("ordine_sospeso").style.visibility='hidden';
       document.getElementById("normal").style.visibility='visible';
     }
