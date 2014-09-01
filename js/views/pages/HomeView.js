@@ -36,9 +36,10 @@ define(function(require) {
       this.contentElement = this.$el.find('#content')[0];
 
       var ordine = new Ordine();
-      if(ordine.carica())
+      if(ordine.carica()) {
         document.getElementById("info_ordine_sospeso").style.visibility='visible';
         document.getElementById("normal").style.visibility='hidden';
+      }
 
       return this;
     },
