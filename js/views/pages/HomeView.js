@@ -27,7 +27,8 @@ define(function(require) {
       "touchend #consegna_a_casa": "pizzerie",
       "touchend #conferma_indirizzo": "aggiorna_indirizzo",
       "touchend #localizzazione": "localizza",
-      "touchend #relocal" : "localizza",
+      "touchend #relocal": "localizza",
+      "touchend #chiudi_local": "nascondiCercami",
       "touchend #dettaglio_ordine_sospeso": "ordine_sospeso"
     },
 
@@ -46,7 +47,20 @@ define(function(require) {
       return this;
     },
 
+    mostraCercami: function() {
+      //mostra il popup di localizzazione
+      if($(this.el).find("#local").is(":hidden"))
+        $(this.el).find("#local").show("fast");
+    },
+
+    nascondiCercami: function() {
+      //nascondi il popup di localizzazione
+      if($(this.el).find("#local").is(":visible"))
+        $(this.el).find("#local").hide("fast");
+    },
+
     localizza: function() {
+      this.mostraCercami();
       //controlla se il dispositivo è connesso
     	function checkNetConnection() {
     		var xhr = new XMLHttpRequest();
@@ -196,6 +210,7 @@ define(function(require) {
           n_civico: nuovo_civico
         });
         utente.salva(true);
+        this.mostraCercami();
         this.pizzerie();
       }
       else {

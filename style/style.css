@@ -140,8 +140,6 @@ input[type="checkbox"] {
   height: 110% !important;
 }
 
-
-
 #personalizza{
   min-height: 150px !important;
 }
@@ -157,8 +155,10 @@ input[type="checkbox"] {
 }
 
 #local{
-  height: 110% !important;
-  margin-top: -5%;
+  display: none;
+  opacity: 1;
+  background: rgb(251, 251, 251);
+  transform: initial;
 }
 
 .btn-block.home_button{

@@ -35,9 +35,8 @@ define(function(require) {
 
     mostra: function() {
       //mostra o nasconde il popup
-      if($(this.el).is(':hidden')) {
+      if($(this.el).is(':hidden'))
         $(this.el).show("fast");
-      }
       else $(this.el).hide("fast");
     },
 
