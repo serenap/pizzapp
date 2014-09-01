@@ -77,6 +77,9 @@ define(function(require) {
         case "menu":
           instance.pizzerie();
           break;
+        //nasconde il popup di personalizzazione
+        case "personalizza":
+          $("#local").hide("fast");
         //torna semplicemente indietro
         case "cartone":
           Backbone.history.history.back();

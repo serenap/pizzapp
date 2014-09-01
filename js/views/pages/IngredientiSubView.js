@@ -4,6 +4,7 @@ define(function(require) {
   var Pizza = require("models/Pizza");
   var Cartone = require("collections/Cartone");
   var Utils = require("utils");
+  var AlertView = require("views/AlertView");
 
   var IngredientiSubView = Utils.Page.extend({
     constructorName: "IngredientiSubView",
@@ -50,18 +51,24 @@ define(function(require) {
       });
       //imposta la nuova lista di ingredienti nella pizza da inserire nel Cartone
       //e la aggiunge
-      pizza.set("ingredienti", ingredienti_aggiornati);
-      cartone.aggiungiPizza(pizza);
-      //aggiorna il numero di pizze sull'icona del Cartone
-      $("#quantita_cartone").html(cartone.getNumeroPizze());
-      //?
-      document.getElementById("quantita_cartone").className ="quantita_aggiornata";
-      setTimeout(function() {
-         $("#quantita_cartone").removeClass("quantita_aggiornata");
-      },3200);
-      
-      this.mostra();
-      this.remove();
+      if(ingredienti_aggiornati.length > 0) {
+        pizza.set("ingredienti", ingredienti_aggiornati);
+        cartone.aggiungiPizza(pizza);
+        //aggiorna il numero di pizze sull'icona del Cartone
+        $("#quantita_cartone").html(cartone.getNumeroPizze());
+        //?
+        document.getElementById("quantita_cartone").className ="quantita_aggiornata";
+        setTimeout(function() {
+           $("#quantita_cartone").removeClass("quantita_aggiornata");
+        },3200);
+        
+        this.mostra();
+        this.remove();
+      }
+      else {
+        var messaggio = "La pizza deve avere almeno un ingrediente.";
+        var alert = new AlertView({message: messaggio});
+      }
     },
 
     annulla: function() {
