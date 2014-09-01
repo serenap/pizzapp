@@ -7,26 +7,32 @@ define(function(require) {
 		constructorName : "Cartone",
 		model : Pizza,
 
+		//alla creazione del cartone, controlla se esista già nel browser
 		initialize: function(){
 			if(window.localStorage.getItem("cartone"))
 				this.carica();
 		},
 
+		//salva lo stato corrente del cartone nel browser
 		salva: function(){
 			window.localStorage.setItem("cartone", JSON.stringify(this));
 			this.carica();
 		},
 
+		//carica dal browser lo stato del cartone
 		carica: function(){
 			this.reset();
 			this.set(JSON.parse(window.localStorage.getItem("cartone")));
 		},
 
+		//rimuove tutti i model dal cartone e lo rimuove dal browser
 		svuota: function(){
 			this.reset();
 			window.localStorage.removeItem("cartone");
 		},
 
+		//aggiunge un nuovo model al cartone se la pizza non è presente, 
+		//ne aumenta la quantità se presente
 		aggiungiPizza: function(nuova_pizza){
 			var presente = false;
 			var i = 0;
@@ -58,6 +64,8 @@ define(function(require) {
 			this.salva();
 		},
 
+		//rimuove un model dal cartone o ne diminuisce la quantita a seconda 
+		//se ci siano una o più pizze dello stesso tipo
 		rimuoviPizza: function(pizza){
 			var nome_pizza = pizza.get("nome");
 			var ingredienti_pizza = JSON.stringify(pizza.get("ingredienti"));
@@ -94,6 +102,7 @@ define(function(require) {
 			return this.at(indice);
 		},
 
+		//restituisce il numero complessivo di pizze nel cartone
 		getNumeroPizze: function() {
 			var count = 0;
 			this.each(function(model) {
@@ -102,6 +111,7 @@ define(function(require) {
 			return count;
 		},
 
+		//restituisce il prezzo complessivo delle pizze nel cartone
 		getTotale: function() {
 			var totale = 0;
 			this.each(function(model) {

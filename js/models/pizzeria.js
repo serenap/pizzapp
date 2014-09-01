@@ -16,6 +16,7 @@ define(function(require) {
 			orarioApertura: []
 		},
 
+		//ad ogni indice corrisponde una stringa per il giorno settimanale
 		mappaGiorni: [
 			"Domenica",
 			"Lunedì",
@@ -26,6 +27,7 @@ define(function(require) {
 			"Sabato"
 		],
 
+		//verifica se la pizzeria è aperta nel momento dell'invocazione
 		aperta: function(){
 			var data = new Date();
 			return this.get("giorniChiusura").indexOf(this.mappaGiorni[data.getDay()]) == -1 && 
@@ -33,6 +35,7 @@ define(function(require) {
 					data.getHours() <= this.get("orarioApertura")[1];
 		},
 
+		//restiuisce il numero corrispondente al giorno di chiusura
 		riposoSettimanale: function(){
 			var data = new Date();
 			return this.get("giorniChiusura").indexOf(this.mappaGiorni[data.getDay()]) == -1;

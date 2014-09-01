@@ -8,6 +8,8 @@ define(function(require) {
 		model : Pizza,
 		url : "",
 
+		//alla creazione del menu, decide a quale url 
+		//mandare la richiesta di fetch
 		initialize: function(url) {
 			this.url = url;
 		}

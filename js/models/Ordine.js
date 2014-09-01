@@ -19,10 +19,12 @@ define(function(require) {
 		},
 		url: "",
 
+		//salva lo stato corrente dell'ordine nel browser
 		salva: function() {
 			window.localStorage.setItem("ordine", JSON.stringify(this));
 		},
 
+		//se è già presente un salvataggio nel browser, carica l'ordine
 		carica: function() {
 			if(window.localStorage.getItem("ordine")) {
 				this.set(JSON.parse(window.localStorage.getItem("ordine")));
@@ -31,12 +33,13 @@ define(function(require) {
 			return false;
 		},
 
+		//cancella l'oggetto e rimuove l'ordine dal browser
 		cancella: function() {
 			this.clear();
 			window.localStorage.removeItem("ordine");
 		},
 
-		countdown: function() {
+		/*countdown: function() {
 			var instance = this;
 			window.setTimeout(function() {
 				instance.destroy({
@@ -45,7 +48,7 @@ define(function(require) {
 					}
 				});
 			}, 30000);
-		}
+		}*/
 	});
 
 	return Ordine;

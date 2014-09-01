@@ -13,6 +13,7 @@ define(function(require) {
 			quantita: 0
 		},
 		
+		//restituisce gli ingredienti in una stringa
 		serializzaIngredienti: function(){
 			return this.ingredienti.join(", ");
 		}

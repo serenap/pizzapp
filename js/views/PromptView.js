@@ -6,8 +6,9 @@ define(function(require) {
     constructorName: "PromptView",
     
     initialize: function(options) {
-      // load the precompiled template
+      //carica il template precompilato
       this.template = Utils.templates.prompt;
+      //imposta i parametri passati alla creazione
       this.options = options;
       this.render();
       this.mostra();
@@ -21,11 +22,13 @@ define(function(require) {
     },   
 
     render: function() {
-       // load the template
+      //carica il template
       this.el.innerHTML = this.template({});
-      // cache a reference to the content element
+      //crea un riferimento all'elemento di contenuto
       this.contentElement = this.$el.find('#content')[0];
+      //imposta il messaggio del prompt dialog
       $(this.el).find(".message").html(this.options.message);
+      //innesta il prompt sulla pagina
       $("body").prepend(this.el);
 
       return this;
@@ -40,6 +43,7 @@ define(function(require) {
     },
 
     ok: function() {
+      //imposta la funzione da eseguire alla conferma
       this.options.ok();
       this.chiudi();
     },
