@@ -12,9 +12,9 @@ define(function(require) {
     
     initialize: function() {
       var instance = this;
-
-      // load the precompiled template
+      //carica il template precompilato
       this.template = Utils.templates.pizzerie;
+      //inizializza la lista di Pizzerie ed effettua il fetch
       this.collection = new ListaPizzerie();
       this.collection.fetch({success: function(collection){
           instance.render();
@@ -25,25 +25,23 @@ define(function(require) {
     id: "pizzerie",
 
     render: function() {
-      // load the template
+      //carica il template
       this.el.innerHTML = this.template({});
-      // cache a reference to the content element
+      //crea un riferimento all'elemento di contenuto
       this.contentElement = this.$el.find('#content')[0];
       $(this.el).html(this.template({}));
 
       var instance = this;
-
-      this.collection.each(function(pizzeria){
+      //per ogni model nella Lista, inizializza una PizzeriaSubView e 
+      //compila tutte le sottoliste
+      this.collection.each(function(pizzeria) {
         var pizzeriaSV = new PizzeriaSubView({model: pizzeria});
         
-      if(pizzeriaSV.model.riposoSettimanale()&&pizzeriaSV.model.aperta()){
-        $(instance.el).find("ul#lista_pizzerie_aperte").append(pizzeriaSV.el);
-      }else if(pizzeriaSV.model.riposoSettimanale()&&!pizzeriaSV.model.aperta()){
-        $(instance.el).find("ul#lista_pizzerie_chiuse").append(pizzeriaSV.el);
-      }else{
-        $(instance.el).find("ul#lista_pizzerie_riposo").append(pizzeriaSV.el);
-        }
-
+        if(pizzeriaSV.model.riposoSettimanale() && pizzeriaSV.model.aperta())
+          $(instance.el).find("ul#lista_pizzerie_aperte").append(pizzeriaSV.el);
+        else if(pizzeriaSV.model.riposoSettimanale() && !pizzeriaSV.model.aperta())
+          $(instance.el).find("ul#lista_pizzerie_chiuse").append(pizzeriaSV.el);
+        else $(instance.el).find("ul#lista_pizzerie_riposo").append(pizzeriaSV.el);
       }, this);
       return this;
     }

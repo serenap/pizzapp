@@ -55,7 +55,7 @@ define(function(require) {
       cartone.aggiungiPizza(pizza);
       //aggiorna il numero di pizze sull'icona del Cartone
       $("#quantita_cartone").html(cartone.getNumeroPizze());
-
+      //?
       document.getElementById("quantita_cartone").className ="quantita_aggiornata";
       setTimeout(function() {
          $("#quantita_cartone").removeClass("quantita_aggiornata");

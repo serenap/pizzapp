@@ -14,10 +14,12 @@ define(function(require) {
     model: Ordine,
     
     initialize: function() {
+      //carica Cartone, Utente e Pizzeria scelta
       var cartone = new Cartone();
       var utente = new Utente(false);
-      var pizzeria = new Pizzeria(JSON.parse(window.localStorage.getItem("pizzeria")));
-
+      var pizzeria = new Pizzeria();
+      pizzeria.carica();
+      //inizializza, compila e salva l'Ordine
       this.model = new Ordine({
         "nomeCliente": utente.get("nome") + " " + utente.get("cognome"),
         "indirizzoCliente": utente.get("via") + ", " + utente.get("n_civico") + ", " + utente.get("citta"),
@@ -33,7 +35,7 @@ define(function(require) {
       });
       this.model.salva();
       
-      // load the precompiled template
+      //carica il template precompilato
       this.template = Utils.templates.riepilogo;
     },
 
@@ -44,9 +46,9 @@ define(function(require) {
     },   
 
     render: function() {
-      // load the template
+      //carica il template
       this.el.innerHTML = this.template({});
-      // cache a reference to the content element
+      //crea un riferimento all'elemento di contenuto
       this.contentElement = this.$el.find('#content')[0];
       $(this.el).html(this.template(this.model.toJSON()));
 
@@ -55,32 +57,36 @@ define(function(require) {
 
     invia: function() {
       var cartone = new Cartone();
+      //recupera orario e modalità di pagamento dalla form
       var orario = this.$el.find("#orario").val();
       var pagamento = this.$el.find(".pagamento:checked").val();
+      //imposta i parametri recuperati nel model
       this.model.set({
         "orarioConsegna": orario,
         "modalitaPagamento": pagamento
       });
 
       var opts = {
-        lines: 15, // The number of lines to draw
-        length: 15, // The length of each line
-        width: 5, // The line thickness
-        radius: 20, // The radius of the inner circle
-        corners: 1, // Corner roundness (0..1)
-        shadow: true, // Whether to render a shadow
-        hwaccel: true, // Whether to use hardware acceleration
+        lines: 15, //linee da disegnare
+        length: 15, //lunghezza delle linee
+        width: 5, //spessore delle linee
+        radius: 20, //raggio del cerchio interno
+        corners: 1, //rotondità degli angoli (0..1)
+        shadow: true, //ombra
+        hwaccel: true, //accelerazione hardware
       };  
       var target = $("#spinner");
       var spinner = new Spinner(opts).spin(target);
       var instance = this.model;
 
+      //salva l'Ordine e ferma lo spinner, poi svuota il Cartone
       window.setTimeout(function() {
         instance.salva();
         spinner.stop();
       }, 10000);
       cartone.svuota();
 
+      //mostra il reminder dell'Ordine Sospeso nella Home
       document.getElementById("info_ordine_sospeso").style.visibility='visible';
       document.getElementById("normal").style.visibility='hidden';
     }

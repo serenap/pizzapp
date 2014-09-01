@@ -75,13 +75,13 @@ define(function(require) {
         if(checkNetConnection()) {
           //inizializza uno spinner per il caricamento
           var opts = {
-              lines: 15, //linee da disegnare
-              length: 15, //lunghezza delle linee
-              width: 5, //spessore delle linee
-              radius: 20, //raggio del cerchio interno
-              corners: 1, //rotondità degli angoli (0..1)
-              shadow: true, //ombra
-              hwaccel: true, //accelerazione hardware
+            lines: 15, //linee da disegnare
+            length: 15, //lunghezza delle linee
+            width: 5, //spessore delle linee
+            radius: 20, //raggio del cerchio interno
+            corners: 1, //rotondità degli angoli (0..1)
+            shadow: true, //ombra
+            hwaccel: true, //accelerazione hardware
           };  
           var target = document.getElementById('spinner');
           var spinner = new Spinner(opts).spin(target);
@@ -136,8 +136,6 @@ define(function(require) {
                           var civico = results[0].address_components[i].long_name;
                         if (results[0].address_components[i].types[j] == "locality")
                           var citta = results[0].address_components[i].long_name;
-                       
-                        
                       }
                     }
                   }

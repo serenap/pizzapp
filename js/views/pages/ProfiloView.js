@@ -14,8 +14,9 @@ define(function(require) {
     model: Utente,
     
     initialize: function() {
-      // load the precompiled template
+      //carica il template precompilato
       this.template = Utils.templates.profilo;
+      //carica l'Utente
       this.model = new Utente(true);
       this.render();
     },
@@ -28,9 +29,9 @@ define(function(require) {
     },   
 
     render: function() {
-       // load the template
+      //carica il template
       this.el.innerHTML = this.template({});
-      // cache a reference to the content element
+      //crea un riferimento all'elemento di contenuto
       this.contentElement = this.$el.find('#content')[0];
       $(this.el).html(this.template(this.model.toJSON()));
       return this;
@@ -38,14 +39,14 @@ define(function(require) {
 
     salvaUtente: function() {
       var cartone = new Cartone();
-
+      //recupera i dati dalla form
       var nome = this.$el.find("#nome_profilo").val();
       var cognome = this.$el.find("#cognome_profilo").val();
       var citta = this.$el.find("#citta_profilo").val();
       var via = this.$el.find("#via_profilo").val();
       var n_civico = this.$el.find("#civico_profilo").val();
       var telefono = this.$el.find("#telefono_profilo").val();
-
+      //imposta i dati nel model
       this.model.set({
         "nome": nome,
         "cognome": cognome,
@@ -54,8 +55,9 @@ define(function(require) {
         "n_civico": n_civico,
         "telefono": telefono
       });
-
+      //se tutti i dati non sono stringhe vuote naviga alla Home
       if(nome != "" && cognome != "" && citta != "" && via != "" && n_civico != "" && telefono != "") {
+        //se il Cartone non è vuoto, chiede di svuotarlo per aggiornare i dati
         if(cartone.length == 0) {
           Backbone.history.navigate("home", {
             trigger: true
@@ -86,77 +88,79 @@ define(function(require) {
     },
 
     localizza: function() {
+      //inizializza uno spinner per il caricamento
       var opts = {
-            lines: 15, // The number of lines to draw
-            length: 15, // The length of each line
-            width: 5, // The line thickness
-            radius: 20, // The radius of the inner circle
-            corners: 1, // Corner roundness (0..1)
-            shadow: true, // Whether to render a shadow
-            hwaccel: true, // Whether to use hardware acceleration
+        lines: 15, //numero di linee
+        length: 15, //lunghezza delle linee
+        width: 5, //spessore delle linee
+        radius: 20, //raggio del cerchio interno
+        corners: 1, //rotondità degli angoli (0..1)
+        shadow: true, //ombra
+        hwaccel: true, //accelerazione hardware
       };
       var target = document.getElementById("spinner_profilo");
       var spinner = new Spinner(opts).spin(target);
+
+      //disabilita il popup di localizzazione
       document.getElementById("localizza").disabled = true;
       var nodes = document.getElementById("localizza").getElementsByTagName('*');
-
       for(var i = 0; i < nodes.length; i++) {
         nodes[i].disabled = true;
       }
 
+      //recupera la posizione dell'utente
       navigator.geolocation.getCurrentPosition(onSuccess,Error);
 
+      //callback di successo
       function onSuccess(position) {
         var lat = position.coords.latitude;
         var lng = position.coords.longitude;     
         var latlng = new google.maps.LatLng(lat, lng);
         var addr = codeLatLng(latlng);
 
-        spinner.stop();
+        //riabilita il popup e ferma lo spinner
         document.getElementById("localizza").disabled = false;
         var nodes = document.getElementById("localizza").getElementsByTagName('*');
-
         for(var i = 0; i < nodes.length; i++) {
           nodes[i].disabled = false;
         }
+        spinner.stop();
       }
-
-      
+      //callback di errore
       function Error(error) {
         spinner.stop();
         var messaggio = "Non riesco a trovarti. Assicurati di aver attivato il GPS.";
         var alert = new AlertView({message: messaggio});
       }
 
+      //formatta la posizione trovata
       function codeLatLng(latlng) {
         var geocoder = new google.maps.Geocoder();
       
+        //recupera città, via e numero civico
         if (geocoder) {
           geocoder.geocode({'latLng': latlng}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               if (results[0]) {
                 for (i = 0; i < results[0].address_components.length; i++) {
                   for (j = 0; j < results[0].address_components[i].types.length; j++) {
-
                     if (results[0].address_components[i].types[j] == "route")
                      var via = results[0].address_components[i].long_name;
-                    
                     if (results[0].address_components[i].types[j] == "street_number")
                      var civico = results[0].address_components[i].long_name;
-                   
                     if (results[0].address_components[i].types[j] == "locality")
                       var citta = results[0].address_components[i].long_name;
                   }
                 }
               }
-              
+              //scrive i valori trovati nei campi della form
               document.getElementById('civico_profilo').value = civico;  
-                if(typeof(via)=='undefined')
-              document.getElementById('via_profilo').value = "";
-                else document.getElementById('via_profilo').value = via; 
+              if(typeof(via)=='undefined')
+                document.getElementById('via_profilo').value = "";
+              else document.getElementById('via_profilo').value = via; 
               if(typeof(citta) == 'undefined')
-                  document.getElementById('citta_profilo').value = "";
-                else document.getElementById('citta_profilo').value = citta;     
+                document.getElementById('citta_profilo').value = "";
+              else document.getElementById('citta_profilo').value = citta;     
             }
           });
         }

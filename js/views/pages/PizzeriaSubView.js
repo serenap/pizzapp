@@ -11,9 +11,7 @@ define(function(require) {
     model: Pizzeria,
     
     initialize: function() {
-      var instance = this;
-
-      // load the precompiled template
+      //carica il template precompilato
       this.template = Utils.templates.pizzeria_sub;
       this.render();
     },
@@ -25,18 +23,21 @@ define(function(require) {
     },
 
     render: function() {
-       // load the template
+      //carica il template
       this.el.innerHTML = this.template({});
-      // cache a reference to the content element
+      //crea un riferimento all'elemento di contenuto
       this.contentElement = this.$el.find('#content')[0];
       $(this.el).html(this.template(this.model.toJSON()));
-      if(this.model.riposoSettimanale()&&this.model.aperta()){
+      //verifica l'orario d'apertura e il giorno di chiusura della Pizzeria
+      if(this.model.riposoSettimanale()&&this.model.aperta()) {
         $(this.el).find(".chiusa").hide();
         $(this.el).find(".riposo").hide();
-      }else if(this.model.riposoSettimanale()&&!this.model.aperta()){
+      }
+      else if(this.model.riposoSettimanale()&&!this.model.aperta()) {
         $(this.el).find(".aperta").hide();
-        $(this.el).find(".riposo").hide();}
-      else{
+        $(this.el).find(".riposo").hide();
+      }
+      else {
         $(this.el).find(".orario").hide();
         $(this.el).find(".chiusa").hide();
         $(this.el).find(".aperta").hide();
@@ -45,6 +46,7 @@ define(function(require) {
     },
 
     menu: function(event) {
+      //se la Pizzeria è aperta, la salva nel browser e naviga alla pagina Menu
       if(this.model.aperta()) {
         this.model.salva();
         Backbone.history.navigate("menu", {
