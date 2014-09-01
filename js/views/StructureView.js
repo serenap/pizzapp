@@ -32,7 +32,7 @@ define(function(require) {
       // load the precompiled template
       this.template = Utils.templates.structure;
       // bind the back event to the back function
-      document.addEventListener("back", this.back(), false);
+      document.addEventListener("backbutton", this.back, true);
     },
 
     render: function() {
@@ -45,20 +45,23 @@ define(function(require) {
     },
 
     ordina: function() {
-      if(Backbone.history.fragment == "profilo")
+      if(Backbone.history.fragment == "profilo") {
         Backbone.history.history.back();
+        this.setActiveTabBarElement("nav1");
+      }
     },
 
     back: function() {
-      var cartone = this.collection;
-      var ordine = this.ordine;
-      cartone.carica();
-
       switch(Backbone.history.fragment) {
+        case "home":
+          navigator.app.exitApp();
+          break;
         case "pizzerie":
           this.home();
           break;
         case "menu":
+          var cartone = this.collection;
+          cartone.carica();
           if(cartone.length != 0) {
             var messaggio = "Cambiando pizzeria dovrai svuotare il tuo Cartone. Vuoi continuare?";
             var conferma = function() {
@@ -79,43 +82,22 @@ define(function(require) {
           Backbone.history.history.back();
           break;
         case "riepilogo":
-          if(ordine.carica())
+          var ordine = this.ordine;
+          if(ordine.carica()) {
             ordine.cancella();
+          }
           Backbone.history.history.back();
           break;
         case "ordine_sospeso":
           document.getElementById("info_ordine_sospeso").style.visibility='visible';
           document.getElementById("normal").style.visibility='hidden';
+          Backbone.history.history.back();
           break;
         case "profilo":
           Backbone.history.history.back();
           this.setActiveTabBarElement("nav1");
           break;
       }
-      /*var cartone = this.collection;
-      cartone.carica();
-      if(Backbone.history.fragment == "menu" && 
-          cartone.length != 0) {
-        var messaggio = "Cambiando pizzeria dovrai svuotare il tuo Cartone. Vuoi continuare?";
-        var conferma = function() {
-          cartone.svuota();
-          $("#quantita_cartone").html(cartone.getNumeroPizze());
-          Backbone.history.navigate("pizzerie", {
-            trigger: true
-          });
-        };
-        var prompt = new PromptView({
-          message: messaggio,
-          ok: conferma
-        });
-      }
-      else {
-        if(Backbone.history.fragment == "ordine_sospeso") {
-          document.getElementById("info_ordine_sospeso").style.visibility='visible';
-          document.getElementById("normal").style.visibility='hidden';
-        }
-        Backbone.history.history.back();
-      }*/
     },
 
     setActiveTabBarElement: function(elementId) {

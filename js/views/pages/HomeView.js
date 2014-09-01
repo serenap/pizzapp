@@ -34,99 +34,106 @@ define(function(require) {
     },
 
     localizza: function() {
-      //if(navigator.connection.type != Connection.NONE) {
-    	function checkNetConnection(){
-    		 var xhr = new XMLHttpRequest();
-    		 var file = "http://demos.subinsb.com/cdn/dot.png";
-    		 var r = Math.round(Math.random() * 10000);
-    		 xhr.open('HEAD', file + "?subins=" + r, false);
-    		 try {
+    	function checkNetConnection() {
+    		var xhr = new XMLHttpRequest();
+    		var file = "http://demos.subinsb.com/cdn/dot.png";
+    		var r = Math.round(Math.random() * 10000);
+    		xhr.open('HEAD', file + "?subins=" + r, false);
+    		try {
     		  xhr.send();
     		  if (xhr.status >= 200 && xhr.status < 304) {
-    		   return true;
-    		  } else {
-    		   return false;
+    		    return true;
     		  }
-    		 } catch (e) {
-    		  return false;
-    		 }
+          else return false;
     		}
+        catch (e) {
+    		  return false;
+    		}
+    	}
+
+      var ordine = new Ordine();
     	
-      if(checkNetConnection()) {
-        var opts = {
-            lines: 15, // The number of lines to draw
-            length: 15, // The length of each line
-            width: 5, // The line thickness
-            radius: 20, // The radius of the inner circle
-            corners: 1, // Corner roundness (0..1)
-            shadow: true, // Whether to render a shadow
-            hwaccel: true, // Whether to use hardware acceleration
-        };  
-        var target = document.getElementById('spinner');
-        var spinner = new Spinner(opts).spin(target);
-        
-        document.getElementById("local").disabled = true;
-            var nodes = document.getElementById("local").getElementsByTagName('*');
-            for(var i = 0; i < nodes.length; i++){
-                nodes[i].disabled = true;}
-
-        navigator.geolocation.getCurrentPosition(onSuccess,Error);
-
-        function onSuccess(position){
-          var lat = position.coords.latitude;
-          var lng = position.coords.longitude;     
-          var latlng = new google.maps.LatLng(lat, lng);
-          var addr = codeLatLng(latlng);
-           
-          document.getElementById("local").disabled = false;
-          var nodes = document.getElementById("local").getElementsByTagName('*');
-          for(var i = 0; i < nodes.length; i++) {
-            nodes[i].disabled = false;
-          }
-          spinner.stop();
-        }
-
-        function Error(error) {
-          spinner.stop();
-          var messaggio = "Non riesco a trovarti. Assicurati di aver attivato il GPS.";
-          var alert = new AlertView({message: messaggio});
-        }
-
-        function codeLatLng(latlng) {
-          var geocoder = new google.maps.Geocoder();
-      
-          if (geocoder) {
-            geocoder.geocode({'latLng': latlng}, function(results, status) {
-              if (status == google.maps.GeocoderStatus.OK) {
-                if (results[0]) {
-                  for (i = 0; i < results[0].address_components.length; i++) {
-                    for (j = 0; j < results[0].address_components[i].types.length; j++) {
-                      if (results[0].address_components[i].types[j] == "route")
-                        var via = results[0].address_components[i].long_name;
-                      if (results[0].address_components[i].types[j] == "street_number")
-                        var civico = results[0].address_components[i].long_name;
-                      if (results[0].address_components[i].types[j] == "locality")
-                        var citta = results[0].address_components[i].long_name;
-                     
-                      
-                    }
-                  }
-                }
-                document.getElementById('civico').value = civico;  
-                if(typeof(via) == 'undefined')
-                  document.getElementById('via').value = "";
-                else document.getElementById('via').value = via;
-                if(typeof(citta) == 'undefined')
-                  document.getElementById('citta').value = "";
-                else document.getElementById('citta').value = citta;      
-              }
-            });  
-          }
-        }
+      if(ordine.carica()) {
+        var messaggio = "Hai ancora un ordine in sospeso.";
+        var alert = new AlertView({message: messaggio});
       }
       else {
-        var messaggio = "Nessuna connessione. Devi essere connesso per procedere.";
-        var alert = new AlertView({message: messaggio});
+        if(checkNetConnection()) {
+          var opts = {
+              lines: 15, // The number of lines to draw
+              length: 15, // The length of each line
+              width: 5, // The line thickness
+              radius: 20, // The radius of the inner circle
+              corners: 1, // Corner roundness (0..1)
+              shadow: true, // Whether to render a shadow
+              hwaccel: true, // Whether to use hardware acceleration
+          };  
+          var target = document.getElementById('spinner');
+          var spinner = new Spinner(opts).spin(target);
+          
+          document.getElementById("local").disabled = true;
+              var nodes = document.getElementById("local").getElementsByTagName('*');
+              for(var i = 0; i < nodes.length; i++){
+                  nodes[i].disabled = true;}
+
+          navigator.geolocation.getCurrentPosition(onSuccess,Error);
+
+          function onSuccess(position){
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;     
+            var latlng = new google.maps.LatLng(lat, lng);
+            var addr = codeLatLng(latlng);
+             
+            document.getElementById("local").disabled = false;
+            var nodes = document.getElementById("local").getElementsByTagName('*');
+            for(var i = 0; i < nodes.length; i++) {
+              nodes[i].disabled = false;
+            }
+            spinner.stop();
+          }
+
+          function Error(error) {
+            spinner.stop();
+            var messaggio = "Non riesco a trovarti. Assicurati di aver attivato il GPS.";
+            var alert = new AlertView({message: messaggio});
+          }
+
+          function codeLatLng(latlng) {
+            var geocoder = new google.maps.Geocoder();
+        
+            if (geocoder) {
+              geocoder.geocode({'latLng': latlng}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                  if (results[0]) {
+                    for (i = 0; i < results[0].address_components.length; i++) {
+                      for (j = 0; j < results[0].address_components[i].types.length; j++) {
+                        if (results[0].address_components[i].types[j] == "route")
+                          var via = results[0].address_components[i].long_name;
+                        if (results[0].address_components[i].types[j] == "street_number")
+                          var civico = results[0].address_components[i].long_name;
+                        if (results[0].address_components[i].types[j] == "locality")
+                          var citta = results[0].address_components[i].long_name;
+                       
+                        
+                      }
+                    }
+                  }
+                  document.getElementById('civico').value = civico;  
+                  if(typeof(via) == 'undefined')
+                    document.getElementById('via').value = "";
+                  else document.getElementById('via').value = via;
+                  if(typeof(citta) == 'undefined')
+                    document.getElementById('citta').value = "";
+                  else document.getElementById('citta').value = citta;      
+                }
+              });  
+            }
+          }
+        }
+        else {
+          var messaggio = "Nessuna connessione. Devi essere connesso per procedere.";
+          var alert = new AlertView({message: messaggio});
+        }
       }
     },
 
