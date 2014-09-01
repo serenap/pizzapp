@@ -4,6 +4,7 @@ define(function(require) {
   var Utils = require("utils");
   var Spinner = require("spin");
   var Utente = require("models/Utente");
+  var Cartone = require("collections/Cartone");
   var Ordine = require("models/Ordine");
   var AlertView = require("views/AlertView");
 
@@ -11,6 +12,9 @@ define(function(require) {
     constructorName: "HomeView",
     
     initialize: function() {
+      var cartone = new Cartone();
+      cartone.svuota();
+
       // load the precompiled template
       this.template = Utils.templates.home;
       this.render();
@@ -30,6 +34,12 @@ define(function(require) {
       this.el.innerHTML = this.template({});
       // cache a reference to the content element
       this.contentElement = this.$el.find('#content')[0];
+
+      var ordine = new Ordine();
+      if(ordine.carica())
+        document.getElementById("info_ordine_sospeso").style.visibility='visible';
+        document.getElementById("normal").style.visibility='hidden';
+
       return this;
     },
 

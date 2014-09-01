@@ -32,7 +32,24 @@ define(function(require) {
     firstView: "home",
 
     initialize: function(options) {
-      this.currentView = undefined;  
+      this.currentView = undefined;
+    },
+
+    checkNetConnection: function() {
+      var xhr = new XMLHttpRequest();
+      var file = "http://demos.subinsb.com/cdn/dot.png";
+      var r = Math.round(Math.random() * 10000);
+      xhr.open('HEAD', file + "?subins=" + r, false);
+      try {
+        xhr.send();
+        if (xhr.status >= 200 && xhr.status < 304) {
+          return true;
+        }
+        else return false;
+      }
+      catch (e) {
+        return false;
+      }
     },
 
     home: function() {
@@ -49,8 +66,7 @@ define(function(require) {
     },
 
     pizzerie: function() {
-      //if(navigator.connection.type != Connection.NONE) {
-      if(1) {
+      if(this.checkNetConnection()) {
         document.getElementById("cartone").style.display="block";
         document.getElementById("riepilogo").style.display="none";
         document.getElementById("back").style.display="block";
@@ -68,8 +84,7 @@ define(function(require) {
     },
 
     menu: function() {
-      //if(navigator.connection.type != Connection.NONE) {
-      if(1) {
+      if(this.checkNetConnection()) {
         document.getElementById("cartone").style.display="block";
         document.getElementById("riepilogo").style.display="none";
         document.getElementById("back").style.display="block";

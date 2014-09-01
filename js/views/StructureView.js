@@ -24,15 +24,16 @@ define(function(require) {
       "touchend #ordine_ricevuto": "distruggi_ordine"
     },
 
-    initialize: function(options) {
+    initialize: function() {
       this.collection = new Cartone();
       this.ordine = new Ordine();
-      this.collection.svuota();
-      this.ordine.cancella();
+      //this.collection.svuota();
+      //this.ordine.cancella();
       // load the precompiled template
       this.template = Utils.templates.structure;
       // bind the back event to the back function
-      document.addEventListener("backbutton", this.back, true);
+      var instance = this;
+      document.addEventListener("backbutton", instance.back, true);
     },
 
     render: function() {
@@ -52,16 +53,20 @@ define(function(require) {
     },
 
     back: function() {
+      if(typeof this != StructureView)
+        var instance = new StructureView();
+      else instance = this;
       switch(Backbone.history.fragment) {
         case "home":
           navigator.app.exitApp();
           break;
         case "pizzerie":
-          this.home();
+          instance.home();
           break;
         case "menu":
-          var cartone = this.collection;
+          var cartone = instance.collection;
           cartone.carica();
+          console.log(cartone.length);
           if(cartone.length != 0) {
             var messaggio = "Cambiando pizzeria dovrai svuotare il tuo Cartone. Vuoi continuare?";
             var conferma = function() {
@@ -76,13 +81,13 @@ define(function(require) {
               ok: conferma
             });
           }
-          else this.pizzerie();
+          else instance.pizzerie();
           break;
         case "cartone":
           Backbone.history.history.back();
           break;
         case "riepilogo":
-          var ordine = this.ordine;
+          var ordine = instance.ordine;
           if(ordine.carica()) {
             ordine.cancella();
           }
@@ -95,7 +100,7 @@ define(function(require) {
           break;
         case "profilo":
           Backbone.history.history.back();
-          this.setActiveTabBarElement("nav1");
+          instance.setActiveTabBarElement("nav1");
           break;
       }
     },
