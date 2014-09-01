@@ -65,7 +65,9 @@ define(function(require) {
       switch(Backbone.history.fragment) {
         //esce dall'applicazione
         case "home":
-          navigator.app.exitApp();
+          if($("#local").is(":visible"))
+            $("#local").hide("fast");
+          else navigator.app.exitApp();
           break;
         //torna alla Home
         case "pizzerie":

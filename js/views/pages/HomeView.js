@@ -15,7 +15,6 @@ define(function(require) {
       //svuota il Cartone
       var cartone = new Cartone();
       cartone.svuota();
-
       //carica il template precompilato
       this.template = Utils.templates.home;
       this.render();
