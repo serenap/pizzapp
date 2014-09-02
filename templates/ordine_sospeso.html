@@ -1,36 +1,31 @@
 <ul class="table-view">
     <fieldset>
         <legend>Ordine</legend>
-    <li class="table-view-cell">Numero pizze:<b> {{numeroPizze}} </b>
-      <br /><br />Totale: &euro; <b> {{totale}} </b>
-    </li>
-    </fieldset>
-    <br/>
-     <fieldset>
-        <legend>Luogo di consegna</legend>
-        <li class="table-view-cell">{{indirizzoCliente}}</li>
+        <li class="table-view-cell">Quantit&agrave;: {{numeroPizze}} 
+            <div class="pull-right">Totale: &euro; {{totale}}</div>
+        </li>
     </fieldset>
     <br/>
     <fieldset>
-        <legend>Pizzeria</legend>
-      <li class="table-view-cell">  {{nomePizzeria}}</li>
+        <legend>Luogo di consegna</legend>
+        {{indirizzoCliente}}
     </fieldset>
     <br/>
     <fieldset>
         <legend>Orario di consegna</legend>
-        <li class="table-view-cell"> {{orarioConsegna}}</li>
+        {{orarioConsegna}}
     </fieldset>
     <br/>
     <fieldset>
         <legend>Pizzeria</legend>
-        <li class="table-view-cell">{{nomePizzeria}}<br />
+        <li class="table-view-cell">{{nomePizzeria}}
             <div class="pull-right">Telefono: {{telefonoPizzeria}}</div>
         </li>
     </fieldset>
     <br/>
     <fieldset>
         <legend>Modalit&agrave; di Pagamento</legend>
-         <li class="table-view-cell">{{modalitaPagamento}} </li>
+        {{modalitaPagamento}}
     </fieldset>
     <br/>
     <button class="btn btn-negative btn-block btn-outlined" id="archivia">
