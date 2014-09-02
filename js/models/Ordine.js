@@ -27,6 +27,7 @@ define(function(require) {
 		//se è già presente un salvataggio nel browser, carica l'ordine
 		carica: function() {
 			if(window.localStorage.getItem("ordine")) {
+				console.log("hey");
 				this.set(JSON.parse(window.localStorage.getItem("ordine")));
 				return true;
 			}
@@ -35,8 +36,8 @@ define(function(require) {
 
 		//cancella l'oggetto e rimuove l'ordine dal browser
 		cancella: function() {
-			this.clear();
 			window.localStorage.removeItem("ordine");
+			this.clear();
 		},
 
 		/*countdown: function() {

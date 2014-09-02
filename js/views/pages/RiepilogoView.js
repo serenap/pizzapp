@@ -16,25 +16,36 @@ define(function(require) {
     initialize: function() {
       //carica Cartone, Utente e Pizzeria scelta
       var cartone = new Cartone();
-      var utente = new Utente(false);
+      var utente = new Utente();
       var pizzeria = new Pizzeria();
       pizzeria.carica();
+      utente.carica(utente.get("a_casa"));
       //inizializza, compila e salva l'Ordine
+      var nomeCliente = utente.get("nome") + " " + utente.get("cognome");
+      var indirizzoCliente = utente.get("via") + " " + utente.get("n_civico") + ", " + utente.get("citta");
+      var telefonoCliente = utente.get("telefono");
+      var nomePizzeria = pizzeria.get("nome");
+      var indirizzoPizzeria = pizzeria.get("indirizzo");
+      var telefonoPizzeria = pizzeria.get("telefono");
+      var numeroPizze = cartone.getNumeroPizze();
+      var totale = cartone.getTotale();
+      var orarioConsegna = "20:00";
+      var modalitaPagamento = "contanti";
+      //imposta i dati nel model
       this.model = new Ordine({
-        "nomeCliente": utente.get("nome") + " " + utente.get("cognome"),
-        "indirizzoCliente": utente.get("via") + ", " + utente.get("n_civico") + ", " + utente.get("citta"),
-        "telefonoCliente": utente.get("telefono"),
-        "nomePizzeria": pizzeria.get("nome"),
-        "indirizzoPizzeria": pizzeria.get("indirizzo"),
-        "telefonoPizzeria": pizzeria.get("telefono"),
+        "nomeCliente": nomeCliente,
+        "indirizzoCliente": indirizzoCliente,
+        "telefonoCliente": telefonoCliente,
+        "nomePizzeria": nomePizzeria,
+        "indirizzoPizzeria": indirizzoPizzeria,
+        "telefonoPizzeria": telefonoPizzeria,
         "cartone": cartone,
-        "numeroPizze": cartone.getNumeroPizze(),
-        "totale": cartone.getTotale(),
-        "orarioConsegna": "20:00",
-        "modalitaPagamento": "contanti"
+        "numeroPizze": numeroPizze,
+        "totale": totale,
+        "orarioConsegna": orarioConsegna,
+        "modalitaPagamento": modalitaPagamento
       });
       this.model.salva();
-      
       //carica il template precompilato
       this.template = Utils.templates.riepilogo;
     },
@@ -57,6 +68,7 @@ define(function(require) {
 
     invia: function() {
       var cartone = new Cartone();
+      var utente = new Utente(false);
       //recupera orario e modalità di pagamento dalla form
       var orario = this.$el.find("#orario").val();
       var pagamento = this.$el.find(".pagamento:checked").val();
@@ -85,6 +97,7 @@ define(function(require) {
         spinner.stop();
       }, 10000);
       cartone.svuota();
+      utente.cancella();
 
       //mostra il reminder dell'Ordine Sospeso nella Home
       document.getElementById("info_ordine_sospeso").style.visibility='visible';

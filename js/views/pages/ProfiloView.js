@@ -2,6 +2,7 @@ define(function(require) {
 
   var Backbone = require("backbone");
   var Utente = require("models/Utente");
+  var Ordine = require("models/Ordine");
   var Utils = require("utils");
   var Spinner = require("spin");
   var Cartone = require("collections/Cartone");
@@ -17,7 +18,8 @@ define(function(require) {
       //carica il template precompilato
       this.template = Utils.templates.profilo;
       //carica l'Utente
-      this.model = new Utente(true);
+      this.model = new Utente();
+      this.model.carica(true);
       this.render();
     },
 
@@ -38,7 +40,9 @@ define(function(require) {
     },
 
     salvaUtente: function() {
+      var instance = this;
       var cartone = new Cartone();
+      var ordine = new Ordine();
       //recupera i dati dalla form
       var nome = this.$el.find("#nome_profilo").val();
       var cognome = this.$el.find("#cognome_profilo").val();
@@ -53,7 +57,8 @@ define(function(require) {
         "citta": citta,
         "via": via,
         "n_civico": n_civico,
-        "telefono": telefono
+        "telefono": telefono,
+        "a_casa": true
       });
       //se tutti i dati non sono stringhe vuote naviga alla Home
       if(nome != "" && cognome != "" && citta != "" && via != "" && n_civico != "" && telefono != "") {
@@ -67,6 +72,8 @@ define(function(require) {
           var messaggio = "Aggiornando i tuoi dati dovrai svuotare il tuo Cartone. Vuoi continuare?";
           var conferma = function() {
             cartone.svuota();
+            ordine.cancella();
+            instance.model.cancella();
             $("#quantita_cartone").html(cartone.getNumeroPizze());
             Backbone.history.navigate("home", {
               trigger: true
@@ -78,7 +85,7 @@ define(function(require) {
           });
           this.render();
         }
-        this.model.salva(false);
+        this.model.salva(true);
       }
       else {
         var messaggio = "Non hai compilato uno o più campi. Tutti i dettagli sono necessari.";
@@ -108,7 +115,7 @@ define(function(require) {
         nodes[i].disabled = true;
       }
 
-      //recupera la posizione dell'utente
+      //recupera la posizione dell'Utente
       navigator.geolocation.getCurrentPosition(onSuccess,Error);
 
       //callback di successo

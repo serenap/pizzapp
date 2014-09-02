@@ -4,6 +4,7 @@ define(function(require) {
   var ListaPizzerie = require("collections/ListaPizzerie");
   var PizzeriaSubView = require("views/pages/PizzeriaSubView");
   var Utils = require("utils");
+  var Spinner = require("spin");
 
   var PizzerieView = Utils.Page.extend({
 
@@ -14,10 +15,23 @@ define(function(require) {
       var instance = this;
       //carica il template precompilato
       this.template = Utils.templates.pizzerie;
+      //inizializza uno spinner per il caricamento
+      var opts = {
+        lines: 15, //linee da disegnare
+        length: 15, //lunghezza delle linee
+        width: 5, //spessore delle linee
+        radius: 20, //raggio del cerchio interno
+        corners: 1, //rotondità degli angoli (0..1)
+        shadow: true, //ombra
+        hwaccel: true, //accelerazione hardware
+      };  
+      var target = document.getElementById('spinner');
+      var spinner = new Spinner(opts).spin(target);
       //inizializza la lista di Pizzerie ed effettua il fetch
       this.collection = new ListaPizzerie();
       this.collection.fetch({success: function(collection){
           instance.render();
+          spinner.stop();
         }
       });
     },

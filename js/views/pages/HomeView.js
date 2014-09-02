@@ -59,7 +59,6 @@ define(function(require) {
     },
 
     localizza: function() {
-      this.mostraCercami();
       //controlla se il dispositivo è connesso
     	function checkNetConnection() {
     		var xhr = new XMLHttpRequest();
@@ -86,6 +85,7 @@ define(function(require) {
       }
       else {
         if(checkNetConnection()) {
+          this.mostraCercami();
           //inizializza uno spinner per il caricamento
           var opts = {
             lines: 15, //linee da disegnare
@@ -106,7 +106,7 @@ define(function(require) {
               nodes[i].disabled = true;
           }
 
-          //recupera la posizione dell'utente
+          //recupera la posizione dell'Utente
           navigator.geolocation.getCurrentPosition(onSuccess,Error);
 
           //callback di successo
@@ -173,10 +173,10 @@ define(function(require) {
     },
 
     pizzerie: function(event) {
-      //carica Utente e Ordine
-      var utente = new Utente(true);
+      //carica Ordine e Utente
       var ordine = new Ordine();
-
+      var utente = new Utente();
+      utente.carica(true);
       //se sono presenti tutti i dati necessari e non c'è un Ordine in sospeso 
       //procedi
       if(utente.completo()) {
@@ -195,8 +195,9 @@ define(function(require) {
     },
 
     aggiorna_indirizzo: function() {
-      //carica l'Utente
-      var utente = new Utente(true);
+      //carica l'Utente a casa per recuperare i dati anagrafici
+      var utente = new Utente();
+      utente.carica(true);
       //recupera i valori immessi dal popup
       var nuova_citta = $("#citta").val();
       var nuova_via = $("#via").val();
@@ -206,11 +207,18 @@ define(function(require) {
         utente.set({
           citta: nuova_citta,
           via: nuova_via,
-          n_civico: nuovo_civico
+          n_civico: nuovo_civico,
+          a_casa: false
         });
-        utente.salva(true);
-        this.mostraCercami();
-        this.pizzerie();
+        if(utente.completo()) {
+          utente.salva(false);
+          this.mostraCercami();
+          this.pizzerie();
+        }
+        else {
+          var messaggio = "Mancano alcuni dei tuoi dati per la consegna. Aggiorna il tuo Profilo.";
+          var alert = new AlertView({message: messaggio});
+        }
       }
       else {
         var messaggio = "Indirizzo incompleto.";

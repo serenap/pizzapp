@@ -27,7 +27,6 @@ define(function(require) {
     initialize: function() {
       //inizializza Cartone e Ordine
       this.collection = new Cartone();
-      this.ordine = new Ordine();
       //carica il template precompilato
       this.template = Utils.templates.structure;
       //lega l'evento "backbutton" alla funzione "back()"
@@ -84,10 +83,11 @@ define(function(require) {
         case "cartone":
           Backbone.history.history.back();
           break;
-        //cancella l'ordine creato e torna indietro
+        //cancella l'Ordine creato e torna indietro
         case "riepilogo":
-          var ordine = instance.ordine;
-          ordine.cancella();
+          var ordine = new Ordine();
+          if(ordine.carica())
+            ordine.cancella();
           Backbone.history.history.back();
           break;
         //torna indietro ma mantiene il reminder in cima alla pagina
