@@ -53,22 +53,19 @@ define(function(require) {
 			return this.get("giorniChiusura").indexOf(this.mappaGiorni[data.getDay()]) == -1;
 		},
 
-		raggiungeIndirizzo: function(lat_utente,lng_utente){
-				var lat1 = lat_utente;
-				var lng1 = lng_utente;
-				var lat2 = this.get('lat');
-				var lng2 = this.get('lng');
+		//verifica che la Pizzeria possa effettuare consegne alla 
+		//posizione passata
+		raggiungeIndirizzo: function(lat_utente, lng_utente) {
+			var lat1 = lat_utente;
+			var lng1 = lng_utente;
+			var lat2 = this.get('lat');
+			var lng2 = this.get('lng');
+			var maxDist = this.get('maxDistanza');
+			var distanza = (3958*3.1415926*Math.sqrt((lat2-lat1)*(lat2-lat1) + Math.cos(lat2/57.29578)*Math.cos(lat1/57.29578)*(lng2-lng1)*(lng2-lng1))/180);
 
-				var maxDist = this.get('maxDistanza');
-
-				var distanza = (3958*3.1415926*Math.sqrt((lat2-lat1)*(lat2-lat1) + Math.cos(lat2/57.29578)*Math.cos(lat1/57.29578)*(lng2-lng1)*(lng2-lng1))/180);
-
-				if (distanza<=maxDist){
-					return true;
-				}else{
-					return distanza;
-					
-				}
+			if (distanza<=maxDist)
+				return true;
+			else return distanza;
 		}
 	});
 

@@ -27,7 +27,6 @@ define(function(require) {
 		//se è già presente un salvataggio nel browser, carica l'ordine
 		carica: function() {
 			if(window.localStorage.getItem("ordine")) {
-				console.log("hey");
 				this.set(JSON.parse(window.localStorage.getItem("ordine")));
 				return true;
 			}
