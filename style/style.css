@@ -403,3 +403,7 @@ a, a:active{
 #riepilogo.table-view-cell{
   padding-right: 15px !important;
 }
+
+#lat,#lng{
+  display: none !important;
+}

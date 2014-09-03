@@ -68,9 +68,9 @@ define(function(require) {
         if($("#lat").val() != '' && $("#lng").val() != '') {
           //per ogni model nella Lista, inizializza una PizzeriaSubView e 
           //compila tutte le sottoliste
-          instance.collection.each(function(pizzeria) {     
-            if(pizzeria.raggiungeIndirizzo($("#lat").val(), $("#lng").val())) {
+          instance.collection.each(function(pizzeria) {  
               var pizzeriaSV = new PizzeriaSubView({model: pizzeria});
+                if(pizzeria.raggiungeIndirizzo($("#lat").val(), $("#lng").val())) {
               if(pizzeria.riposoSettimanale() && pizzeria.aperta())
                 $(instance.el).find("ul#lista_pizzerie_aperte").append(pizzeriaSV.el);
               else if(pizzeria.riposoSettimanale() && !pizzeria.aperta())
@@ -84,9 +84,15 @@ define(function(require) {
           var alert = new AlertView({message: messaggio});
           Backbone.history.history.back();
         }
-      });
+              /*if( ){
+                var messaggio = "Spiacenti!Nessuna pizzeria raggiunge l'indirizzo selezionato";
+                var alert = new AlertView({message: messaggio});
+                Backbone.history.history.back();
+              }*/
+
+          });
       return this;
-    } 
+     } 
   });
 
   return PizzerieView;

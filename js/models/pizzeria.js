@@ -65,7 +65,7 @@ define(function(require) {
 
 			if (distanza<=maxDist)
 				return true;
-			else return distanza;
+			else return false;
 		}
 	});
 
