@@ -8,6 +8,8 @@ define(function(require) {
 			nome: '',
 			cognome: '',
 			citta: '',
+			lat: '',
+			lng: '',
 			via: '',
 			n_civico: '',
 			telefono: '',
