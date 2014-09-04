@@ -411,3 +411,9 @@ a, a:active{
 #lat,#lng{
   display: none !important;
 }
+
+#spinner_pizzerie{
+  position: absolute;
+  margin-top: 20% !important;
+  margin-left: 50% !important;
+}

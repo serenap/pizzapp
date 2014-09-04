@@ -18,23 +18,13 @@ define(function(require) {
       //carica il template precompilato
       this.template = Utils.templates.pizzerie;
       //inizializza uno spinner per il caricamento
-      var opts = {
-        lines: 15, //linee da disegnare
-        length: 15, //lunghezza delle linee
-        width: 5, //spessore delle linee
-        radius: 20, //raggio del cerchio interno
-        corners: 1, //rotondità degli angoli (0..1)
-        shadow: true, //ombra
-        hwaccel: true, //accelerazione hardware
-      };  
-      var target = $("#spinner_pizzerie");
-      var spinner = new Spinner(opts).spin(target);
+      
       
       //inizializza la lista di Pizzerie ed effettua il fetch
       this.collection = new ListaPizzerie();
       this.collection.fetch({success: function(collection) {
           //instance.render();
-          spinner.stop();
+          //spinner.stop();
         }
       });
     },
@@ -57,15 +47,29 @@ define(function(require) {
       var indirizzo_consegna = utente.get("via") + " " + utente.get("n_civico") + ", " + utente.get("citta");
     
       geocoder.geocode({"address": indirizzo_consegna}, function (results, status) {
+        var opts = {
+          lines: 15, //linee da disegnare
+          length: 15, //lunghezza delle linee
+          width: 5, //spessore delle linee
+          radius: 20, //raggio del cerchio interno
+          corners: 1, //rotondità degli angoli (0..1)
+          shadow: true, //ombra
+          hwaccel: true, //accelerazione hardware
+      };  
+      var target = document.getElementById("spinner_pizzerie");
+      var spinner = new Spinner(opts).spin(target);
+
         var latlng = results[0].geometry.location.toString().split(",");
         var length = latlng[1].length-1;
         var lat = latlng[0].substring(1);
         var lng = latlng[1].substring(0,length);
         $("#lat").val(lat);
         $("#lng").val(lng);
-      
+       
+
         //se i valori di lat e lng non sono vuoti
         if($("#lat").val() != '' && $("#lng").val() != '') {
+          spinner.stop();
           //per ogni model nella Lista, inizializza una PizzeriaSubView e 
           //compila tutte le sottoliste
           var numero_pizzerie = 0;
