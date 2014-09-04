@@ -9,18 +9,6 @@
 		"prezzo": "4.50"
 	},
 	{
-		"nome": "Porcellona",
-		"categoria": "Rossa",
-		"ingredienti": [
-			"mozzarella",
-			" pomodoro",
-			" salsiccia",
-			" wurstel",
-			" prosciutto cotto"
-		],
-		"prezzo": "6.50"
-	},
-	{
 		"nome": "Capricciosa",
 		"categoria": "Rossa",
 		"ingredienti": [
@@ -32,6 +20,17 @@
 			" olive nere"
 		],
 		"prezzo": "6.00"
+	},
+	{
+		"nome": "Rustica",
+		"categoria": "Bianca",
+		"ingredienti": [
+			"mozzarella",
+			" pachino",
+			" rucola", 
+			" mais"
+		],
+		"prezzo": "4.00"
 	},
 	{
 		"nome": "4 Formaggi",
@@ -67,17 +66,6 @@
 		"prezzo": "5.00"
 	},
 	{
-		"nome": "Tirolese",
-		"categoria": "Rossa",
-		"ingredienti": [
-			"mozzarella",
-			" pomodoro",
-			" speck",
-			" gorgonzola"
-		],
-		"prezzo": "6.00"
-	},
-	{
 		"nome": "Frutti di Mare",
 		"categoria": "Bianca",
 		"ingredienti": [
@@ -87,5 +75,16 @@
 			" prezzemolo"
 		],
 		"prezzo": "7.00"
+	},
+	{
+		"nome": "Tirolese",
+		"categoria": "Rossa",
+		"ingredienti": [
+			"mozzarella",
+			" pomodoro",
+			" speck",
+			" gorgonzola"
+		],
+		"prezzo": "6.00"
 	}
 ]

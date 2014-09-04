@@ -9,14 +9,82 @@
 		"prezzo": "3.50"
 	},
 	{
-		"nome": "Rustica",
+		"nome": "Blue Sky",
 		"categoria": "Bianca",
 		"ingredienti": [
 			"mozzarella",
-			" pachino",
-			" rucola", 
-			" mais"
+			" metanfetamina",
+			" fulminato di mercurio", 
+			" ricina"
 		],
-		"prezzo": "4.00"
+		"prezzo": "4.50"
+	},
+	{
+		"nome": "Capricciosa",
+		"categoria": "Rossa",
+		"ingredienti": [
+			"mozzarella",
+			" pomodoro",
+			" carciofini",
+			" prosciutto cotto",
+			" funghi",
+			" olive nere"
+		],
+		"prezzo": "6.00"
+	},
+	{
+		"nome": "4 Formaggi",
+		"categoria": "Bianca",
+		"ingredienti": [
+			"gorgonzola",
+			" fontina",
+			" provola",
+			" emmenthal"
+		],
+		"prezzo": "6.50"
+	},
+	{
+		"nome": "Napoletana",
+		"categoria": "Rossa",
+		"ingredienti": [
+			"mozzarella",
+			" pomodoro",
+			" acciughe",
+			" origano",
+			" capperi"
+		],
+		"prezzo": "5.50"
+	},
+	{
+		"nome": "Diavola",
+		"categoria": "Bianca",
+		"ingredienti": [
+			"mozzarella",
+			" olive nere",
+			" salame piccante"
+		],
+		"prezzo": "5.00"
+	},
+	{
+		"nome": "Tirolese",
+		"categoria": "Rossa",
+		"ingredienti": [
+			"mozzarella",
+			" pomodoro",
+			" speck",
+			" gorgonzola"
+		],
+		"prezzo": "6.00"
+	},
+	{
+		"nome": "Frutti di Mare",
+		"categoria": "Bianca",
+		"ingredienti": [
+			"mozzarella",
+			" frutti di mare",
+			" aglio",
+			" prezzemolo"
+		],
+		"prezzo": "7.00"
 	}
 ]
