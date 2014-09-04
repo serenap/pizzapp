@@ -80,12 +80,16 @@ define(function(require) {
         else {
           var messaggio = "C'è stato un problema, riprova";
           var alert = new AlertView({message: messaggio});
-          Backbone.history.history.back();
+          Backbone.history.navigate("home", {
+            trigger: true
+          });
         }
         if(numero_pizzerie == 0) {
           var messaggio = "Spiacente, non ho trovato pizzerie che possano raggiungere il tuo indirizzo.";
           var alert = new AlertView({message: messaggio});
-          Backbone.history.history.back();
+          Backbone.history.navigate("home", {
+            trigger: true
+          });
         }
               
       });
