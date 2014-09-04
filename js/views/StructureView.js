@@ -5,6 +5,7 @@ define(function(require) {
   var Cartone = require("collections/Cartone");
   var Utils = require("utils");
   var PromptView = require("views/PromptView");
+  var Utente = require("models/Utente");
   var Ordine = require("models/Ordine");
 
   var StructureView = Backbone.View.extend({
@@ -25,8 +26,11 @@ define(function(require) {
     },
 
     initialize: function() {
-      //inizializza Cartone e Ordine
+      //inizializza Cartone
       this.collection = new Cartone();
+      //resetta l'Utente non a casa
+      var utente = new Utente();
+      utente.cancella();
       //carica il template precompilato
       this.template = Utils.templates.structure;
       //lega l'evento "backbutton" alla funzione "back()"
