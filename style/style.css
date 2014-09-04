@@ -412,8 +412,8 @@ a, a:active{
   display: none !important;
 }
 
-#spinner_pizzerie{
-  position: absolute;
+#spinner_pizzerie, #spinner_riepilogo{
+  position: fixed;
   margin-top: 50% !important;
   margin-left: 50% !important;
 }

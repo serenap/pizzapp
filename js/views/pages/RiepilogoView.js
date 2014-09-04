@@ -67,6 +67,24 @@ define(function(require) {
     },
 
     invia: function() {
+          $("#content").scrollTop(0);
+          var nodes = document.getElementsByTagName('input');
+          for(var i = 0; i < nodes.length; i++) {
+              nodes[i].disabled = true;
+          }
+      var opts = {
+        lines: 15, //linee da disegnare
+        length: 15, //lunghezza delle linee
+        width: 5, //spessore delle linee
+        radius: 20, //raggio del cerchio interno
+        corners: 1, //rotondità degli angoli (0..1)
+        shadow: true, //ombra
+        hwaccel: true, //accelerazione hardware
+      };  
+      var target = document.getElementById("spinner_riepilogo");
+      var spinner = new Spinner(opts).spin(target);
+
+
       var cartone = new Cartone();
       var utente = new Utente(false);
       //recupera orario e modalità di pagamento dalla form
@@ -78,23 +96,13 @@ define(function(require) {
         "modalitaPagamento": pagamento
       });
 
-      var opts = {
-        lines: 15, //linee da disegnare
-        length: 15, //lunghezza delle linee
-        width: 5, //spessore delle linee
-        radius: 20, //raggio del cerchio interno
-        corners: 1, //rotondità degli angoli (0..1)
-        shadow: true, //ombra
-        hwaccel: true, //accelerazione hardware
-      };  
-      var target = $("#spinner_riepilogo");
-      var spinner = new Spinner(opts).spin(target);
+      
       var instance = this.model;
 
       //salva l'Ordine e ferma lo spinner, poi svuota il Cartone
       window.setTimeout(function() {
         instance.salva();
-        spinner.stop();
+        
         //mostra il reminder dell'Ordine Sospeso nella Home
         document.getElementById("info_ordine_sospeso").style.visibility='visible';
         document.getElementById("normal").style.visibility='hidden';
