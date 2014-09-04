@@ -67,11 +67,11 @@ define(function(require) {
     },
 
     invia: function() {
-          $("#content").scrollTop(0);
-          var nodes = document.getElementsByTagName('input');
-          for(var i = 0; i < nodes.length; i++) {
-              nodes[i].disabled = true;
-          }
+      $("#content").scrollTop(0);
+      var nodes = document.getElementsByTagName('input');
+      for(var i = 0; i < nodes.length; i++) {
+          nodes[i].disabled = true;
+      }
       var opts = {
         lines: 15, //linee da disegnare
         length: 15, //lunghezza delle linee
@@ -83,8 +83,6 @@ define(function(require) {
       };  
       var target = document.getElementById("spinner_riepilogo");
       var spinner = new Spinner(opts).spin(target);
-
-
       var cartone = new Cartone();
       var utente = new Utente(false);
       //recupera orario e modalità di pagamento dalla form
@@ -95,14 +93,11 @@ define(function(require) {
         "orarioConsegna": orario,
         "modalitaPagamento": pagamento
       });
-
       
       var instance = this.model;
-
       //salva l'Ordine e ferma lo spinner, poi svuota il Cartone
       window.setTimeout(function() {
         instance.salva();
-        
         //mostra il reminder dell'Ordine Sospeso nella Home
         document.getElementById("info_ordine_sospeso").style.visibility='visible';
         document.getElementById("normal").style.visibility='hidden';
@@ -113,8 +108,6 @@ define(function(require) {
       }, 5000);
       cartone.svuota();
       utente.cancella();
-
-      
     }
 
   });

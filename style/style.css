@@ -78,24 +78,23 @@ body {
   -webkit-overflow-scrolling: auto; }
 
 /* END STRUCTURE */
-#map {
-  height: 100%;
-  width: 100%; }
 
 header .icon{
-  padding:10px !important;
+  padding: 10px;
+  margin: 0 -10px;
 }
+
 .icon:active{
-  color: rgb(212,62,55);
+  color: rgb(212, 62, 55);
   background: rgb(251, 251, 251);;
 }
 
-.icon:active img{
-   background: rgb(212,62,55);
+#cartone:active img{
+  content: url('../img/cartone_rosso.png');
 }
 
 input[type="search"] {
-  background-image: url('../img/lente.gif') ;
+  background-image: url('../img/lente.gif');
   background-repeat:no-repeat;
   position: relative;
   top:1em;
