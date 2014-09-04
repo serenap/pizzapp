@@ -21,7 +21,6 @@ define(function(require) {
       "touchend #cartone": "cartone",
       "touchend #riepilogo": "riepilogo",
       "touchend #dettaglio_ordine_sospeso": "ordine_sospeso",
-      "touchend #invia_ordine": "home",
       "touchend #ordine_ricevuto": "distruggi_ordine"
     },
 

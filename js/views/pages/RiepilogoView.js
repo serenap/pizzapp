@@ -87,7 +87,7 @@ define(function(require) {
         shadow: true, //ombra
         hwaccel: true, //accelerazione hardware
       };  
-      var target = $("#spinner");
+      var target = $("#spinner_riepilogo");
       var spinner = new Spinner(opts).spin(target);
       var instance = this.model;
 
@@ -95,13 +95,18 @@ define(function(require) {
       window.setTimeout(function() {
         instance.salva();
         spinner.stop();
-      }, 10000);
+        //mostra il reminder dell'Ordine Sospeso nella Home
+        document.getElementById("info_ordine_sospeso").style.visibility='visible';
+        document.getElementById("normal").style.visibility='hidden';
+        //naviga alla Home
+        Backbone.history.navigate("home", {
+          trigger: true
+        });
+      }, 5000);
       cartone.svuota();
       utente.cancella();
 
-      //mostra il reminder dell'Ordine Sospeso nella Home
-      document.getElementById("info_ordine_sospeso").style.visibility='visible';
-      document.getElementById("normal").style.visibility='hidden';
+      
     }
 
   });
