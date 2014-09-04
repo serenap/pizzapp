@@ -27,7 +27,7 @@ define(function(require) {
         shadow: true, //ombra
         hwaccel: true, //accelerazione hardware
       };  
-      var target = document.getElementById('spinner');
+      var target = $("#spinner_pizzerie");
       var spinner = new Spinner(opts).spin(target);
       
       //inizializza la lista di Pizzerie ed effettua il fetch
@@ -68,9 +68,11 @@ define(function(require) {
         if($("#lat").val() != '' && $("#lng").val() != '') {
           //per ogni model nella Lista, inizializza una PizzeriaSubView e 
           //compila tutte le sottoliste
-          instance.collection.each(function(pizzeria) {  
-              var pizzeriaSV = new PizzeriaSubView({model: pizzeria});
-                if(pizzeria.raggiungeIndirizzo($("#lat").val(), $("#lng").val())) {
+          var numero_pizzerie = 0;
+          instance.collection.each(function(pizzeria) {
+            var pizzeriaSV = new PizzeriaSubView({model: pizzeria});
+            if(pizzeria.raggiungeIndirizzo($("#lat").val(), $("#lng").val())) {
+              numero_pizzerie++;
               if(pizzeria.riposoSettimanale() && pizzeria.aperta())
                 $(instance.el).find("ul#lista_pizzerie_aperte").append(pizzeriaSV.el);
               else if(pizzeria.riposoSettimanale() && !pizzeria.aperta())
@@ -78,19 +80,19 @@ define(function(require) {
               else $(instance.el).find("ul#lista_pizzerie_riposo").append(pizzeriaSV.el);
             }
           }, instance);
+          if(numero_pizzerie == 0) {
+            var messaggio = "Spiacente, non ho trovato pizzerie che possano raggiungere il tuo indirizzo.";
+            var alert = new AlertView({message: messaggio});
+            Backbone.history.history.back();
+          }
         }
         else {
           var messaggio = "C'è stato un problema, riprova";
           var alert = new AlertView({message: messaggio});
           Backbone.history.history.back();
         }
-              /*if( ){
-                var messaggio = "Spiacenti!Nessuna pizzeria raggiunge l'indirizzo selezionato";
-                var alert = new AlertView({message: messaggio});
-                Backbone.history.history.back();
-              }*/
-
-          });
+              
+      });
       return this;
      } 
   });
