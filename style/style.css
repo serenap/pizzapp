@@ -82,14 +82,16 @@ body {
   height: 100%;
   width: 100%; }
 
+header .icon{
+  padding:10px !important;
+}
 .icon:active{
   color: rgb(212,62,55);
-  background: #fff;
+  background: rgb(251, 251, 251);;
 }
 
 .icon:active img{
- 
-  background: rgb(212,62,55);
+   background: rgb(212,62,55);
 }
 
 input[type="search"] {
