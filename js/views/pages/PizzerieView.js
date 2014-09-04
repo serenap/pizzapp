@@ -79,15 +79,15 @@ define(function(require) {
                 $(instance.el).find("ul#lista_pizzerie_chiuse").append(pizzeriaSV.el);
               else $(instance.el).find("ul#lista_pizzerie_riposo").append(pizzeriaSV.el);
             }
-          }, instance);
-          if(numero_pizzerie == 0) {
-            var messaggio = "Spiacente, non ho trovato pizzerie che possano raggiungere il tuo indirizzo.";
-            var alert = new AlertView({message: messaggio});
-            Backbone.history.history.back();
-          }
+          });
         }
         else {
           var messaggio = "C'è stato un problema, riprova";
+          var alert = new AlertView({message: messaggio});
+          Backbone.history.history.back();
+        }
+        if(numero_pizzerie == 0) {
+          var messaggio = "Spiacente, non ho trovato pizzerie che possano raggiungere il tuo indirizzo.";
           var alert = new AlertView({message: messaggio});
           Backbone.history.history.back();
         }

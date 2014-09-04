@@ -144,6 +144,10 @@ input[type="checkbox"] {
   min-height: 150px !important;
 }
 
+.btn-block{
+  border: none;
+}
+
 .btn-negative.btn-block{
   position:relative;  
   width: 90% !important;
