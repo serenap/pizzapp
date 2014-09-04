@@ -21,6 +21,12 @@ define(function(require) {
       this.model = new Utente();
       this.model.carica(true);
       this.render();
+      //disabilita il tasto di invio della tastiera
+      document.addEventListener("keypress", function(event) {
+        var key = event.which || event.keyCode;
+        if(key == 13)
+          event.preventDefault();
+      }, true);
     },
 
     id: "profilo",
