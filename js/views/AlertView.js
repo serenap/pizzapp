@@ -1,8 +1,9 @@
 define(function(require) {
   
+  var Backbone = require("backbone");
   var Utils = require("utils");
 
-  var AlertView = Utils.Page.extend({
+  var AlertView = Backbone.View.extend({
     constructorName: "AlertView",
     
     initialize: function(options) {

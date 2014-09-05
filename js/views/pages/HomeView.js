@@ -24,11 +24,11 @@ define(function(require) {
 
     events: {
       "touchend #consegna_a_casa": "pizzerie",
-      "touchend #conferma_indirizzo": "aggiorna_indirizzo",
+      "touchend #conferma_indirizzo": "aggiornaIndirizzo",
       "touchend #localizzazione": "localizza",
       "touchend #relocal": "localizza",
       "touchend #chiudi_local": "nascondiCercami",
-      "touchend #dettaglio_ordine_sospeso": "ordine_sospeso"
+      "touchend #dettaglio_ordine_sospeso": "ordineSospeso"
     },
 
     render: function() {
@@ -194,7 +194,7 @@ define(function(require) {
       }
     },
 
-    aggiorna_indirizzo: function() {
+    aggiornaIndirizzo: function() {
       //carica l'Utente a casa per recuperare i dati anagrafici
       var utente = new Utente();
       utente.carica(true);
@@ -207,10 +207,10 @@ define(function(require) {
         utente.set({
           citta: nuova_citta,
           via: nuova_via,
-          n_civico: nuovo_civico,
-          a_casa: false
+          n_civico: nuovo_civico
         });
         if(utente.completo()) {
+          utente.set("a_casa", false);
           utente.salva(false);
           this.mostraCercami();
           this.pizzerie();
@@ -226,7 +226,7 @@ define(function(require) {
       }
     },
 
-    ordine_sospeso: function(event) {
+    ordineSospeso: function(event) {
       //mostra l'Ordine Sospeso
       document.getElementById("ordine_sospeso").style.visibility='hidden';
       document.getElementById("normal").style.visibility='visible';

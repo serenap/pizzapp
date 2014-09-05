@@ -4,7 +4,7 @@ define(function(require) {
   var Pizzeria = require("models/Pizzeria");
   var Menu = require("collections/Menu");
   var Cartone = require("collections/Cartone");
-  var PizzaSubView = require("views/pages/PizzaSubView");
+  var PizzaSubView = require("views/subviews/PizzaSubView");
   var Utils = require("utils");
   var Spinner = require("spin");
 

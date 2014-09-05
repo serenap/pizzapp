@@ -4,7 +4,7 @@ define(function(require) {
   var Pizza = require("models/Pizza");
   var Cartone = require("collections/Cartone");
   var Utils = require("utils");
-  var PizzaCartoneSubView = require("views/pages/PizzaCartoneSubView");
+  var PizzaCartoneSubView = require("views/subviews/PizzaCartoneSubView");
 
   var CartoneView = Utils.Page.extend({
 

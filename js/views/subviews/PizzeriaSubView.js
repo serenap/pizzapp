@@ -5,7 +5,7 @@ define(function(require) {
   var Utils = require("utils");
   var AlertView = require("views/AlertView");
 
-  var PizzeriaSubView = Utils.Page.extend({
+  var PizzeriaSubView = Backbone.View.extend({
 
     constructorName: "PizzeriaSubView",
     model: Pizzeria,

@@ -3,10 +3,10 @@ define(function(require) {
   var Backbone = require("backbone");
   var Pizza = require("models/Pizza");
   var Cartone = require("collections/Cartone");
-  var IngredientiSubView = require("views/pages/IngredientiSubView");
+  var IngredientiSubView = require("views/subviews/IngredientiSubView");
   var Utils = require("utils");
 
-  var PizzaSubView = Utils.Page.extend({
+  var PizzaSubView = Backbone.View.extend({
 
     constructorName: "PizzaSubView",
     model: Pizza,

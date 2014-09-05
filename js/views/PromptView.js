@@ -1,8 +1,9 @@
 define(function(require) {
 
+  var Backbone = require("backbone");
   var Utils = require("utils");
 
-  var PromptView = Utils.Page.extend({
+  var PromptView = Backbone.View.extend({
     constructorName: "PromptView",
     
     initialize: function(options) {

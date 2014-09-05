@@ -2,7 +2,7 @@ define(function(require) {
 
   var Backbone = require("backbone");
   var ListaPizzerie = require("collections/ListaPizzerie");
-  var PizzeriaSubView = require("views/pages/PizzeriaSubView");
+  var PizzeriaSubView = require("views/subviews/PizzeriaSubView");
   var AlertView = require("views/AlertView");
   var Utente = require("models/Utente");
   var Utils = require("utils");

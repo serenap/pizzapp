@@ -5,7 +5,7 @@ define(function(require) {
   var Cartone = require("collections/Cartone");
   var Utils = require("utils");
 
-  var PizzaCartoneSubView = Utils.Page.extend({
+  var PizzaCartoneSubView = Backbone.View.extend({
 
     constructorName: "PizzaCartoneSubView",
     model: Pizza,

@@ -115,7 +115,6 @@ define(function(require) {
 
     pizzerie: function(event) {
       var cartone = this.collection;
-
       //se il Cartone non è vuoto chiede se svuotarlo per cambiare pizzeria 
       //o se mantenerlo e continuare l'ordine
       if(cartone.length != 0) {
