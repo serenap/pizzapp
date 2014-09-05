@@ -43,7 +43,7 @@ define(function(require) {
 		},
 
 		//rimuove dal browser l'Utente non a casa
-		cancella: function() {
+		cancellaNonACasa: function() {
 			if(window.localStorage.getItem("utente_non_a_casa"))
 				window.localStorage.removeItem("utente_non_a_casa");
 		},

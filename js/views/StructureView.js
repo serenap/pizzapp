@@ -29,7 +29,7 @@ define(function(require) {
       this.collection = new Cartone();
       //resetta l'Utente non a casa
       var utente = new Utente();
-      utente.cancella();
+      utente.cancellaNonACasa();
       //carica il template precompilato
       this.template = Utils.templates.structure;
       //lega l'evento "backbutton" alla funzione "back()"
@@ -47,7 +47,7 @@ define(function(require) {
     },
 
     ordina: function() {
-      //se l'utente arriva dal profilo, torna indietro e imposta la tab 
+      //se l'Utente arriva dal Profilo, torna indietro e imposta la tab 
       //"Ordina" come attiva
       if(Backbone.history.fragment == "profilo") {
         Backbone.history.history.back();

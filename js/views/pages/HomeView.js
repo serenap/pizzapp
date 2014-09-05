@@ -176,10 +176,13 @@ define(function(require) {
       //carica Ordine e Utente
       var ordine = new Ordine();
       var utente = new Utente();
+      utente.cancellaNonACasa();
       utente.carica(true);
       //se sono presenti tutti i dati necessari e non c'è un Ordine in sospeso 
       //procedi
       if(utente.completo()) {
+        utente.set("a_casa", true);
+        utente.salva(true);
         if(ordine.carica()) {
           var messaggio = "Hai ancora un ordine in sospeso.";
           var alert = new AlertView({message: messaggio});
@@ -195,7 +198,8 @@ define(function(require) {
     },
 
     aggiornaIndirizzo: function() {
-      //carica l'Utente a casa per recuperare i dati anagrafici
+      //carica l'Ordine e l'Utente a casa per recuperare i dati anagrafici
+      var ordine = new Ordine();
       var utente = new Utente();
       utente.carica(true);
       //recupera i valori immessi dal popup
@@ -212,8 +216,16 @@ define(function(require) {
         if(utente.completo()) {
           utente.set("a_casa", false);
           utente.salva(false);
-          this.mostraCercami();
-          this.pizzerie();
+          if(ordine.carica()) {
+            var messaggio = "Hai ancora un ordine in sospeso.";
+            var alert = new AlertView({message: messaggio});
+          }
+          else {
+            this.nascondiCercami();
+            Backbone.history.navigate("pizzerie", {
+              trigger: true
+            });
+          }
         }
         else {
           var messaggio = "Mancano alcuni dei tuoi dati per la consegna. Aggiorna il tuo Profilo.";

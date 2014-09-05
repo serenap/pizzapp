@@ -107,7 +107,7 @@ define(function(require) {
         });
       }, 5000);
       cartone.svuota();
-      utente.cancella();
+      utente.cancellaNonACasa();
     }
 
   });
