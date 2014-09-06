@@ -50,15 +50,39 @@ define(function(require) {
       //mostra il popup di localizzazione
       if($(this.el).find("#local").is(":hidden"))
         $(this.el).find("#local").show("fast");
+      if($(this.el).find("#spinner").is(":hidden"))
+        $(this.el).find("#spinner").show("fast");
     },
 
     nascondiCercami: function() {
       //nascondi il popup di localizzazione
       if($(this.el).find("#local").is(":visible"))
         $(this.el).find("#local").hide("fast");
+      if($(this.el).find("#spinner").is(":visible"))
+        $(this.el).find("#spinner").hide("fast");
     },
 
     localizza: function() {
+      this.mostraCercami();
+      //inizializza uno spinner per il caricamento
+      var opts = {
+        lines: 15, //linee da disegnare
+        length: 15, //lunghezza delle linee
+        width: 5, //spessore delle linee
+        radius: 20, //raggio del cerchio interno
+        corners: 1, //rotondità degli angoli (0..1)
+        shadow: true, //ombra
+        hwaccel: true, //accelerazione hardware
+      };  
+      var target = document.getElementById('spinner');
+      var spinner = new Spinner(opts).spin(target);
+      
+      //disabilita il popup di localizzazione
+      document.getElementById("local").disabled = true;
+      var nodes = document.getElementById("local").getElementsByTagName('*');
+      for(var i = 0; i < nodes.length; i++) {
+          nodes[i].disabled = true;
+      }
       //controlla se il dispositivo è connesso
     	function checkNetConnection() {
     		var xhr = new XMLHttpRequest();
@@ -85,26 +109,6 @@ define(function(require) {
       }
       else {
         if(checkNetConnection()) {
-          this.mostraCercami();
-          //inizializza uno spinner per il caricamento
-          var opts = {
-            lines: 15, //linee da disegnare
-            length: 15, //lunghezza delle linee
-            width: 5, //spessore delle linee
-            radius: 20, //raggio del cerchio interno
-            corners: 1, //rotondità degli angoli (0..1)
-            shadow: true, //ombra
-            hwaccel: true, //accelerazione hardware
-          };  
-          var target = document.getElementById('spinner');
-          var spinner = new Spinner(opts).spin(target);
-          
-          //disabilita il popup di localizzazione
-          document.getElementById("local").disabled = true;
-          var nodes = document.getElementById("local").getElementsByTagName('*');
-          for(var i = 0; i < nodes.length; i++) {
-              nodes[i].disabled = true;
-          }
 
           //recupera la posizione dell'Utente
           navigator.geolocation.getCurrentPosition(onSuccess,Error);

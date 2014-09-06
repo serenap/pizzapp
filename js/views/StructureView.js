@@ -69,6 +69,8 @@ define(function(require) {
         case "home":
           if($("#local").is(":visible"))
             $("#local").hide("fast");
+          if($("#spinner").is(":visible"))
+            $("#spinner").hide("fast");
           else navigator.app.exitApp();
           break;
         //torna alla Home
