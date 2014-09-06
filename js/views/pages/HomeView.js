@@ -99,17 +99,6 @@ define(function(require) {
           var target = document.getElementById('spinner');
           var spinner = new Spinner(opts).spin(target);
           
-          setTimeout(function() {
-          if($("#local").is(':visible')){
-            spinner.stop();
-            $("#local").hide('fast');
-            if(document.getElementById('via').value == '' && document.getElementById('citta').value == ''){
-            var messaggio = "Non riesco a trovarti. Assicurati di aver attivato il GPS.";
-            var alert = new AlertView({message: messaggio});
-             } 
-            }
-          },5000);
-
           //disabilita il popup di localizzazione
           document.getElementById("local").disabled = true;
           var nodes = document.getElementById("local").getElementsByTagName('*');
@@ -138,11 +127,9 @@ define(function(require) {
 
           //callback di errore
           function Error(error) {
-            if($("#local").is(':visible')){
             spinner.stop();
             var messaggio = "Non riesco a trovarti. Assicurati di aver attivato il GPS.";
             var alert = new AlertView({message: messaggio});
-            }
           }
 
           //formatta la posizione trovata
