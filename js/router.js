@@ -18,7 +18,6 @@ define(function(require) {
     constructorName: "AppRouter",
 
     routes: {
-      // the default is the structure view
       "": "structure",
       "home": "home",
       "pizzerie": "pizzerie",
@@ -35,23 +34,6 @@ define(function(require) {
       this.currentView = undefined;
     },
 
-    checkNetConnection: function() {
-      var xhr = new XMLHttpRequest();
-      var file = "http://demos.subinsb.com/cdn/dot.png";
-      var r = Math.round(Math.random() * 10000);
-      xhr.open('HEAD', file + "?subins=" + r, false);
-      try {
-        xhr.send();
-        if (xhr.status >= 200 && xhr.status < 304) {
-          return true;
-        }
-        else return false;
-      }
-      catch (e) {
-        return false;
-      }
-    },
-
     home: function() {
       document.getElementById("cartone").style.display="block";
       document.getElementById("riepilogo").style.display="none";
@@ -59,21 +41,19 @@ define(function(require) {
       document.getElementById("title").innerHTML = "Home";
       document.getElementById("subtitle").innerHTML = "";
       this.structureView.setActiveTabBarElement("nav1");
-      // create the view
+      //crea e mostra la view
       var page = new HomeView();
-      // show the view
       this.changePage(page);
     },
 
     pizzerie: function() {
-      if(this.checkNetConnection()) {
+      if(navigator.onLine) {
         document.getElementById("cartone").style.display="block";
         document.getElementById("riepilogo").style.display="none";
         document.getElementById("back").style.display="block";
         document.getElementById("title").innerHTML = "Pizzerie";
         document.getElementById("subtitle").innerHTML = "";
-
-        // create the view and show it
+        //crea e mostra la view
         var page = new PizzerieView();
         this.changePage(page);
       }
@@ -84,13 +64,12 @@ define(function(require) {
     },
 
     menu: function() {
-      if(this.checkNetConnection()) {
+      if(navigator.onLine) {
         document.getElementById("cartone").style.display="block";
         document.getElementById("riepilogo").style.display="none";
         document.getElementById("back").style.display="block";
         document.getElementById("title").innerHTML = "Menu";
-
-        // create the view and show it
+        //crea e mostra la view
         var page = new MenuView();
         this.changePage(page);
       }
@@ -108,7 +87,7 @@ define(function(require) {
       document.getElementById("back").style.display="block";
       document.getElementById("title").innerHTML = "Il mio cartone";
       document.getElementById("subtitle").innerHTML = "";
-      
+      //crea e mostra la view
       var page = new CartoneView();
       this.changePage(page);
     },
@@ -119,10 +98,9 @@ define(function(require) {
       document.getElementById("back").style.display="block";
       document.getElementById("title").innerHTML = "Profilo";
       document.getElementById("subtitle").innerHTML = "";
-
-      // highlight the nav2 tab bar element as the current one
+      //imposta nav2 come la tab attiva
       this.structureView.setActiveTabBarElement("nav2");
-      // create the view and show it
+      //crea e mostra la view
       var page = new ProfiloView();
       this.changePage(page);
     },
@@ -133,10 +111,9 @@ define(function(require) {
       document.getElementById("back").style.display="block";
       document.getElementById("title").innerHTML = "Riepilogo";
       document.getElementById("subtitle").innerHTML = "";
-
-      // highlight the nav2 tab bar element as the current one
+      //imposta nav1 come la tab attiva
       this.structureView.setActiveTabBarElement("nav1");
-      // create the view and show it
+      //crea e mostra la view
       var page = new RiepilogoView();
       this.changePage(page);
     },
@@ -147,22 +124,21 @@ define(function(require) {
       document.getElementById("back").style.display="block";
       document.getElementById("title").innerHTML = "Il mio ordine";
       document.getElementById("subtitle").innerHTML = "";
-      // highlight the nav2 tab bar element as the current one
+      //imposta nav1 come la tab attiva
       this.structureView.setActiveTabBarElement("nav1");
-      // create the view and show it
+      //imposta nav2 come la tab attiva
       var page = new OrdineSospesoView();
       this.changePage(page);
     },
  
-    // load the structure view
     structure: function() {    
       if (!this.structureView) {   
         this.structureView = new StructureView();
-        // put the el element of the structure view into the DOM
+        //inserisce el della StructureView nel DOM
         document.body.appendChild(this.structureView.render().el);
         this.structureView.trigger("inTheDOM");
       }
-      // go to first view
+      //naviga alla prima view
       this.navigate(this.firstView, {trigger: true});
     },
 

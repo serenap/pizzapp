@@ -59,23 +59,30 @@ define(function(require) {
     },
 
     localizza: function() {
-      //controlla se il dispositivo è connesso
-    	function checkNetConnection() {
-    		var xhr = new XMLHttpRequest();
-    		var file = "http://demos.subinsb.com/cdn/dot.png";
-    		var r = Math.round(Math.random() * 10000);
-    		xhr.open('HEAD', file + "?subins=" + r, false);
-    		try {
-    		  xhr.send();
-    		  if (xhr.status >= 200 && xhr.status < 304) {
-    		    return true;
-    		  }
-          else return false;
-    		}
-        catch (e) {
-    		  return false;
-    		}
-    	}
+      this.mostraCercami();
+      //inizializza uno spinner per il caricamento
+      var opts = {
+        lines: 15, //linee da disegnare
+        length: 15, //lunghezza delle linee
+        width: 5, //spessore delle linee
+        radius: 20, //raggio del cerchio interno
+        corners: 1, //rotondità degli angoli (0..1)
+        shadow: true, //ombra
+        hwaccel: true, //accelerazione hardware
+      };  
+      var target = document.getElementById('spinner');
+      var spinner = new Spinner(opts).spin(target);   
+      //disabilita il popup di localizzazione
+      document.getElementById("local").disabled = true;
+      var nodes = document.getElementById("local").getElementsByTagName('*');
+      for(var i = 0; i < nodes.length; i++) {
+          nodes[i].disabled = true;
+      }
+      //interrompe lo spinner alla pressione del backbutton
+      document.addEventListener("backbutton", function(event) {
+        event.preventDefault();
+        spinner.stop();
+      }, true);
 
       //se c'è un Ordine in sospeso impedisce la procedura
       var ordine = new Ordine();
@@ -84,38 +91,14 @@ define(function(require) {
         var alert = new AlertView({message: messaggio});
       }
       else {
-        if(checkNetConnection()) {
-          this.mostraCercami();
-          //inizializza uno spinner per il caricamento
-          var opts = {
-            lines: 15, //linee da disegnare
-            length: 15, //lunghezza delle linee
-            width: 5, //spessore delle linee
-            radius: 20, //raggio del cerchio interno
-            corners: 1, //rotondità degli angoli (0..1)
-            shadow: true, //ombra
-            hwaccel: true, //accelerazione hardware
-          };  
-          var target = document.getElementById('spinner');
-          var spinner = new Spinner(opts).spin(target);
-          
-          //disabilita il popup di localizzazione
-          document.getElementById("local").disabled = true;
-          var nodes = document.getElementById("local").getElementsByTagName('*');
-          for(var i = 0; i < nodes.length; i++) {
-              nodes[i].disabled = true;
-          }
-
-          //recupera la posizione dell'Utente
-          navigator.geolocation.getCurrentPosition(onSuccess,Error);
-
+        //se il dispositivo è connesso
+        if(navigator.onLine) {
           //callback di successo
           function onSuccess(position){
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;     
             var latlng = new google.maps.LatLng(lat, lng);
             var addr = codeLatLng(latlng);
-            
             //riabilita il popup e ferma lo spinner
             document.getElementById("local").disabled = false;
             var nodes = document.getElementById("local").getElementsByTagName('*');
@@ -123,14 +106,18 @@ define(function(require) {
               nodes[i].disabled = false;
             }
             spinner.stop();
+            //rimuove il listener del backbutton
+            document.removeEventListener("backbutton", function() {});
           }
-
           //callback di errore
-          function Error(error) {
+          function onError(error) {
             spinner.stop();
             var messaggio = "Non riesco a trovarti. Assicurati di aver attivato il GPS.";
             var alert = new AlertView({message: messaggio});
           }
+
+          //recupera la posizione dell'Utente
+          navigator.geolocation.getCurrentPosition(onSuccess,onError);
 
           //formatta la posizione trovata
           function codeLatLng(latlng) {
