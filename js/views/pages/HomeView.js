@@ -78,10 +78,8 @@ define(function(require) {
 
 
     localizza: function() {
-    //controlla se il dispositivo è connesso
-     
-     
-      //se c'è un Ordine in sospeso impedisce la procedura
+    
+    //se c'è un Ordine in sospeso impedisce la procedura
       var ordine = new Ordine();
       if(ordine.carica()) {
         var messaggio = "Hai ancora un ordine in sospeso.";

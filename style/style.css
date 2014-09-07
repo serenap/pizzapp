@@ -94,8 +94,8 @@ header .icon{
 }
 
 input[type="search"] {
-  background-image: url('../img/lente.gif');
-  background-repeat:no-repeat;
+  background-image: url('../img/lente.png') !important;
+  background-repeat:no-repeat !important;
   position: relative;
   top:1em;
   width: 90%;
@@ -195,7 +195,7 @@ input[type="checkbox"] {
 
 .bar-tab .tab-item.active, .bar-tab .tab-item:active {
 color: rgb(212,62,55);
-background: #fff;
+background: rgb(251, 251, 251) !important;
 
 }
 
@@ -218,7 +218,7 @@ background: #fff;
 }
 
 .bar-tab{
-  border-top-color: #fff !important;
+  border-top-color: rgb(251, 251, 251) !important;
 
 }
 
