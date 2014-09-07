@@ -58,35 +58,29 @@ define(function(require) {
         $(this.el).find("#local").hide("fast");
     },
 
+
+     checkConnection: function(){
+        var xhr = new XMLHttpRequest();
+        var file = "http://demos.subinsb.com/cdn/dot.png";
+        var r = Math.round(Math.random() * 10000);
+        xhr.open('HEAD', file + "?subins=" + r, false);
+        try {
+          xhr.send();
+          if (xhr.status >= 200 && xhr.status < 304) {
+            return true;
+          }
+          else return false;
+        }
+        catch (e) {
+          return false;
+        }
+      },
+
+
     localizza: function() {
-      this.mostraCercami();
-
-      //inizializza uno spinner per il caricamento
-      var opts = {
-        lines: 15, //linee da disegnare
-        length: 15, //lunghezza delle linee
-        width: 5, //spessore delle linee
-        radius: 20, //raggio del cerchio interno
-        corners: 1, //rotondità degli angoli (0..1)
-        shadow: true, //ombra
-        hwaccel: true, //accelerazione hardware
-      };  
-      var target = document.getElementById('spinner');
-      var spinner = new Spinner(opts).spin(target);  
-      $(".spinner").show('fast'); 
-      //disabilita il popup di localizzazione
-      document.getElementById("local").disabled = true;
-      var nodes = document.getElementById("local").getElementsByTagName('*');
-      for(var i = 0; i < nodes.length; i++) {
-          nodes[i].disabled = true;
-      }
-      //interrompe lo spinner alla pressione del backbutton
-      document.addEventListener("backbutton", function(event) {
-        event.preventDefault();
-        spinner.stop();
-        $(".spinner").hide('fast'); 
-      }, true);
-
+    //controlla se il dispositivo è connesso
+     
+     
       //se c'è un Ordine in sospeso impedisce la procedura
       var ordine = new Ordine();
       if(ordine.carica()) {
@@ -94,8 +88,36 @@ define(function(require) {
         var alert = new AlertView({message: messaggio});
       }
       else {
-        //se il dispositivo è connesso
-        if(navigator.onLine) {
+        if(this.checkConnection()) {
+          this.mostraCercami();
+          //inizializza uno spinner per il caricamento
+          var opts = {
+            lines: 15, //linee da disegnare
+            length: 15, //lunghezza delle linee
+            width: 5, //spessore delle linee
+            radius: 20, //raggio del cerchio interno
+            corners: 1, //rotondità degli angoli (0..1)
+            shadow: true, //ombra
+            hwaccel: true, //accelerazione hardware
+          };  
+          var target = document.getElementById('spinner');
+          var spinner = new Spinner(opts).spin(target);
+          $(".spinner").show('fast'); 
+          //disabilita il popup di localizzazione
+          document.getElementById("local").disabled = true;
+          var nodes = document.getElementById("local").getElementsByTagName('*');
+          for(var i = 0; i < nodes.length; i++) {
+              nodes[i].disabled = true;
+          }
+
+           //interrompe lo spinner alla pressione del backbutton
+          document.addEventListener("backbutton", function(event) {
+            event.preventDefault();
+            spinner.stop();
+            $(".spinner").hide('fast'); 
+          }, true);
+
+
           //callback di successo
           function onSuccess(position){
             var lat = position.coords.latitude;
@@ -166,6 +188,7 @@ define(function(require) {
     },
 
     pizzerie: function(event) {
+      if(this.checkConnection()){
       //carica Ordine e Utente
       var ordine = new Ordine();
       var utente = new Utente();
@@ -188,7 +211,10 @@ define(function(require) {
         var messaggio = "Mancano alcuni dei tuoi dati per la consegna. Aggiorna il tuo Profilo.";
         var alert = new AlertView({message: messaggio});
       }
-    },
+    }else{ 
+        var messaggio = "Nessuna connessione. Devi essere connesso per procedere.";
+        var alert = new AlertView({message: messaggio});}
+  },
 
     aggiornaIndirizzo: function() {
       //carica l'Ordine e l'Utente a casa per recuperare i dati anagrafici
