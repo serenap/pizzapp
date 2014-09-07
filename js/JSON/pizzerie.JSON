@@ -1,9 +1,9 @@
 [
 	{
-		"nome": "Boh",
+		"nome": "Pizzapazza",
 		"indirizzo": "Viale della Croce Rossa 48, 67100 L'Aquila",
 		"lat": "42.3606",
-		"lng": "14.229275700000017",
+		"lng": "13.3772",
 		"telefono": "086200000",
 		"immagine": "img/pizzeria.png",
 		"menu": "null",
@@ -12,7 +12,7 @@
 		"orarioApertura": [9,22]
 	},
 	{
-		"nome": "Mah",
+		"nome": "Tucano",
 		"indirizzo": "Viale Aldo Moro 26, 67100 L'Aquila",
 		"lat": "42.3606",
 		"lng": "13.3772",
@@ -24,7 +24,7 @@
 		"orarioApertura": [8,23]
 	},
 	{
-		"nome": "Eh",
+		"nome": "Regina",
 		"indirizzo": "Via Strinella 60, 67100 L'Aquila",
 		"lat": "42.3606",
 		"lng": "13.3772",
@@ -36,7 +36,7 @@
 		"orarioApertura": [2,3]
 	},
 	{
-		"nome": "Uh",
+		"nome": "Capriccio",
 		"indirizzo": "Via Sallustio 7, 67039 Sulmona",
 		"lat": "42.3606",
 		"lng": "13.3772",
