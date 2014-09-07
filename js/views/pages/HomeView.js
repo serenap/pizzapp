@@ -60,6 +60,7 @@ define(function(require) {
 
     localizza: function() {
       this.mostraCercami();
+
       //inizializza uno spinner per il caricamento
       var opts = {
         lines: 15, //linee da disegnare
@@ -71,7 +72,8 @@ define(function(require) {
         hwaccel: true, //accelerazione hardware
       };  
       var target = document.getElementById('spinner');
-      var spinner = new Spinner(opts).spin(target);   
+      var spinner = new Spinner(opts).spin(target);  
+      $(".spinner").show('fast'); 
       //disabilita il popup di localizzazione
       document.getElementById("local").disabled = true;
       var nodes = document.getElementById("local").getElementsByTagName('*');
@@ -82,6 +84,7 @@ define(function(require) {
       document.addEventListener("backbutton", function(event) {
         event.preventDefault();
         spinner.stop();
+        $(".spinner").hide('fast'); 
       }, true);
 
       //se c'è un Ordine in sospeso impedisce la procedura
@@ -106,15 +109,18 @@ define(function(require) {
               nodes[i].disabled = false;
             }
             spinner.stop();
+            $(".spinner").hide('fast'); 
             //rimuove il listener del backbutton
             document.removeEventListener("backbutton", function() {});
           }
           //callback di errore
           function onError(error) {
             spinner.stop();
+            $(".spinner").hide('fast');
             var messaggio = "Non riesco a trovarti. Assicurati di aver attivato il GPS.";
             var alert = new AlertView({message: messaggio});
-          }
+            $('#local').hide('fast');
+            }
 
           //recupera la posizione dell'Utente
           navigator.geolocation.getCurrentPosition(onSuccess,onError);

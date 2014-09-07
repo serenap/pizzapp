@@ -1,5 +1,9 @@
 <form class="input-group">
 <br/>
+<div class="spinner">
+  <p><b>Stiamo calcolando la tua posizione...</b></p>
+<div id="spinner_profilo"></div>
+</div>
   <div class="input-row">
     <label>Nome</label>
     <input type="text" id="nome_profilo" value="{{nome}}" autofocus>
@@ -13,7 +17,7 @@
     <input type="number" id="telefono_profilo" value="{{telefono}}">
   </div>
   <br/>
-  <div id="spinner_profilo"></div>
+  
   <div class="input-row">
     <label>Città</label>
     <input type="text" id="citta_profilo" value="{{citta}}">

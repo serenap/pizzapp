@@ -8,7 +8,7 @@
 		"immagine": "img/pizzeria.png",
 		"menu": "null",
 		"maxDistanza": 10,
-		"giorniChiusura": ["Domenica"],
+		"giorniChiusura": ["Lunedì"],
 		"orarioApertura": [9,22]
 	},
 	{

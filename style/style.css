@@ -413,8 +413,31 @@ a, a:active{
   display: none !important;
 }
 
-#spinner_pizzerie, #spinner_riepilogo{
+#spinner,#spinner_pizzerie, #spinner_riepilogo, #spinner_profilo{
   position: fixed;
-  margin-top: 50% !important;
+  margin-top: 70% !important;
   margin-left: 50% !important;
+}
+
+.spinner{
+  z-index: 100 !important;
+  display: none;
+  position:absolute;
+  top: 0;
+  background-color: rgba(200,200,200, 0.5);
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.spinner p{
+  width: 100%;
+  line-height: 1.5;
+  color: #000;
+  text-align: center;
+  position: fixed;
+  margin-top: 30% !important;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 10% !important;
+  font-size: 20px;
 }

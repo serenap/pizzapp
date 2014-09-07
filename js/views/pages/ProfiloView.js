@@ -113,10 +113,11 @@ define(function(require) {
       };
       var target = document.getElementById("spinner_profilo");
       var spinner = new Spinner(opts).spin(target);
+      $(".spinner").show('fast');
 
-      //disabilita il popup di localizzazione
-      document.getElementById("localizza").disabled = true;
-      var nodes = document.getElementById("localizza").getElementsByTagName('*');
+      //disabilita il form del profilo
+      document.getElementById("profilo").disabled = true;
+      var nodes = document.getElementById("profilo").getElementsByTagName('*');
       for(var i = 0; i < nodes.length; i++) {
         nodes[i].disabled = true;
       }
@@ -131,17 +132,19 @@ define(function(require) {
         var latlng = new google.maps.LatLng(lat, lng);
         var addr = codeLatLng(latlng);
 
-        //riabilita il popup e ferma lo spinner
-        document.getElementById("localizza").disabled = false;
-        var nodes = document.getElementById("localizza").getElementsByTagName('*');
+        //riabilita il form e ferma lo spinner
+        document.getElementById("profilo").disabled = false;
+        var nodes = document.getElementById("profilo").getElementsByTagName('*');
         for(var i = 0; i < nodes.length; i++) {
           nodes[i].disabled = false;
         }
         spinner.stop();
+        $(".spinner").hide('fast');
       }
       //callback di errore
       function Error(error) {
         spinner.stop();
+        $(".spinner").hide('fast');
         var messaggio = "Non riesco a trovarti. Assicurati di aver attivato il GPS.";
         var alert = new AlertView({message: messaggio});
       }

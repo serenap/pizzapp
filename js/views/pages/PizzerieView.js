@@ -45,10 +45,12 @@ define(function(require) {
           };  
           var target = document.getElementById("spinner_pizzerie");
           var spinner = new Spinner(opts).spin(target);
+          $(".spinner").show('fast');
           //interrompe lo spinner alla pressione del backbutton
           document.addEventListener("backbutton", function(event) {
             event.preventDefault();
             spinner.stop();
+            $(".spinner").hide('fast');
           }, true);
 
           var utente = new Utente();
@@ -68,6 +70,7 @@ define(function(require) {
             //se i valori di lat e lng non sono vuoti
             if($("#lat").val() != '' && $("#lng").val() != '') {
               spinner.stop();
+              $(".spinner").hide('fast');
               //rimuove il listener del backbutton
               document.removeEventListener("backbutton", function() {});
               //per ogni model nella Lista, inizializza una PizzeriaSubView e 

@@ -83,6 +83,7 @@ define(function(require) {
       };  
       var target = document.getElementById("spinner_riepilogo");
       var spinner = new Spinner(opts).spin(target);
+      $(".spinner").show('fast');
       var cartone = new Cartone();
       var utente = new Utente(false);
       //recupera orario e modalità di pagamento dalla form
@@ -102,6 +103,7 @@ define(function(require) {
         document.getElementById("info_ordine_sospeso").style.visibility='visible';
         document.getElementById("normal").style.visibility='hidden';
         //naviga alla Home
+        $(".spinner").hide('fast');
         Backbone.history.navigate("home", {
           trigger: true
         });
