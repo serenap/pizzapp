@@ -160,6 +160,7 @@ input[type="checkbox"] {
 }
 
 #local{
+  height: 150% !important;
   display: none;
   opacity: 1;
   background: rgb(251, 251, 251);
@@ -426,7 +427,7 @@ a, a:active{
   top: 0;
   background-color: rgba(200,200,200, 0.5);
   width: 100% !important;
-  height: 100% !important;
+  height: 150% !important;
 }
 
 .spinner p{
